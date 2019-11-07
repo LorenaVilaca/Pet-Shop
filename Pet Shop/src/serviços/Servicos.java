@@ -1,10 +1,11 @@
 package serviços;
 
-public class Serviços {
+public class Servicos {
 	private String nome;
 	private String codigo;
 	private double preco;
-	public Serviços(String nome, String codigo, double preco) {
+	
+	public Servicos(String nome, String codigo, double preco) {
 		super();
 		this.nome = nome;
 		this.codigo = codigo;
@@ -28,5 +29,4 @@ public class Serviços {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-//Usar produto, checar se o produto existe e abater da quantidade.
 }
