@@ -1,49 +1,43 @@
 package serviços;
 
-public class RepositorioServiçoLista implements RepositorioServiços {
-	private Serviços serviço;
-	private RepositorioServiçoLista proximo;
-	
-	public RepositorioServiçoLista () {
+public class RepositorioServicoLista implements RepositorioServicos {
+	private Servicos serviço;
+	private RepositorioServicoLista proximo;
+
+	public RepositorioServicoLista () {
 		this.serviço = null;
+		this.proximo = null;
 	}
-	public void inserir (Serviços serviço) {
+	public void inserir (Servicos serviço) {
 		if (this.serviço == null) {
 			this.serviço = serviço;
-			this.proximo = new RepositorioServiçoLista();
+			this.proximo = new RepositorioServicoLista();
 			return;
 		}
 		this.proximo.inserir(serviço);
 	}
-
+	
 	public void remover(String codigo) {
 		if (this.serviço != null && this.serviço.getCodigo().equals(codigo)) {
 			this.serviço = this.proximo.serviço;
 			this.proximo = this.proximo.proximo;
 		}
-		else if (this.serviço == null) {
-			//gerar erro
-		}
 		else {
 			this.proximo.procurar(codigo);
 		}
-		
+
 	}
-	public void atualizar(Serviços serviço) {
-		if (this.serviço != null && this.serviço.equals(serviço)) {
+	public void atualizar(Servicos serviço) {
+		if (this.serviço != null && this.serviço.getCodigo().equals(serviço.getCodigo())) {
 			this.serviço.setNome(serviço.getNome());
-			this.serviço.setCodigo(serviço.getCodigo());
 			this.serviço.setPreco(serviço.getPreco());
-		}
-		else if (this.serviço == null) {
-			//gerar erro
 		}
 		else {
 			this.proximo.atualizar(serviço);
 		}
 	}
-	
-	public Serviços procurar(String codigo) {
+
+	public Servicos procurar(String codigo) {
 		if (this.serviço != null && this.serviço.getCodigo().equals(codigo)) {
 			return this.serviço;
 		}
@@ -53,7 +47,18 @@ public class RepositorioServiçoLista implements RepositorioServiços {
 		else {
 			return this.proximo.procurar(codigo);
 		}
-		
+
+	}
+	public boolean existe(String codigo) {
+		if (this.serviço != null && this.serviço.getCodigo().equals(codigo)) {
+			return true;
+		}
+		else if (this.serviço == null) {
+			return false;
+		}
+		else {
+			return this.proximo.existe(codigo);
+		}
 	}
 
 }
