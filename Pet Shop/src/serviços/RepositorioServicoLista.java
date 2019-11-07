@@ -1,16 +1,16 @@
 package serviços;
 
 public class RepositorioServicoLista implements RepositorioServicos {
-	private Servicos serviço;
+	private Servicos servico;
 	private RepositorioServicoLista proximo;
 
 	public RepositorioServicoLista () {
-		this.serviço = null;
+		this.servico = null;
 		this.proximo = null;
 	}
 	public void inserir (Servicos serviço) {
-		if (this.serviço == null) {
-			this.serviço = serviço;
+		if (this.servico == null) {
+			this.servico = serviço;
 			this.proximo = new RepositorioServicoLista();
 			return;
 		}
@@ -18,8 +18,8 @@ public class RepositorioServicoLista implements RepositorioServicos {
 	}
 	
 	public void remover(String codigo) {
-		if (this.serviço != null && this.serviço.getCodigo().equals(codigo)) {
-			this.serviço = this.proximo.serviço;
+		if (this.servico != null && this.servico.getCodigo().equals(codigo)) {
+			this.servico = this.proximo.servico;
 			this.proximo = this.proximo.proximo;
 		}
 		else {
@@ -28,9 +28,9 @@ public class RepositorioServicoLista implements RepositorioServicos {
 
 	}
 	public void atualizar(Servicos serviço) {
-		if (this.serviço != null && this.serviço.getCodigo().equals(serviço.getCodigo())) {
-			this.serviço.setNome(serviço.getNome());
-			this.serviço.setPreco(serviço.getPreco());
+		if (this.servico != null && this.servico.getCodigo().equals(serviço.getCodigo())) {
+			this.servico.setNome(serviço.getNome());
+			this.servico.setPreco(serviço.getPreco());
 		}
 		else {
 			this.proximo.atualizar(serviço);
@@ -38,10 +38,10 @@ public class RepositorioServicoLista implements RepositorioServicos {
 	}
 
 	public Servicos procurar(String codigo) {
-		if (this.serviço != null && this.serviço.getCodigo().equals(codigo)) {
-			return this.serviço;
+		if (this.servico != null && this.servico.getCodigo().equals(codigo)) {
+			return this.servico;
 		}
-		else if (this.serviço == null) {
+		else if (this.servico == null) {
 			return null;
 		}
 		else {
@@ -50,10 +50,10 @@ public class RepositorioServicoLista implements RepositorioServicos {
 
 	}
 	public boolean existe(String codigo) {
-		if (this.serviço != null && this.serviço.getCodigo().equals(codigo)) {
+		if (this.servico != null && this.servico.getCodigo().equals(codigo)) {
 			return true;
 		}
-		else if (this.serviço == null) {
+		else if (this.servico == null) {
 			return false;
 		}
 		else {

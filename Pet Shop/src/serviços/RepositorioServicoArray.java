@@ -1,17 +1,17 @@
 package serviços;
 
 public class RepositorioServicoArray implements RepositorioServicos {
-	private Servicos [] arrayServiço;
+	private Servicos [] arrayServico;
 	private int indice;
 	
 	public RepositorioServicoArray() {
-		this.arrayServiço = new Servicos [100];
+		this.arrayServico = new Servicos [100];
 		this.indice = 0;
 	}
 	
 	public void inserir(Servicos serviço) {
-		if (this.indice < this.arrayServiço.length) {
-			this.arrayServiço [indice] = serviço;
+		if (this.indice < this.arrayServico.length) {
+			this.arrayServico [indice] = serviço;
 			indice ++;
 		}
 		else {
@@ -21,9 +21,9 @@ public class RepositorioServicoArray implements RepositorioServicos {
 	
 	public void remover(String codigo) {
 		for (int i = 0; i < 100; i ++) {
-			if (this.arrayServiço[i].getCodigo().equals(codigo)) {
-				this.arrayServiço[i] = null;
-				System.arraycopy(arrayServiço, i + 1, this.arrayServiço, i, this.arrayServiço.length - 1 - i);
+			if (this.arrayServico[i].getCodigo().equals(codigo)) {
+				this.arrayServico[i] = null;
+				System.arraycopy(arrayServico, i + 1, this.arrayServico, i, this.arrayServico.length - 1 - i);
 				return;
 			}
 		}
@@ -31,9 +31,9 @@ public class RepositorioServicoArray implements RepositorioServicos {
 
 	public void atualizar(Servicos serviço) {
 		for (int i = 0; i < 100; i ++) {
-			if(this.arrayServiço[i].getCodigo().equals(serviço.getCodigo())) {
-				this.arrayServiço[i].setNome(serviço.getNome());
-				this.arrayServiço[i].setPreco(serviço.getPreco());
+			if(this.arrayServico[i].getCodigo().equals(serviço.getCodigo())) {
+				this.arrayServico[i].setNome(serviço.getNome());
+				this.arrayServico[i].setPreco(serviço.getPreco());
 				return;
 			}
 		}
@@ -41,8 +41,8 @@ public class RepositorioServicoArray implements RepositorioServicos {
 
 	public Servicos procurar(String codigo) {
 		for (int i = 0; i < 100; i ++) {
-			if (this.arrayServiço[i].getCodigo().equals(codigo)) {
-				return this.arrayServiço [i];
+			if (this.arrayServico[i].getCodigo().equals(codigo)) {
+				return this.arrayServico [i];
 			}
 		}
 		return null;
@@ -50,7 +50,7 @@ public class RepositorioServicoArray implements RepositorioServicos {
 
 	public boolean existe(String codigo) {
 		for (int i = 0; i < 100; i ++) {
-			if (this.arrayServiço[i].getCodigo().equals(codigo)) {
+			if (this.arrayServico[i].getCodigo().equals(codigo)) {
 				return true;
 			}
 		}
