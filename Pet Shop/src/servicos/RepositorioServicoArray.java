@@ -1,4 +1,4 @@
-package serviços;
+package servicos;
 
 public class RepositorioServicoArray implements RepositorioServicos {
 	private Servicos [] arrayServico;

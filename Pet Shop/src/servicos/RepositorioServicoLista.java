@@ -1,4 +1,4 @@
-package serviços;
+package servicos;
 
 public class RepositorioServicoLista implements RepositorioServicos {
 	private Servicos servico;

@@ -1,4 +1,4 @@
-package serviços;
+package servicos;
 public class CadastroServicos {
 	private RepositorioServicos servico;
 	
