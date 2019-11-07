@@ -8,13 +8,13 @@ public class RepositorioServicoLista implements RepositorioServicos {
 		this.servico = null;
 		this.proximo = null;
 	}
-	public void inserir (Servicos serviço) {
+	public void inserir (Servicos servico) {
 		if (this.servico == null) {
-			this.servico = serviço;
+			this.servico = servico;
 			this.proximo = new RepositorioServicoLista();
 			return;
 		}
-		this.proximo.inserir(serviço);
+		this.proximo.inserir(servico);
 	}
 	
 	public void remover(String codigo) {
@@ -27,13 +27,13 @@ public class RepositorioServicoLista implements RepositorioServicos {
 		}
 
 	}
-	public void atualizar(Servicos serviço) {
-		if (this.servico != null && this.servico.getCodigo().equals(serviço.getCodigo())) {
-			this.servico.setNome(serviço.getNome());
-			this.servico.setPreco(serviço.getPreco());
+	public void atualizar(Servicos servico) {
+		if (this.servico != null && this.servico.getCodigo().equals(servico.getCodigo())) {
+			this.servico.setNome(servico.getNome());
+			this.servico.setPreco(servico.getPreco());
 		}
 		else {
-			this.proximo.atualizar(serviço);
+			this.proximo.atualizar(servico);
 		}
 	}
 

@@ -9,9 +9,9 @@ public class RepositorioServicoArray implements RepositorioServicos {
 		this.indice = 0;
 	}
 	
-	public void inserir(Servicos serviço) {
+	public void inserir(Servicos servico) {
 		if (this.indice < this.arrayServico.length) {
-			this.arrayServico [indice] = serviço;
+			this.arrayServico [indice] = servico;
 			indice ++;
 		}
 		else {
@@ -29,11 +29,11 @@ public class RepositorioServicoArray implements RepositorioServicos {
 		}
 	}
 
-	public void atualizar(Servicos serviço) {
+	public void atualizar(Servicos servico) {
 		for (int i = 0; i < 100; i ++) {
-			if(this.arrayServico[i].getCodigo().equals(serviço.getCodigo())) {
-				this.arrayServico[i].setNome(serviço.getNome());
-				this.arrayServico[i].setPreco(serviço.getPreco());
+			if(this.arrayServico[i].getCodigo().equals(servico.getCodigo())) {
+				this.arrayServico[i].setNome(servico.getNome());
+				this.arrayServico[i].setPreco(servico.getPreco());
 				return;
 			}
 		}
