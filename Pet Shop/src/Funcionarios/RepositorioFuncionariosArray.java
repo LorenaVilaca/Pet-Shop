@@ -1,26 +1,25 @@
 package Funcionarios;
-import PetShop.Funcionarios.Funcionario;
 
-public class RepositorioFuncionariosArray implements Interface{
-	private Funcionario[] arrayFuncionario;
+public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
+	private Funcionarios[] arrayFuncionario;
 	private int indice;
 
 	public RepositorioFuncionariosArray() {
-		this.arrayFuncionario = new Funcionario[200];
+		this.arrayFuncionario = new Funcionarios[200];
 		this.indice = 0;
 	}
 
-	public void inserirFuncionarios(Funcionario funcionario) {
+	public void inserirFuncionarios(Funcionarios funcionario) {
 		if (this.indice < this.arrayFuncionario.length) {
 			this.arrayFuncionario[this.indice] = funcionario;
 			this.indice += 1;
 		}
 	}
-	public void removerFuncionarios(Funcionario funcionario) {
+	public void removerFuncionarios(Funcionarios funcionario) {
 		
 	}
-	public Funcionario procurarFuncionarios(int codigo) {
-		Funcionario resposta = null;
+	public Funcionarios procurarFuncionarios(int codigo) {
+		Funcionarios resposta = null;
 		boolean achou = false;
 		for (int i=0; i<this.indice && !achou ; i++) {
 			if(this.arrayFuncionario[i].getCodigo()==codigo) {

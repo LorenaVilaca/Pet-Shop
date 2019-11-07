@@ -1,27 +1,25 @@
 package Funcionarios;
 
-import PetShop.Funcionarios.Funcionario;
-
-public class RepositorioFuncionariosLista implements Interface{
+public class RepositorioFuncionariosLista implements InterfaceFuncionarios{
 	public RepositorioFuncionariosLista() {
 		
 		
 	}
 
 	@Override
-	public void inserirFuncionarios(Funcionario funcionario) {
+	public void inserirFuncionarios(Funcionarios funcionario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void removerFuncionarios(Funcionario funcionario) {
+	public void removerFuncionarios(Funcionarios funcionario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Funcionario procurarFuncionarios(int codigo) {
+	public Funcionarios procurarFuncionarios(int codigo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
