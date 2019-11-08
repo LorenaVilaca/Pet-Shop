@@ -5,10 +5,10 @@ public class CadastroVenda {
     	   repositorio = repo;
        }
        
-       public void cadastar (Vendas venda) {
+       public void cadastar (Vendas venda) throws LimiteAtingidoException {
     	   if (!this.repositorio.existe(venda.getId())) {
     		   this.repositorio.inserir(venda);
-    		   venda.setId(venda.getId()) += 1; 
+    		   
     	   }
     		   
     	   }
