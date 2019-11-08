@@ -1,4 +1,4 @@
-package serviços;
+package servicos;
 
 public interface RepositorioServicos {
 	public void inserir (Servicos servico);
