@@ -1,12 +1,13 @@
 package Venda;
-public class Venda {
+public class Vendas {
 	private Funcionario funcionario;
 	private Cliente cliente;
 	private Produto produto;
 	private Servico servico;
 	private double valor;
 	private int id;
-	public Venda(Funcionario funcionario, Cliente cliente, Produto produto, Servico servico, double valor) {
+	public Vendas (Funcionario funcionario, Cliente cliente, 
+			Produto produto, Servico servico, double valor, int id) {
 		this.funcionario = funcionario;
 		this.cliente = cliente;
 		this.produto = produto;
