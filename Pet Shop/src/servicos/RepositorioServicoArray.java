@@ -9,13 +9,14 @@ public class RepositorioServicoArray implements RepositorioServicos {
 		this.indice = 0;
 	}
 	
-	public void inserir(Servicos servico) {
+	public void inserir(Servicos servico) throws LimiteServicoAtingidoException {
 		if (this.indice < this.arrayServico.length) {
 			this.arrayServico [indice] = servico;
 			indice ++;
 		}
 		else {
-			//gerar erro
+			LimiteServicoAtingidoException e = new LimiteServicoAtingidoException();
+			throw e;
 		}
 	}
 	
@@ -24,6 +25,7 @@ public class RepositorioServicoArray implements RepositorioServicos {
 			if (this.arrayServico[i].getCodigo().equals(codigo)) {
 				this.arrayServico[i] = null;
 				System.arraycopy(arrayServico, i + 1, this.arrayServico, i, this.arrayServico.length - 1 - i);
+				this.indice --;
 				return;
 			}
 		}
@@ -39,11 +41,17 @@ public class RepositorioServicoArray implements RepositorioServicos {
 		}
 	}
 
-	public Servicos procurar(String codigo) {
+	public Servicos procurar(String codigo) throws ServicoNaoEncontradoException {
+		boolean achou = false;
 		for (int i = 0; i < 100; i ++) {
 			if (this.arrayServico[i].getCodigo().equals(codigo)) {
+				achou = true;
 				return this.arrayServico [i];
 			}
+		}
+		if (!achou) {
+			ServicoNaoEncontradoException e = new ServicoNaoEncontradoException();
+			throw e;
 		}
 		return null;
 	}
