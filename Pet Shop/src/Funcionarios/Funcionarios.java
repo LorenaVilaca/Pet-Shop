@@ -1,6 +1,6 @@
 package Funcionarios;
 
-public class Funcionarios{
+public class Funcionarios {
 	private int codigo;
 	private double salario;
 
