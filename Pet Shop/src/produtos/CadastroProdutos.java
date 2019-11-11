@@ -6,7 +6,7 @@ public class CadastroProdutos {
 		this.repositorio = repositorio;
 	}
 
-	public void cadastrar(Produtos produto) { //produto ja cadastrado
+	public void cadastrar(Produtos produto) { //produto ja cadastrado kutxlut
 		if(!this.repositorio.existe(produto.getCode())) {
 			this.repositorio.inserir(produto);
 		}
