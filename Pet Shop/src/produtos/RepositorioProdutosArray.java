@@ -1,23 +1,33 @@
 package produtos;
 
 public class RepositorioProdutosArray implements RepositorioProduto {
-	private Produtos[] produtos;
-	int indice = 0;
+	private Produtos[] arrayProdutos;
+	private int indice;
 	
+	public RepositorioProdutosArray() {
+		this.arrayProdutos = new Produtos [100];
+		this.indice = 0;
+	}
 	@Override
-	public void inserir(Produtos produto) {
-		produtos[indice] = produto;
-		indice++;
+	public void inserir(Produtos produto) { //limite atingido
+		if(this.indice < this.arrayProdutos.length-1) {
+			this.arrayProdutos[this.indice] = produto;
+			this.indice++;
+		} else {
+			//limite atingido
+			//throw error
+		}
+		
 	}
 
 	@Override
 	public Produtos procurar(String codeProduto) {
 		Produtos p = null;
 		boolean find = false;
-		for(int i=0; i<produtos.length && !find; i++) {
-			if (produtos[i].getCode().equals(codeProduto)) {
+		for(int i=0; i<this.arrayProdutos.length-1 && !find; i++) {
+			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
 				find = true;
-				p = produtos[i];
+				p = this.arrayProdutos[i];
 			} else {
 				p = null;
 			}
@@ -26,11 +36,12 @@ public class RepositorioProdutosArray implements RepositorioProduto {
 	}
 
 	@Override
-	public void remover(String codeProduto) {
+	public void remover(String codeProduto) { //pokemon nao encontrad
 		boolean removido = false;
-		for (int i=0; i<produtos.length && !removido; i++) {
-			if (produtos[i].getCode().equals(codeProduto)) {
-				produtos[i] = null;
+		for (int i=0; i<this.arrayProdutos.length-1 && !removido; i++) {
+			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
+				this.arrayProdutos[i] = null;
+				System.arraycopy(arrayProdutos, i+1, this.arrayProdutos, i, this.arrayProdutos.length -1 -i);				
 				removido = true;
 			}
 		}
@@ -39,8 +50,8 @@ public class RepositorioProdutosArray implements RepositorioProduto {
 	@Override
 	public boolean existe(String codeProduto) {
 		boolean existe = false;
-		for (int i=0; i<produtos.length && !existe;i++) {
-			if (produtos[i].getCode().equals(codeProduto)) {
+		for (int i=0; i<this.arrayProdutos.length-1 && !existe;i++) {
+			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
 				existe = true;
 			}
 		}
@@ -50,9 +61,9 @@ public class RepositorioProdutosArray implements RepositorioProduto {
 	@Override
 	public void atualizarPreco(String codeProduto, double price) {
 		boolean atualizado = false;
-		for (int i=0; i<produtos.length && !atualizado;i++) {
-			if (produtos[i].getCode().equals(codeProduto)) {
-				produtos[i].setPrice(price);
+		for (int i=0; i<this.arrayProdutos.length-1 && !atualizado;i++) {
+			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
+				this.arrayProdutos[i].setPrice(price);
 				atualizado = true;
 			}
 		}
@@ -61,9 +72,9 @@ public class RepositorioProdutosArray implements RepositorioProduto {
 	@Override
 	public void atualizarQuantidade(String codeProduto, int quantidade) {
 		boolean atualizado = false;
-		for (int i=0; i<produtos.length && !atualizado;i++) {
-			if (produtos[i].getCode().equals(codeProduto)) {
-				produtos[i].setQuantidade(quantidade);
+		for (int i=0; i<this.arrayProdutos.length-1 && !atualizado;i++) {
+			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
+				this.arrayProdutos[i].setQuantidade(quantidade);
 				atualizado = true;
 			}
 		}
@@ -72,9 +83,9 @@ public class RepositorioProdutosArray implements RepositorioProduto {
 	@Override
 	public void atualizarFornecedor(String codeProduto, String fornecedor) {
 		boolean atualizado = false;
-		for (int i=0; i<produtos.length && !atualizado;i++) {
-			if (produtos[i].getCode().equals(codeProduto)) {
-				produtos[i].setFornecedor(fornecedor);
+		for (int i=0; i<this.arrayProdutos.length-1 && !atualizado;i++) {
+			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
+				this.arrayProdutos[i].setFornecedor(fornecedor);
 				atualizado = true;
 			}
 		}

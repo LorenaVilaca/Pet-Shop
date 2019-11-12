@@ -1,13 +1,18 @@
 package Venda;
+
+import Funcionarios.Funcionarios;
+import produtos.Produtos;
+import servicos.Servicos;
+
 public class Vendas {
-	private Funcionario funcionario;
-	private Cliente cliente;
-	private Produto produto;
-	private Servico servico;
+	private Funcionarios funcionario;
+	private Clientes cliente;
+	private Produtos produto;
+	private Servicos servico;
 	private double valor;
 	private int id;
-	public Vendas (Funcionario funcionario, Cliente cliente, 
-			Produto produto, Servico servico, double valor, int id) {
+	public Vendas (Funcionarios funcionario, Clientes cliente, 
+			Produtos produto, Servicos servico, double valor, int id) {
 		this.funcionario = funcionario;
 		this.cliente = cliente;
 		this.produto = produto;
@@ -21,28 +26,28 @@ public class Vendas {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Funcionario getFuncionario() {
+	public Funcionarios getFuncionario() {
 		return funcionario;
 	}
-	public void setFuncionario(Funcionario funcionario) {
+	public void setFuncionario(Funcionarios funcionario) {
 		this.funcionario = funcionario;
 	}
-	public Cliente getCliente() {
+	public Clientes getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente cliente) {
+	public void setCliente(Clientes cliente) {
 		this.cliente = cliente;
 	}
-	public Produto getProduto() {
+	public Produtos getProduto() {
 		return produto;
 	}
-	public void setProduto(Produto produto) {
+	public void setProduto(Produtos produto) {
 		this.produto = produto;
 	}
-	public Servico getServico() {
+	public Servicos getServico() {
 		return servico;
 	}
-	public void setServico(Servico servico) {
+	public void setServico(Servicos servico) {
 		this.servico = servico;
 	}
 	public double getValor() {

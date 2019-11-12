@@ -2,7 +2,7 @@ package Venda;
 public class CadastroVenda {
 	private RepositorioVendas repositorio;
        public CadastroVenda (RepositorioVendas repo) {
-    	   repositorio = repo;
+    	   this.repositorio = repo;
        }
        
        public void cadastar (Vendas venda) 

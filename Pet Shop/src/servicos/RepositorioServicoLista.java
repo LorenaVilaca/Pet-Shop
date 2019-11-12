@@ -17,32 +17,41 @@ public class RepositorioServicoLista implements RepositorioServicos {
 		this.proximo.inserir(servico);
 	}
 	
-	public void remover(String codigo) {
+	public void remover(String codigo) throws ServicoNaoEncontradoException {
 		if (this.servico != null && this.servico.getCodigo().equals(codigo)) {
 			this.servico = this.proximo.servico;
 			this.proximo = this.proximo.proximo;
 		}
+		else if (this.servico == null) {
+			ServicoNaoEncontradoException e = new ServicoNaoEncontradoException();
+			throw e;
+		}
 		else {
-			this.proximo.procurar(codigo);
+			this.proximo.remover(codigo);
 		}
 
 	}
-	public void atualizar(Servicos servico) {
+	public void atualizar(Servicos servico) throws ServicoNaoEncontradoException {
 		if (this.servico != null && this.servico.getCodigo().equals(servico.getCodigo())) {
 			this.servico.setNome(servico.getNome());
 			this.servico.setPreco(servico.getPreco());
+		}
+		else if (this.servico == null) {
+			ServicoNaoEncontradoException e = new ServicoNaoEncontradoException();
+			throw e;
 		}
 		else {
 			this.proximo.atualizar(servico);
 		}
 	}
 
-	public Servicos procurar(String codigo) {
+	public Servicos procurar(String codigo) throws ServicoNaoEncontradoException {
 		if (this.servico != null && this.servico.getCodigo().equals(codigo)) {
 			return this.servico;
 		}
 		else if (this.servico == null) {
-			return null;
+			ServicoNaoEncontradoException e = new ServicoNaoEncontradoException();
+			throw e;
 		}
 		else {
 			return this.proximo.procurar(codigo);
