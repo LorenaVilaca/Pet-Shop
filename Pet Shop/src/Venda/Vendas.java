@@ -1,6 +1,7 @@
 package Venda;
 
 import Funcionarios.Funcionarios;
+import clientes.Clientes;
 import produtos.Produtos;
 import servicos.Servicos;
 
