@@ -5,3 +5,4 @@ public class ClienteNaoEncontradoException extends Exception{
 		super ("Cliente não encontrado!");
 	}
 }
+//...

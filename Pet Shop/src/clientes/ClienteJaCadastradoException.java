@@ -5,3 +5,4 @@ public class ClienteJaCadastradoException extends Exception {
 		super ("Cliente já cadastrado!");
 	}
 }
+//...
