@@ -1,22 +1,15 @@
-package Funcionarios;
+package funcionarios;
 
 
 public interface InterfaceFuncionarios {
-	public void inserirFuncionarios(Funcionarios funcionario, String codigo, double salario) 
-			throws LimiteAtingidoException;
+	public void inserirFuncionarios(Funcionarios funcionario);
 	
-	public void removerFuncionarios(String codigo) 
-			throws FuncionarioNaoEncontradoException;
+	public void removerFuncionarios(Funcionarios funcionario);
 	
-	public Funcionarios procurarFuncionarios(String codigo) 
-			throws FuncionarioNaoEncontradoException;
+	public Funcionarios procurarFuncionarios(int codigo);
 	
-	public boolean existeFuncionario(String codigo);
+	public boolean existeFuncionario(int codigo);
 	
-	public void atualizarSalario(double salario) 
-			throws FuncionarioNaoEncontradoException, LimiteAtingidoException;
-	
-
-	
+	public void atualizarSalario(double salario);
 
 }

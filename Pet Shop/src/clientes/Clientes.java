@@ -1,38 +1,15 @@
 package clientes;
+import pessoa.PessoaAbstract;
 
-public class Clientes {
-	private String nome;
-	private String cpf;
-	private String telefone;
-
-	public Clientes(String nome, String cpf, String telefone) {
-		this.nome = nome;
-		this.cpf = cpf;
-		this.telefone = telefone;
+public class Clientes extends PessoaAbstract {
+	
+	public Clientes (String nome, String cpf, String telefone) {
+		super (nome,cpf,telefone);
+				
 	}
 
-	public String getNome() {
-		return nome;
+	public double desconto() {
+		return 0;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-}
+}//

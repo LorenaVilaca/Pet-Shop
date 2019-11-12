@@ -1,4 +1,4 @@
-package Funcionarios;
+package funcionarios;
 
 public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
 	private Funcionarios[] arrayFuncionario;
@@ -9,23 +9,16 @@ public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
 		this.indice = 0;
 	}
 
-	public void inserirFuncionarios(Funcionarios funcionario, String codigo, double salario) 
-	throws LimiteAtingidoException {
+	public void inserirFuncionarios(Funcionarios funcionario) {
 		if (this.indice < this.arrayFuncionario.length) {
 			this.arrayFuncionario[this.indice] = funcionario;
 			this.indice += 1;
-		} else {
-			LimiteAtingidoException e;
-			e = new LimiteAtingidoException();
-			throw e;
 		}
 	}
-	public void removerFuncionarios(String codigo) {
+	public void removerFuncionarios(Funcionarios funcionario) {
 		
 	}
-	
-	public Funcionarios procurarFuncionarios(String codigo) 
-	throws FuncionarioNaoEncontradoException {
+	public Funcionarios procurarFuncionarios(int codigo) {
 		Funcionarios resposta = null;
 		boolean achou = false;
 		for (int i=0; i<this.indice && !achou ; i++) {
@@ -34,17 +27,10 @@ public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
 				achou = true;
 			}
 		}
-		if (achou)
 		return resposta;
-		else {
-			FuncionarioNaoEncontradoException e;
-			e = new FuncionarioNaoEncontradoException();
-			throw e;
-		}
-		
 	}
 	
-	public boolean existeFuncionario(String codigo) {
+	public boolean existeFuncionario(int codigo) {
 		boolean achou = false;
 		for (int i=0; i<this.indice && !achou; i++) {
 			if (this.arrayFuncionario[i].getCodigo()==codigo)
@@ -54,8 +40,8 @@ public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
 	}
 
 	public void atualizarSalario(double salario) {
-		
-		
+
+
 	}
 
 }
