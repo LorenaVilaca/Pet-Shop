@@ -1,9 +1,9 @@
 package produtos;
 
 public interface RepositorioProduto {
-	void inserir(Produtos produto);
-	Produtos procurar(String codeProduto);
-	void remover(String codeProduto);
-	boolean existe(String codeProduto);
-	void atualizarProduto(Produtos produto);
+	void inserir(Produtos produto) throws LimiteProdutosAtingidoException;
+	Produtos procurar(String codeProduto) throws ProdutoNaoEncontradoException;
+	void remover(String codeProduto) throws ProdutoNaoEncontradoException;
+	boolean existe(String codeProduto) throws ProdutoNaoEncontradoException;
+	void atualizarProduto(Produtos produto) throws ProdutoNaoEncontradoException;
 }

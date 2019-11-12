@@ -6,24 +6,24 @@ public class CadastroProdutos {
 		this.repositorio = repositorio;
 	}
 
-	public void cadastrar(Produtos produto) { //produto ja cadastrado kutxlut & limite atingido 
+	public void cadastrar(Produtos produto) throws LimiteProdutosAtingidoException, ProdutoNaoEncontradoException{ 
 		if(!this.repositorio.existe(produto.getCode())) {
 			this.repositorio.inserir(produto);
 		}
 	}
 
-	public void atualizarProduto(Produtos produto) { //produto nao encontrado
+	public void atualizarProduto(Produtos produto) throws ProdutoNaoEncontradoException { //produto nao encontrado
 		this.repositorio.atualizarProduto(produto);
 	}
-	public void remover(String codeProduto) { //produto nao encontrado 
+	public void remover(String codeProduto) throws ProdutoNaoEncontradoException { //produto nao encontrado 
 		this.repositorio.remover(codeProduto);
 	}
 
-	public Produtos procurar(String codeProduto) { //produto na encontrado
+	public Produtos procurar(String codeProduto)throws ProdutoNaoEncontradoException { //produto na encontrado
 		return this.repositorio.procurar(codeProduto);
 	}
 	
-	public boolean existe(String codeProduto) { //produto nao encontrado
+	public boolean existe(String codeProduto) throws ProdutoNaoEncontradoException { //produto nao encontrado
 		return this.repositorio.existe(codeProduto);
 	}
 	
