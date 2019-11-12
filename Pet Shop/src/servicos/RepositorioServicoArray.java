@@ -20,23 +20,35 @@ public class RepositorioServicoArray implements RepositorioServicos {
 		}
 	}
 	
-	public void remover(String codigo) {
+	public void remover(String codigo) throws ServicoNaoEncontradoException{
+		boolean achou = false;
 		for (int i = 0; i < 100; i ++) {
 			if (this.arrayServico[i].getCodigo().equals(codigo)) {
 				this.arrayServico[i] = null;
 				System.arraycopy(arrayServico, i + 1, this.arrayServico, i, this.arrayServico.length - 1 - i);
 				this.indice --;
+				achou = true;
 				return;
 			}
 		}
+		if (!achou) {
+			ServicoNaoEncontradoException e = new ServicoNaoEncontradoException();
+			throw e;
+		}
 	}
 
-	public void atualizar(Servicos servico) {
+	public void atualizar(Servicos servico) throws ServicoNaoEncontradoException{
+		boolean achou = false;
 		for (int i = 0; i < 100; i ++) {
 			if(this.arrayServico[i].getCodigo().equals(servico.getCodigo())) {
 				this.arrayServico[i] = servico;
+				achou = true;
 				return;
 			}
+		}
+		if (!achou) {
+			ServicoNaoEncontradoException e = new ServicoNaoEncontradoException();
+			throw e;
 		}
 	}
 
