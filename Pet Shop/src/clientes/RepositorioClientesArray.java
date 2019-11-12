@@ -51,9 +51,7 @@ public class RepositorioClientesArray implements RepositorioClientes {
 	public void atualizar(Clientes cliente) {
 		for (int i = 0; i < 100; i ++) {
 			if(this.arrayCliente[i].getCpf().equals(cliente.getCpf())) {
-				this.arrayCliente[i].setNome(cliente.getNome());
-				this.arrayCliente[i].setCpf(cliente.getCpf());
-				this.arrayCliente[i].setTelefone(cliente.getTelefone());
+				this.arrayCliente[i] = cliente;
 				return;
 			}
 		}

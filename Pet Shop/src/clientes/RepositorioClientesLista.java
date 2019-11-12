@@ -31,9 +31,7 @@ public class RepositorioClientesLista implements RepositorioClientes {
 
 	public void atualizar(Clientes cliente) {
 		if (this.cliente != null && this.cliente.getCpf().equals(cliente.getCpf())) {
-			this.cliente.setNome(cliente.getNome());
-			this.cliente.setCpf(cliente.getCpf());
-			this.cliente.setTelefone(cliente.getTelefone());
+			this.cliente = cliente;
 		} else {
 			this.proximo.atualizar(cliente);
 		}
