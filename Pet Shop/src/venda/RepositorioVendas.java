@@ -1,4 +1,4 @@
-package Venda;
+package venda;
 public interface RepositorioVendas {
        public void remover (int id)
                throws VendaNaoEncontradaException;

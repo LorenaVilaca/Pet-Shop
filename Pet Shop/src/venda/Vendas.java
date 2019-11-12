@@ -1,9 +1,9 @@
-package Venda;
+package venda;
 
-import Funcionarios.Funcionarios;
+import funcionarios.Funcionarios;
 import produtos.Produtos;
 import servicos.Servicos;
-
+import clientes.Clientes;
 public class Vendas {
 	private Funcionarios funcionario;
 	private Clientes cliente;

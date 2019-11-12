@@ -1,6 +1,6 @@
-package Venda;
+package venda;
 public class VendaNaoEncontradaException extends Exception {
        public VendaNaoEncontradaException () {
-    	   super("Venda não encontrada!");
+    	   super("Venda nï¿½o encontrada!");
        }
 }
