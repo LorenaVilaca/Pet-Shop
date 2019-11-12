@@ -18,7 +18,7 @@ public class PetShop {
 	
    private CadastroClientes clientes;
    private CadastroFuncionarios funcionarios;
-   private CadastroProdutos produtos;
+   private CadastroProdutos produtos;//yujduytn
    private CadastroServicos servicos;
    private CadastroVenda vendas;
    
