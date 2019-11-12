@@ -1,4 +1,4 @@
-package Funcionarios;
+package funcionarios;
 
 public class FuncionarioJaCadastradoException extends Exception {
 	

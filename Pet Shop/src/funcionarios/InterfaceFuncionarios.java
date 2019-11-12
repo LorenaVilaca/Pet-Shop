@@ -2,11 +2,11 @@ package funcionarios;
 
 
 public interface InterfaceFuncionarios {
-	public void inserirFuncionarios(Funcionarios funcionario);
+	public void inserirFuncionarios(funcionarios funcionario);
 	
-	public void removerFuncionarios(Funcionarios funcionario);
+	public void removerFuncionarios(funcionarios funcionario);
 	
-	public Funcionarios procurarFuncionarios(int codigo);
+	public funcionarios procurarFuncionarios(int codigo);
 	
 	public boolean existeFuncionario(int codigo);
 	

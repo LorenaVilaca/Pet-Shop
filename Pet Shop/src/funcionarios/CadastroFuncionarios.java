@@ -1,4 +1,4 @@
-package Funcionarios;
+package funcionarios;
 
 public class CadastroFuncionarios {
 	private InterfaceFuncionarios repositorio;
@@ -7,7 +7,7 @@ public class CadastroFuncionarios {
 		this.repositorio = repo;
 	}
 
-	public void cadastrarFuncionario (Funcionarios funcionario, String codigo, double salario) 
+	public void cadastrarFuncionario (funcionarios funcionario, String codigo, double salario) 
 			throws FuncionarioJaCadastradoException, LimiteAtingidoException  {
 		if(this.repositorio.existeFuncionario(funcionario.getCodigo())) {
 			this.repositorio.inserirFuncionarios(funcionario, codigo, salario);
@@ -28,7 +28,7 @@ public class CadastroFuncionarios {
 		this.repositorio.removerFuncionarios(codigo);
 	}
 
-	public Funcionarios procurarFuncionario(String codigo) 
+	public funcionarios procurarFuncionario(String codigo) 
 			throws FuncionarioNaoEncontradoException {
 		return this.repositorio.procurarFuncionarios(codigo);
 	}

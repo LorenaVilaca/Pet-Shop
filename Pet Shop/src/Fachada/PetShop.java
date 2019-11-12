@@ -1,18 +1,18 @@
 package Fachada;
-import Funcionarios.Funcionarios;
-import Venda.CadastroVenda;
-import Venda.RepositorioVendas;
 import clientes.CadastroClientes;
 import clientes.ClienteJaCadastradoException;
 import clientes.ClienteNaoEncontradoException;
 import clientes.Clientes;
 import clientes.RepositorioClientes;
+import funcionarios.funcionarios;
 import produtos.CadastroProdutos;
 import produtos.Produtos;
 import produtos.RepositorioProduto;
 import servicos.CadastroServicos;
 import servicos.RepositorioServicos;
 import servicos.Servicos;
+import venda.CadastroVenda;
+import venda.RepositorioVendas;
 
 public class PetShop {
 	

@@ -7,19 +7,19 @@ public class RepositorioFuncionariosLista implements InterfaceFuncionarios{
 	}
 
 	@Override
-	public void inserirFuncionarios(Funcionarios funcionario) {
+	public void inserirFuncionarios(funcionarios funcionario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void removerFuncionarios(Funcionarios funcionario) {
+	public void removerFuncionarios(funcionarios funcionario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Funcionarios procurarFuncionarios(int codigo) {
+	public funcionarios procurarFuncionarios(int codigo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

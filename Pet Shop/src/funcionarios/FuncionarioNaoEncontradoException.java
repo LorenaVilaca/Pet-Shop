@@ -1,4 +1,4 @@
-package Funcionarios;
+package funcionarios;
 
 public class FuncionarioNaoEncontradoException extends Exception{
 	public FuncionarioNaoEncontradoException() {
