@@ -49,7 +49,7 @@ public class RepositorioClientesLista implements RepositorioClientes {
 		}
 
 	}
-
+//
 	public boolean existe(String cpf) {
 		if (this.cliente != null && this.cliente.getCpf().equals(cpf)) {
 			return true;
