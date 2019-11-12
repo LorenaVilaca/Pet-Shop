@@ -3,28 +3,29 @@ package produtos;
 public class RepositorioProdutosArray implements RepositorioProduto {
 	private Produtos[] arrayProdutos;
 	private int indice;
-	
+
 	public RepositorioProdutosArray() {
 		this.arrayProdutos = new Produtos [100];
 		this.indice = 0;
 	}
+	
 	@Override
-	public void inserir(Produtos produto) { //limite atingido
-		if(this.indice < this.arrayProdutos.length-1) {
-			this.arrayProdutos[this.indice] = produto;
-			this.indice++;
-		} else {
-			//limite atingido
-			//throw error
+	public void inserir(Produtos produto) throws ProdutoJaCadastradoException{ 
+		boolean inserido = false;
+		boolean jainserido = false;
+		for(int i=0;i<this.arrayProdutos.length && !inserido && !jainserido; i++) {
+			if (this.arrayProdutos[i].getCode().equals(produto.getCode())) {
+				jainserido = true;
+			} else if               °
 		}
-		
+
 	}
 
 	@Override
 	public Produtos procurar(String codeProduto) {
 		Produtos p = null;
 		boolean find = false;
-		for(int i=0; i<this.arrayProdutos.length-1 && !find; i++) {
+		for(int i=0; i<this.arrayProdutos.length && !find; i++) {
 			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
 				find = true;
 				p = this.arrayProdutos[i];
@@ -38,7 +39,7 @@ public class RepositorioProdutosArray implements RepositorioProduto {
 	@Override
 	public void remover(String codeProduto) { //pokemon nao encontrad
 		boolean removido = false;
-		for (int i=0; i<this.arrayProdutos.length-1 && !removido; i++) {
+		for (int i=0; i<this.arrayProdutos.length && !removido; i++) {
 			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
 				this.arrayProdutos[i] = null;
 				System.arraycopy(arrayProdutos, i+1, this.arrayProdutos, i, this.arrayProdutos.length -1 -i);				
@@ -50,45 +51,24 @@ public class RepositorioProdutosArray implements RepositorioProduto {
 	@Override
 	public boolean existe(String codeProduto) {
 		boolean existe = false;
-		for (int i=0; i<this.arrayProdutos.length-1 && !existe;i++) {
+		for (int i=0; i<this.arrayProdutos.length && !existe;i++) {
 			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
 				existe = true;
 			}
 		}
 		return existe;
 	}
-
+	
 	@Override
-	public void atualizarPreco(String codeProduto, double price) {
+	public void atualizarProduto(Produtos produto) {
 		boolean atualizado = false;
-		for (int i=0; i<this.arrayProdutos.length-1 && !atualizado;i++) {
-			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
-				this.arrayProdutos[i].setPrice(price);
+		for (int i=0; i<this.arrayProdutos.length && !atualizado;i++) {
+			if (this.arrayProdutos[i].getCode().equals(produto.getCode())) {
 				atualizado = true;
+				this.arrayProdutos[i]=produto;
 			}
 		}
 	}
 
-	@Override
-	public void atualizarQuantidade(String codeProduto, int quantidade) {
-		boolean atualizado = false;
-		for (int i=0; i<this.arrayProdutos.length-1 && !atualizado;i++) {
-			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
-				this.arrayProdutos[i].setQuantidade(quantidade);
-				atualizado = true;
-			}
-		}
-	}
-
-	@Override
-	public void atualizarFornecedor(String codeProduto, String fornecedor) {
-		boolean atualizado = false;
-		for (int i=0; i<this.arrayProdutos.length-1 && !atualizado;i++) {
-			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
-				this.arrayProdutos[i].setFornecedor(fornecedor);
-				atualizado = true;
-			}
-		}
-	}
 
 }
