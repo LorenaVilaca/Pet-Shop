@@ -34,8 +34,7 @@ public class RepositorioServicoArray implements RepositorioServicos {
 	public void atualizar(Servicos servico) {
 		for (int i = 0; i < 100; i ++) {
 			if(this.arrayServico[i].getCodigo().equals(servico.getCodigo())) {
-				this.arrayServico[i].setNome(servico.getNome());
-				this.arrayServico[i].setPreco(servico.getPreco());
+				this.arrayServico[i] = servico;
 				return;
 			}
 		}

@@ -33,8 +33,7 @@ public class RepositorioServicoLista implements RepositorioServicos {
 	}
 	public void atualizar(Servicos servico) throws ServicoNaoEncontradoException {
 		if (this.servico != null && this.servico.getCodigo().equals(servico.getCodigo())) {
-			this.servico.setNome(servico.getNome());
-			this.servico.setPreco(servico.getPreco());
+			this.servico = servico;
 		}
 		else if (this.servico == null) {
 			ServicoNaoEncontradoException e = new ServicoNaoEncontradoException();
