@@ -44,19 +44,7 @@ public class RepositorioProdutosLista implements RepositorioProduto{
 	}
 
 	@Override
-	public void atualizarPreco(String codeProduto, double price) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void atualizarQuantidade(String codeProduto, int quantidade) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void atualizarFornecedor(String codeProduto, String fornecedor) {
+	public void atualizarProduto(Produtos produto) {
 		// TODO Auto-generated method stub
 		
 	}
