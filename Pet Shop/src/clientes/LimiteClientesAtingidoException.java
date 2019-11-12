@@ -5,4 +5,3 @@ public class LimiteClientesAtingidoException extends Exception{
 		super ("Limite de clientes cadastrados atingido!");
 	}
 }
-//...
