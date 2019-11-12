@@ -1,14 +1,29 @@
 package servicos;
 public class CadastroServicos {
-	private RepositorioServicos servico;
+	private RepositorioServicos reposervico;
 	
-	public CadastroServicos (RepositorioServicos servico) {
-		this.servico = servico;
+	public CadastroServicos (RepositorioServicos reposervico) {
+		this.reposervico = reposervico;
 	}
-	//Conta já cadastrada
-	public void cadastrar (Servicos servico) {
-		if(!this.servico.existe(servico.getCodigo())) {
-			
+	public void cadastrar (Servicos servico) throws ServicoJaCadastradoException, LimiteServicoAtingidoException{
+		if(!this.reposervico.existe(servico.getCodigo())) {
+			this.reposervico.inserir(servico);
 		}
+		else {
+			ServicoJaCadastradoException e = new ServicoJaCadastradoException();
+			throw e;
+		}
+	}
+	public void remover (String codigo) throws ServicoNaoEncontradoException{
+		this.reposervico.remover(codigo);
+	}
+	public void atualizar (Servicos servico) throws ServicoNaoEncontradoException{
+		this.reposervico.atualizar(servico);
+	}
+	public Servicos procurar (String codigo) throws ServicoNaoEncontradoException{
+		return this.reposervico.procurar(codigo);
+	}
+	public boolean existe (String codigo) {
+		return this.reposervico.existe(codigo);
 	}
 }
