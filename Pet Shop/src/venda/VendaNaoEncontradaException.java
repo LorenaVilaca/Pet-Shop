@@ -4,3 +4,4 @@ public class VendaNaoEncontradaException extends Exception {
     	   super("Venda n�o encontrada!");
        }
 }
+//ok

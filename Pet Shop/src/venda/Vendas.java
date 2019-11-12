@@ -3,7 +3,7 @@ package venda;
 import funcionarios.funcionarios;
 import produtos.Produtos;
 import servicos.Servicos;
-import clientes.Clientes;
+import clientes.Clientes; //ewjferg
 public class Vendas {
 	private funcionarios funcionario;
 	private Clientes cliente;

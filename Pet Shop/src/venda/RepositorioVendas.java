@@ -9,4 +9,4 @@ public interface RepositorioVendas {
        public boolean existe (int id);
        public void atualizar (Vendas venda)
                throws VendaNaoEncontradaException;
-}
+} //lorena rabuda

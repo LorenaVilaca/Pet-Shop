@@ -28,7 +28,7 @@ public class RepositorioVendasLista implements RepositorioVendas  {
 			this.proximo = new RepositorioVendasLista();
 		} else this.proximo.inserir(venda);
 	}
-
+ //nadia te amo
 	@Override
 	public Vendas procurar (int id) 
 			throws VendaNaoEncontradaException {

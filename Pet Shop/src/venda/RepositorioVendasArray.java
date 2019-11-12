@@ -48,7 +48,7 @@ public class RepositorioVendasArray implements RepositorioVendas {
 			l = new LimiteAtingidoException();
 			throw l;
 		}
-	}
+	} //dona do meu coração
 
 	@Override
 	public Vendas procurar(int id) 
