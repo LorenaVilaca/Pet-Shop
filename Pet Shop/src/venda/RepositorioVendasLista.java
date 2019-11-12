@@ -1,4 +1,4 @@
-package Venda;
+package venda;
 public class RepositorioVendasLista implements RepositorioVendas  {
 	
 	private Vendas venda;
