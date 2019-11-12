@@ -1,4 +1,4 @@
-package venda;
+package venda; //meu pau eh gigante
 public class CadastroVenda {
 	private RepositorioVendas repositorio;
        public CadastroVenda (RepositorioVendas repo) {
