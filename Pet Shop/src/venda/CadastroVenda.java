@@ -5,8 +5,8 @@ public class CadastroVenda {
     	   this.repositorio = repo;
        }
        
-       public void cadastar (Vendas venda) 
-    		   throws LimiteAtingidoException {
+       public void cadastrar (Vendas venda) 
+    		   throws LimiteAtingidoException, VendaJaCadastradaException {
     	   //cadastrando qnd n�o existe a venda com o respectivo id
     	   if (!this.repositorio.existe(venda.getId()))
     		   this.repositorio.inserir(venda);	   

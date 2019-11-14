@@ -3,7 +3,7 @@ public interface RepositorioVendas {
        public void remover (int id)
                throws VendaNaoEncontradaException;
        public void inserir (Vendas venda) 
-    		   throws LimiteAtingidoException;
+    		   throws LimiteAtingidoException, VendaJaCadastradaException;
        public Vendas procurar (int id)
     		   throws VendaNaoEncontradaException;
        public boolean existe (int id);

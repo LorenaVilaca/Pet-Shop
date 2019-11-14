@@ -18,10 +18,16 @@ import produtos.ProdutoNaoEncontradoException;
 import produtos.Produtos;
 import produtos.RepositorioProduto;
 import servicos.CadastroServicos;
+import servicos.LimiteServicoAtingidoException;
 import servicos.RepositorioServicos;
+import servicos.ServicoJaCadastradoException;
+import servicos.ServicoNaoEncontradoException;
 import servicos.Servicos;
 import venda.CadastroVenda;
 import venda.RepositorioVendas;
+import venda.VendaJaCadastradaException;
+import venda.VendaNaoEncontradaException;
+import venda.Vendas;
 
 public class PetShop {
 	
@@ -61,9 +67,8 @@ public class PetShop {
        if (this.clientes.existe(cliente.getCpf())) {
            this.clientes.atualizar(cliente);
        } else {
-           ClienteNaoEncontradoException e;
-           e = new ClienteNaoEncontradoException();
-           throw e;
+           ClienteNaoEncontradoException c = new ClienteNaoEncontradoException();
+           throw c;
        }
 
    }
@@ -72,12 +77,16 @@ public class PetShop {
            throws ClienteNaoEncontradoException {
        return this.clientes.procurar(cpf);
    }
+   
+   public boolean existeCliente (String cpf) 
+		   throws ClienteNaoEncontradoException {
+       return this.clientes.existe(cpf);
+   }
 
    public void cadastrarProdutos(Produtos produto) throws LimiteProdutosAtingidoException, ProdutoJaCadastradoException, ProdutoNaoEncontradoException {
        if (this.produtos.existe(produto.getCode())) {
-           ProdutoJaCadastradoException e;
-           e = new ProdutoJaCadastradoException();
-           throw e;
+           ProdutoJaCadastradoException p = new ProdutoJaCadastradoException();
+           throw p;
        } else {
            produtos.cadastrar(produto);
        }
@@ -89,11 +98,10 @@ public class PetShop {
 
    public void atualizarProduto (Produtos produto) throws ProdutoNaoEncontradoException {
        if (this.produtos.existe(produto.getCode())) {
-           this.produtos.atualizarProduto (produto);
+           this.produtos.atualizarProduto(produto);
        } else {
-           ProdutoNaoEncontradoException e;
-           e = new ProdutoNaoEncontradoException();
-           throw e;
+           ProdutoNaoEncontradoException p = new ProdutoNaoEncontradoException();
+           throw p;
        }
 
    }
@@ -103,67 +111,109 @@ public class PetShop {
    }
 
    public boolean existeProduto (String codeProduto) throws ProdutoNaoEncontradoException {
-       return this.produtos.existe (codeProduto);
+       return this.produtos.existe(codeProduto);
    }
 
    public void cadastrarFuncionario (Funcionarios funcionario, String codigo, double salario)
            throws LimiteAtingidoException, FuncionarioJaCadastradoException, FuncionarioNaoEncontradoException {
-       if (this.funcionarios.existeFuncionario(funcionario.getCodigo())) {
-           FuncionarioJaCadastradoException f;
-           f = new FuncionarioJaCadastradoException();
+       if (this.funcionarios.existe(funcionario.getCodigo())) {
+           FuncionarioJaCadastradoException f = new FuncionarioJaCadastradoException();
            throw f;
        } else {
-           funcionarios.cadastrarFuncionario(funcionario, codigo, salario);
+           funcionarios.cadastrar(funcionario, codigo, salario);
        }
    }
 
-   public void removerGerente(String cpf)
-           throws GerenteNaoEncontradoException {
-       this.gerentes.remover(cpf);
+   public void removerFuncionario (String codigo) throws FuncionarioNaoEncontradoException {
+       this.funcionarios.remover(codigo);
    }
 
-   public void atualizarGerente(Gerentes funcionario)
-           throws GerenteNaoEncontradoException {
-       if (this.gerentes.existe(funcionario.getCpf())) {
-           this.gerentes.atualizar(funcionario);
+   public void atualizarSalarioFuncionario (Funcionarios funcionario, double salario)
+           throws FuncionarioNaoEncontradoException {
+       if (this.funcionarios.existe(funcionario.getCodigo())) {
+           this.funcionarios.atualizarSalario(salario);
        } else {
-           GerenteNaoEncontradoException e;
-           e = new GerenteNaoEncontradoException();
-           throw e;
+           FuncionarioNaoEncontradoException f = new FuncionarioNaoEncontradoException();
+           throw f;
        }
-
    }
 
-   public Gerentes procurarGerente(String cpf)
-           throws GerenteNaoEncontradoException {
-       return this.gerentes.procurar(cpf);
+   public Funcionarios procurarFuncionario (String codigo)
+           throws FuncionarioNaoEncontradoException {
+       return this.funcionarios.procurar(codigo);
+   }
+   
+   public boolean existeFuncionario (String codigo) throws FuncionarioNaoEncontradoException {
+       return this.funcionarios.existe(codigo);
    }
 
-   public void cadastrarPokemon(Pokemon pokemon) throws PokemonJaCadastradoException, LimiteAtingidoException {
-       if (this.pokemons.existe(pokemon.getId())) {
-           PokemonJaCadastradoException e;
-           e = new PokemonJaCadastradoException();
-           throw e;
+   public void cadastrarServico (Servicos servico) 
+		   throws ServicoJaCadastradoException, LimiteAtingidoException, LimiteServicoAtingidoException {
+       if (this.servicos.existe(servico.getCodigo())) {
+           ServicoJaCadastradoException s = new ServicoJaCadastradoException();
+           throw s;
        } else {
-           pokemons.cadastrar(pokemon);
+           servicos.cadastrar(servico);
        }
    }
 
-   public void removerPokemon(int id) throws PokemonNaoEncontradoException {
-       this.pokemons.remover(id);
+   public void removerServico (String codigo) 
+		   throws ServicoNaoEncontradoException {
+       this.servicos.remover(codigo);
    }
 
-   public Pokemon procurarPokemon(int id) throws PokemonNaoEncontradoException {
-       return this.pokemons.procurar(id);
+   public Servicos procurarServico (String codigo) 
+		   throws ServicoNaoEncontradoException {
+       return this.servicos.procurar(codigo);
    }
 
-   public void atualizarPokemon(Pokemon pokemon) throws PokemonNaoEncontradoException {
-       if (this.pokemons.existe(pokemon.getId())) {
-           this.pokemons.atualizar(pokemon);
+   public void atualizarServico (Servicos servico) 
+		   throws ServicoNaoEncontradoException {
+       if (this.servicos.existe(servico.getCodigo())) {
+           this.servicos.atualizar(servico);
        } else {
-           PokemonNaoEncontradoException e;
-           e = new PokemonNaoEncontradoException();
-           throw e;
+           ServicoNaoEncontradoException s = new ServicoNaoEncontradoException();
+           throw s;
        }
+   }
+   
+   public boolean existeServico (String codigo) 
+		   throws ServicoNaoEncontradoException {
+       return this.servicos.existe(codigo);
+   }
+   
+   public void cadastrarVenda (Vendas venda) 
+		   throws VendaJaCadastradaException, LimiteAtingidoException, venda.LimiteAtingidoException {
+       if (this.vendas.existe(venda.getId())) {
+           VendaJaCadastradaException v = new VendaJaCadastradaException();
+           throw v;
+       } else {
+           vendas.cadastrar(venda);
+       }
+   }
+
+   public void removerVenda (int id) 
+		   throws VendaNaoEncontradaException {
+       this.vendas.remover(id);
+   }
+
+   public Vendas procurarVenda (int id) 
+		   throws VendaNaoEncontradaException {
+       return this.vendas.procurar(id);
+   }
+
+   public void atualizarVenda (Vendas venda) 
+		   throws VendaNaoEncontradaException {
+       if (this.vendas.existe(venda.getId())) {
+           this.vendas.atualizar(venda);
+       } else {
+           VendaNaoEncontradaException v = new VendaNaoEncontradaException();
+           throw v;
+       }
+   }
+   
+   public boolean existeVenda (int id) 
+		   throws VendaNaoEncontradaException {
+       return this.vendas.existe(id);
    }
 }
