@@ -1,7 +1,6 @@
 package funcionarios;
 
-
-public interface InterfaceFuncionarios {
+public interface RepositorioFuncionarios {
 	public void inserirFuncionarios(Funcionarios funcionario, String codigo, double salario) 
 			throws LimiteAtingidoException;
 		
@@ -16,7 +15,4 @@ public interface InterfaceFuncionarios {
 	
 	public void atualizarSalario(double salario) 
 			throws FuncionarioNaoEncontradoException;
-	
-	public void adicionarBonus(double salario, double desconto);
-
 }

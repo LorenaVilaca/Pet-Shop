@@ -1,13 +1,15 @@
 package funcionarios;
 
-public class RepositorioFuncionariosLista implements InterfaceFuncionarios{
+public class RepositorioFuncionariosLista implements RepositorioFuncionarios{
 	private Funcionarios funcionario;
 	private RepositorioFuncionariosLista proximo;
 	private String codigo;
 	private double salario;
 	public RepositorioFuncionariosLista() {
-		this.funcionario=null;
-		this.proximo=null;
+		this.funcionario = null;
+		this.proximo = null;
+		this.codigo = null;
+		this.salario = 0;
 	}
 
 
@@ -39,7 +41,7 @@ public class RepositorioFuncionariosLista implements InterfaceFuncionarios{
 			throws FuncionarioNaoEncontradoException {
 		Funcionarios funcionarioProcurado = null;
 		if(this.funcionario != null && this.funcionario.getCodigo().equals(codigo))
-			funcionarioProcurado=this.funcionario;
+			funcionarioProcurado = this.funcionario;
 		else if (this.proximo!=null)
 			funcionarioProcurado=this.procurarFuncionarios(codigo);
 		else {
@@ -65,17 +67,6 @@ public class RepositorioFuncionariosLista implements InterfaceFuncionarios{
 			throws FuncionarioNaoEncontradoException{
 		Funcionarios salarioAntigo = procurarFuncionarios(funcionario.getCodigo());
 		this.removerFuncionarios(salarioAntigo.getCodigo());
-		this.inserirFuncionarios(funcionario, funcionario.getCodigo(), salario);
-		
-		
+		this.inserirFuncionarios(funcionario, funcionario.getCodigo(), salario);	
 	}
-
-
-	@Override
-	public void adicionarBonus(double salario, double desconto) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-
 }

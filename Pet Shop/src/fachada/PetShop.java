@@ -8,9 +8,9 @@ import clientes.RepositorioClientes;
 import funcionarios.CadastroFuncionarios;
 import funcionarios.FuncionarioJaCadastradoException;
 import funcionarios.FuncionarioNaoEncontradoException;
-import funcionarios.InterfaceFuncionarios;
 import funcionarios.LimiteAtingidoException;
 import funcionarios.Funcionarios;
+import funcionarios.RepositorioFuncionarios;
 import produtos.CadastroProdutos;
 import produtos.LimiteProdutosAtingidoException;
 import produtos.ProdutoJaCadastradoException;
@@ -32,7 +32,7 @@ public class PetShop {
    private CadastroVenda vendas;
    
    public PetShop (RepositorioClientes repoClientes, 
-		   InterfaceFuncionarios repoFuncionarios, RepositorioProduto repoProdutos,
+		   RepositorioFuncionarios repoFuncionarios, RepositorioProduto repoProdutos,
 		   RepositorioServicos repoServicos, RepositorioVendas repoVendas) {
 	   this.clientes = new CadastroClientes (repoClientes);
 	   this.funcionarios = new CadastroFuncionarios (repoFuncionarios);

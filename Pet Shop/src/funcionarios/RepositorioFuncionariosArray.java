@@ -1,6 +1,7 @@
 package funcionarios;
 
-public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
+public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
+	
 	private Funcionarios[] arrayFuncionario;
 	private int indice;
 
@@ -9,10 +10,10 @@ public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
 		this.indice = 0;
 	}
 	
-	public int getIndice (String s)
+	public int getIndice (String codigo)
 		throws FuncionarioNaoEncontradoException {
 		for (int i = 0; i < this.indice; i++) {
-            if (arrayFuncionario[i].getCodigo().equals(s)) {
+            if (arrayFuncionario[i].getCodigo().equals(codigo)) {
                 return i;
             }
         }
@@ -75,11 +76,4 @@ public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
 		}
 		
 	}
-
-	@Override
-	public void adicionarBonus(double salario, double desconto) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

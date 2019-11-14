@@ -1,9 +1,9 @@
 package funcionarios;
 
 public class CadastroFuncionarios {
-	private InterfaceFuncionarios repositorio;
+	private RepositorioFuncionarios repositorio;
 
-	public CadastroFuncionarios (InterfaceFuncionarios repo) {
+	public CadastroFuncionarios (RepositorioFuncionarios repo) {
 		this.repositorio = repo;
 	}
 
