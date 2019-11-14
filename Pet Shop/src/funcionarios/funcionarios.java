@@ -1,17 +1,18 @@
 package funcionarios;
 
-public class funcionarios {
-	private int codigo;
-	private double salario;
+import pessoa.PessoaAbstract;
 
-	//public Funcionarios(String nome, String cpf, String telefone, int codigo, double salario){
-	//	super(nome, cpf, telefone);
-	//	this.codigo = codigo;
-	//  this.salario = salario;
-	public int getCodigo() {
-		return this.codigo;
+public class funcionarios extends PessoaAbstract{
+	public funcionarios(String nome, String cpf, String telefone, String codigo, double salario) {
+		super(nome, cpf, telefone);
 	}
-	public void setCodigo(int codigo) {
+	private String codigo;
+	private double salario;
+	
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 	public double getSalario() {
@@ -19,5 +20,9 @@ public class funcionarios {
 	}
 	public void setSalario(double salario) {
 		this.salario = salario;
+	}
+	public double desconto() {
+		
+		return 0;
 	}
 }

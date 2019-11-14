@@ -8,7 +8,7 @@ public class CadastroFuncionarios {
 	}
 
 	public void cadastrarFuncionario (funcionarios funcionario, String codigo, double salario) 
-			throws FuncionarioJaCadastradoException, LimiteAtingidoException  {
+			throws FuncionarioJaCadastradoException, LimiteAtingidoException, FuncionarioNaoEncontradoException  {
 		if(this.repositorio.existeFuncionario(funcionario.getCodigo())) {
 			this.repositorio.inserirFuncionarios(funcionario, codigo, salario);
 		} else {
@@ -33,7 +33,8 @@ public class CadastroFuncionarios {
 		return this.repositorio.procurarFuncionarios(codigo);
 	}
 
-	public boolean existeFuncionario(String codigo) {
+	public boolean existeFuncionario(String codigo) 
+			throws FuncionarioNaoEncontradoException {
 		return this.repositorio.existeFuncionario(codigo);
 	}
 }

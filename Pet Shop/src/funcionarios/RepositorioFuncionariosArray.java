@@ -8,17 +8,39 @@ public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
 		this.arrayFuncionario = new funcionarios[200];
 		this.indice = 0;
 	}
-
-	public void inserirFuncionarios(funcionarios funcionario) {
+	
+	public int getIndice (String s)
+		throws FuncionarioNaoEncontradoException {
+		for (int i = 0; i < this.indice; i++) {
+            if (arrayFuncionario[i].getCodigo().equals(s)) {
+                return i;
+            }
+        }
+        throw new FuncionarioNaoEncontradoException();
+    }
+	
+	public void inserirFuncionarios(funcionarios funcionario, String codigo, double salario) 
+	throws LimiteAtingidoException {
 		if (this.indice < this.arrayFuncionario.length) {
 			this.arrayFuncionario[this.indice] = funcionario;
 			this.indice += 1;
+		} else {
+			LimiteAtingidoException e;
+            e = new LimiteAtingidoException();
+            throw e;
 		}
 	}
-	public void removerFuncionarios(funcionarios funcionario) {
-		
+	public void removerFuncionarios(String codigo) 
+	throws FuncionarioNaoEncontradoException {
+		int index = this.getIndice(codigo);
+		if (this.arrayFuncionario.length - 1 - index >=0) {
+			System.arraycopy(arrayFuncionario, index+1, this.arrayFuncionario, index, this.arrayFuncionario.length-1-index);
+		}
+		this.arrayFuncionario[this.arrayFuncionario.length-1] = null;
+		this.indice = this.indice - 1;
 	}
-	public funcionarios procurarFuncionarios(int codigo) {
+	public funcionarios procurarFuncionarios(String codigo) 
+			throws FuncionarioNaoEncontradoException {
 		funcionarios resposta = null;
 		boolean achou = false;
 		for (int i=0; i<this.indice && !achou ; i++) {
@@ -27,10 +49,16 @@ public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
 				achou = true;
 			}
 		}
-		return resposta;
+		if (achou) {
+			return resposta;
+		} else {
+			FuncionarioNaoEncontradoException e;
+			e = new FuncionarioNaoEncontradoException();
+			throw e;
+		}
 	}
 	
-	public boolean existeFuncionario(int codigo) {
+	public boolean existeFuncionario(String codigo) {
 		boolean achou = false;
 		for (int i=0; i<this.indice && !achou; i++) {
 			if (this.arrayFuncionario[i].getCodigo()==codigo)
@@ -39,9 +67,19 @@ public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
 		return achou;
 	}
 
-	public void atualizarSalario(double salario) {
+	public void atualizarSalario(double salario) 
+	throws FuncionarioNaoEncontradoException {
+		boolean achou = false;
+		int i = 0;
+		for (i=0; i<this.indice && !achou; i++) {
+		}
+		
+	}
 
-
+	@Override
+	public void adicionarBonus(double salario, double desconto) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
