@@ -2,6 +2,6 @@ package produtos;
 
 public class ProdutoJaCadastradoException extends Exception {
 	public ProdutoJaCadastradoException () {
-		super ("Produto ja encontrado.");
+		super ("Produto ja foi cadastrado anteriormente.");
 	}
 }

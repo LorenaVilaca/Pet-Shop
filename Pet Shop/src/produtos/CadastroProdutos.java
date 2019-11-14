@@ -6,7 +6,7 @@ public class CadastroProdutos {
 		this.repositorio = repositorio;
 	}
 
-	public void cadastrar(Produtos produto) throws LimiteProdutosAtingidoException, ProdutoNaoEncontradoException{ 
+	public void cadastrar(Produtos produto) throws LimiteProdutosAtingidoException, ProdutoNaoEncontradoException, ProdutoJaCadastradoException{ 
 		if(!this.repositorio.existe(produto.getCode())) {
 			this.repositorio.inserir(produto);
 		}

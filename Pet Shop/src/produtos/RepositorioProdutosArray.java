@@ -10,16 +10,23 @@ public class RepositorioProdutosArray implements RepositorioProduto {
 	}
 
 	@Override
-	public void inserir(Produtos produto) throws LimiteProdutosAtingidoException { 
-		if(this.indice < this.arrayProdutos.length) {
-			this.arrayProdutos[this.indice] = produto;
-			this.indice++;
-		} else {
-			LimiteProdutosAtingidoException p;
-			p = new LimiteProdutosAtingidoException();
-			throw p;
+	public void inserir(Produtos produto) throws LimiteProdutosAtingidoException, ProdutoJaCadastradoException { 
+		for (int i=0;i<this.indice;i++) {
+			if (this.arrayProdutos[i].getCode().equals(produto.getCode())) {
+				ProdutoJaCadastradoException p;
+				p = new ProdutoJaCadastradoException();
+				throw p;
+			}else {
+				if(this.indice < this.arrayProdutos.length) {
+					this.arrayProdutos[this.indice] = produto;
+					this.indice++;
+				} else {
+					LimiteProdutosAtingidoException p;
+					p = new LimiteProdutosAtingidoException();
+					throw p;
+				}
+			}
 		}
-
 	}
 
 	@Override
@@ -73,7 +80,7 @@ public class RepositorioProdutosArray implements RepositorioProduto {
 		} else {
 			return existe;
 		}
-		
+
 	}
 
 	@Override
