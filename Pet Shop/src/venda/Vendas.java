@@ -1,17 +1,17 @@
 package venda;
 
-import funcionarios.funcionarios;
+import funcionarios.Funcionarios;
 import produtos.Produtos;
 import servicos.Servicos;
 import clientes.Clientes;
 public class Vendas {
-	private funcionarios funcionario;
+	private Funcionarios funcionario;
 	private Clientes cliente;
 	private Produtos produto;
 	private Servicos servico;
 	private double valor;
 	private int id;
-	public Vendas (funcionarios funcionario, Clientes cliente, 
+	public Vendas (Funcionarios funcionario, Clientes cliente, 
 			Produtos produto, Servicos servico, double valor, int id) {
 		this.funcionario = funcionario;
 		this.cliente = cliente;
@@ -26,10 +26,10 @@ public class Vendas {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public funcionarios getFuncionario() {
+	public Funcionarios getFuncionario() {
 		return funcionario;
 	}
-	public void setFuncionario(funcionarios funcionario) {
+	public void setFuncionario(Funcionarios funcionario) {
 		this.funcionario = funcionario;
 	}
 	public Clientes getCliente() {

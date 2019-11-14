@@ -1,11 +1,11 @@
 package funcionarios;
 
 public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
-	private funcionarios[] arrayFuncionario;
+	private Funcionarios[] arrayFuncionario;
 	private int indice;
 
 	public RepositorioFuncionariosArray() {
-		this.arrayFuncionario = new funcionarios[200];
+		this.arrayFuncionario = new Funcionarios[200];
 		this.indice = 0;
 	}
 	
@@ -19,7 +19,7 @@ public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
         throw new FuncionarioNaoEncontradoException();
     }
 	
-	public void inserirFuncionarios(funcionarios funcionario, String codigo, double salario) 
+	public void inserirFuncionarios(Funcionarios funcionario, String codigo, double salario) 
 	throws LimiteAtingidoException {
 		if (this.indice < this.arrayFuncionario.length) {
 			this.arrayFuncionario[this.indice] = funcionario;
@@ -39,9 +39,9 @@ public class RepositorioFuncionariosArray implements InterfaceFuncionarios{
 		this.arrayFuncionario[this.arrayFuncionario.length-1] = null;
 		this.indice = this.indice - 1;
 	}
-	public funcionarios procurarFuncionarios(String codigo) 
+	public Funcionarios procurarFuncionarios(String codigo) 
 			throws FuncionarioNaoEncontradoException {
-		funcionarios resposta = null;
+		Funcionarios resposta = null;
 		boolean achou = false;
 		for (int i=0; i<this.indice && !achou ; i++) {
 			if(this.arrayFuncionario[i].getCodigo()==codigo) {

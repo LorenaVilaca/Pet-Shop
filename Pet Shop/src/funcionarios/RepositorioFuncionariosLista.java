@@ -1,7 +1,7 @@
 package funcionarios;
 
 public class RepositorioFuncionariosLista implements InterfaceFuncionarios{
-	private funcionarios funcionario;
+	private Funcionarios funcionario;
 	private RepositorioFuncionariosLista proximo;
 	private String codigo;
 	private double salario;
@@ -11,7 +11,7 @@ public class RepositorioFuncionariosLista implements InterfaceFuncionarios{
 	}
 
 
-	public void inserirFuncionarios(funcionarios funcionario, String codigo, double salario) {
+	public void inserirFuncionarios(Funcionarios funcionario, String codigo, double salario) {
 		if(this.funcionario==null) {
 			this.funcionario=funcionario;
 			this.proximo= new RepositorioFuncionariosLista(); 
@@ -22,10 +22,10 @@ public class RepositorioFuncionariosLista implements InterfaceFuncionarios{
 	
 	public void removerFuncionarios(String codigo) 
 	throws FuncionarioNaoEncontradoException {
-		funcionarios funcionarioDemitido = this.procurarFuncionarios(codigo);
-		if (this.funcionario!=null && this.funcionario.getCodigo().equals(funcionarioDemitido)) {
-			this.funcionario=this.proximo.funcionario;
-			this.proximo=this.proximo.proximo;
+		Funcionarios funcionarioDemitido = this.procurarFuncionarios(codigo);
+		if (this.funcionario!=null && this.funcionario.getCodigo().equals(codigo)) {
+			this.funcionario = this.proximo.funcionario;
+			this.proximo = this.proximo.proximo;
 		} else if (this.proximo!=null)
 			this.removerFuncionarios(codigo);
 		else {
@@ -35,10 +35,10 @@ public class RepositorioFuncionariosLista implements InterfaceFuncionarios{
 		}
 	}
 
-	public funcionarios procurarFuncionarios(String codigo) 
+	public Funcionarios procurarFuncionarios(String codigo) 
 			throws FuncionarioNaoEncontradoException {
-		funcionarios funcionarioProcurado = null;
-		if(this.funcionario!=null && this.funcionario.getCodigo().equals(funcionario))
+		Funcionarios funcionarioProcurado = null;
+		if(this.funcionario != null && this.funcionario.getCodigo().equals(codigo))
 			funcionarioProcurado=this.funcionario;
 		else if (this.proximo!=null)
 			funcionarioProcurado=this.procurarFuncionarios(codigo);
@@ -53,7 +53,7 @@ public class RepositorioFuncionariosLista implements InterfaceFuncionarios{
 
 	public boolean existeFuncionario(String codigo) 
 			throws FuncionarioNaoEncontradoException {
-		if(this.funcionario!=null && this.funcionario.getCodigo().equals(funcionario))
+		if(this.funcionario!=null && this.funcionario.getCodigo().equals(codigo))
 			return true;
 		else if (this.proximo!=null)
 			return this.proximo.existeFuncionario(codigo);
@@ -63,7 +63,7 @@ public class RepositorioFuncionariosLista implements InterfaceFuncionarios{
 
 	public void atualizarSalario(double salario) 
 			throws FuncionarioNaoEncontradoException{
-		funcionarios salarioAntigo = procurarFuncionarios(funcionario.getCodigo());
+		Funcionarios salarioAntigo = procurarFuncionarios(funcionario.getCodigo());
 		this.removerFuncionarios(salarioAntigo.getCodigo());
 		this.inserirFuncionarios(funcionario, funcionario.getCodigo(), salario);
 		

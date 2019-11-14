@@ -2,8 +2,8 @@ package funcionarios;
 
 import pessoa.PessoaAbstract;
 
-public class funcionarios extends PessoaAbstract{
-	public funcionarios(String nome, String cpf, String telefone, String codigo, double salario) {
+public class Funcionarios extends PessoaAbstract{
+	public Funcionarios(String nome, String cpf, String telefone, String codigo, double salario) {
 		super(nome, cpf, telefone);
 	}
 	private String codigo;

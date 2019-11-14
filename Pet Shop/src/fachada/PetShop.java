@@ -1,4 +1,4 @@
-package Fachada;
+package fachada;
 import clientes.CadastroClientes;
 import clientes.ClienteJaCadastradoException;
 import clientes.ClienteNaoEncontradoException;
@@ -6,8 +6,11 @@ import clientes.Clientes;
 import clientes.LimiteClientesAtingidoException;
 import clientes.RepositorioClientes;
 import funcionarios.CadastroFuncionarios;
+import funcionarios.FuncionarioJaCadastradoException;
+import funcionarios.FuncionarioNaoEncontradoException;
 import funcionarios.InterfaceFuncionarios;
-import funcionarios.funcionarios;
+import funcionarios.LimiteAtingidoException;
+import funcionarios.Funcionarios;
 import produtos.CadastroProdutos;
 import produtos.LimiteProdutosAtingidoException;
 import produtos.ProdutoJaCadastradoException;
@@ -103,14 +106,14 @@ public class PetShop {
        return this.produtos.existe (codeProduto);
    }
 
-   public void cadastrarGerente(Gerentes gerente)
-           throws LimiteAtingidoException, GerenteJaCadastradoException, GerenteNaoEncontradoException {
-       if (this.gerentes.existe(gerente.getCpf())) {
-           GerenteJaCadastradoException e;
-           e = new GerenteJaCadastradoException();
-           throw e;
+   public void cadastrarFuncionario (Funcionarios funcionario, String codigo, double salario)
+           throws LimiteAtingidoException, FuncionarioJaCadastradoException, FuncionarioNaoEncontradoException {
+       if (this.funcionarios.existeFuncionario(funcionario.getCodigo())) {
+           FuncionarioJaCadastradoException f;
+           f = new FuncionarioJaCadastradoException();
+           throw f;
        } else {
-           gerentes.cadastrar(gerente);
+           funcionarios.cadastrarFuncionario(funcionario, codigo, salario);
        }
    }
 

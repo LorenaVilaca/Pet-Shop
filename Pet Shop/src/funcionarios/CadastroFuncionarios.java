@@ -7,7 +7,7 @@ public class CadastroFuncionarios {
 		this.repositorio = repo;
 	}
 
-	public void cadastrarFuncionario (funcionarios funcionario, String codigo, double salario) 
+	public void cadastrarFuncionario (Funcionarios funcionario, String codigo, double salario) 
 			throws FuncionarioJaCadastradoException, LimiteAtingidoException, FuncionarioNaoEncontradoException  {
 		if(this.repositorio.existeFuncionario(funcionario.getCodigo())) {
 			this.repositorio.inserirFuncionarios(funcionario, codigo, salario);
@@ -28,7 +28,7 @@ public class CadastroFuncionarios {
 		this.repositorio.removerFuncionarios(codigo);
 	}
 
-	public funcionarios procurarFuncionario(String codigo) 
+	public Funcionarios procurarFuncionario(String codigo) 
 			throws FuncionarioNaoEncontradoException {
 		return this.repositorio.procurarFuncionarios(codigo);
 	}
