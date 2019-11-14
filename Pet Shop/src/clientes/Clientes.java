@@ -8,8 +8,7 @@ public class Clientes extends PessoaAbstract {
 				
 	}
 
-	public double desconto() {
+	public double bonus () {
 		return 0;
 	}
-
-}//
+}

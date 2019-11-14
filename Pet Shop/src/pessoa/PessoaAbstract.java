@@ -8,7 +8,7 @@ public abstract class PessoaAbstract {
        this.cpf = cpf;
        this.telefone = telefone;
 	}
-	public abstract double desconto ();
+	public abstract double bonus ();
 	public String getTelefone() {
 		return telefone;
 	}

@@ -3,9 +3,15 @@ import clientes.CadastroClientes;
 import clientes.ClienteJaCadastradoException;
 import clientes.ClienteNaoEncontradoException;
 import clientes.Clientes;
+import clientes.LimiteClientesAtingidoException;
 import clientes.RepositorioClientes;
+import funcionarios.CadastroFuncionarios;
+import funcionarios.InterfaceFuncionarios;
 import funcionarios.funcionarios;
 import produtos.CadastroProdutos;
+import produtos.LimiteProdutosAtingidoException;
+import produtos.ProdutoJaCadastradoException;
+import produtos.ProdutoNaoEncontradoException;
 import produtos.Produtos;
 import produtos.RepositorioProduto;
 import servicos.CadastroServicos;
@@ -18,12 +24,12 @@ public class PetShop {
 	
    private CadastroClientes clientes;
    private CadastroFuncionarios funcionarios;
-   private CadastroProdutos produtos;//yujduytn
+   private CadastroProdutos produtos;
    private CadastroServicos servicos;
    private CadastroVenda vendas;
    
    public PetShop (RepositorioClientes repoClientes, 
-		   RepositorioFuncionarios repoFuncionarios, RepositorioProduto repoProdutos,
+		   InterfaceFuncionarios repoFuncionarios, RepositorioProduto repoProdutos,
 		   RepositorioServicos repoServicos, RepositorioVendas repoVendas) {
 	   this.clientes = new CadastroClientes (repoClientes);
 	   this.funcionarios = new CadastroFuncionarios (repoFuncionarios);
@@ -33,7 +39,7 @@ public class PetShop {
    }
    
    public void cadastrarCliente (Clientes cliente)
-           throws ClienteJaCadastradoException {
+           throws ClienteJaCadastradoException, LimiteClientesAtingidoException {
        if (this.clientes.existe(cliente.getCpf())) {
            ClienteJaCadastradoException c = new ClienteJaCadastradoException();
            throw c;
@@ -64,37 +70,37 @@ public class PetShop {
        return this.clientes.procurar(cpf);
    }
 
-   public void cadastrarProdutos(Produtos produto) throws LimiteAtingidoException, ViveiroJaCadastradoException {
-       if (this.viveiros.existe(viveiro.getId())) {
-           ViveiroJaCadastradoException e;
-           e = new ViveiroJaCadastradoException();
+   public void cadastrarProdutos(Produtos produto) throws LimiteProdutosAtingidoException, ProdutoJaCadastradoException, ProdutoNaoEncontradoException {
+       if (this.produtos.existe(produto.getCode())) {
+           ProdutoJaCadastradoException e;
+           e = new ProdutoJaCadastradoException();
            throw e;
        } else {
-           viveiros.cadastrar(viveiro);
+           produtos.cadastrar(produto);
        }
    }
 
-   public void removerViveiro(int id) throws ViveiroNaoEncontradoException {
-       this.viveiros.remover(id);
+   public void removerProduto (String codeProduto) throws ProdutoNaoEncontradoException {
+       this.produtos.remover(codeProduto);
    }
 
-   public void atualizarViveiro(Viveiro viveiro) throws ViveiroNaoEncontradoException {
-       if (this.viveiros.existe(viveiro.getId())) {
-           this.viveiros.atualizar(viveiro);
+   public void atualizarProduto (Produtos produto) throws ProdutoNaoEncontradoException {
+       if (this.produtos.existe(produto.getCode())) {
+           this.produtos.atualizarProduto (produto);
        } else {
-           ViveiroNaoEncontradoException e;
-           e = new ViveiroNaoEncontradoException();
+           ProdutoNaoEncontradoException e;
+           e = new ProdutoNaoEncontradoException();
            throw e;
        }
 
    }
 
-   public Viveiro procurarViveiro(int id) throws ViveiroNaoEncontradoException {
-       return this.viveiros.procurar(id);
+   public Produtos procurarProduto (String codeProduto) throws ProdutoNaoEncontradoException {
+       return this.produtos.procurar(codeProduto);
    }
 
-   public boolean existeViveiro(int id){
-       return this.viveiros.existe(id);
+   public boolean existeProduto (String codeProduto) throws ProdutoNaoEncontradoException {
+       return this.produtos.existe (codeProduto);
    }
 
    public void cadastrarGerente(Gerentes gerente)

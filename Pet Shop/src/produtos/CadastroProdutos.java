@@ -12,7 +12,7 @@ public class CadastroProdutos {
 		}
 	}
 
-	public void atualizarProduto(Produtos produto) throws ProdutoNaoEncontradoException { //produto nao encontrado
+	public void atualizarProduto (Produtos produto) throws ProdutoNaoEncontradoException { //produto nao encontrado
 		this.repositorio.atualizarProduto(produto);
 	}
 	public void remover(String codeProduto) throws ProdutoNaoEncontradoException { //produto nao encontrado 
