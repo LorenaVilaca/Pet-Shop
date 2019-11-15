@@ -3,36 +3,31 @@ package funcionarios;
 public class RepositorioFuncionariosLista implements RepositorioFuncionarios{
 	private Funcionarios funcionario;
 	private RepositorioFuncionariosLista proximo;
-	private String codigo;
-	private double salario;
+
 	public RepositorioFuncionariosLista() {
 		this.funcionario = null;
 		this.proximo = null;
-		this.codigo = null;
-		this.salario = 0;
 	}
 
 
-	public void inserirFuncionarios(Funcionarios funcionario, String codigo, double salario) {
+	public void inserirFuncionarios(Funcionarios funcionario) {
 		if(this.funcionario==null) {
 			this.funcionario=funcionario;
 			this.proximo= new RepositorioFuncionariosLista(); 
 		} else
-			this.proximo.inserirFuncionarios(funcionario, codigo, salario);
+			this.proximo.inserirFuncionarios(funcionario);
 		
 	}
 	
 	public void removerFuncionarios(String codigo) 
 	throws FuncionarioNaoEncontradoException {
-		Funcionarios funcionarioDemitido = this.procurarFuncionarios(codigo);
 		if (this.funcionario!=null && this.funcionario.getCodigo().equals(codigo)) {
 			this.funcionario = this.proximo.funcionario;
 			this.proximo = this.proximo.proximo;
 		} else if (this.proximo!=null)
 			this.removerFuncionarios(codigo);
 		else {
-			FuncionarioNaoEncontradoException e;
-			e = new FuncionarioNaoEncontradoException();
+			FuncionarioNaoEncontradoException e = new FuncionarioNaoEncontradoException();
 			throw e;
 		}
 	}
@@ -45,16 +40,14 @@ public class RepositorioFuncionariosLista implements RepositorioFuncionarios{
 		else if (this.proximo!=null)
 			funcionarioProcurado=this.procurarFuncionarios(codigo);
 		else {
-			FuncionarioNaoEncontradoException e;
-			e = new FuncionarioNaoEncontradoException();
+			FuncionarioNaoEncontradoException e = new FuncionarioNaoEncontradoException();
 			throw e;
 		}
 		
 		return funcionarioProcurado;
 	}
 
-	public boolean existeFuncionario(String codigo) 
-			throws FuncionarioNaoEncontradoException {
+	public boolean existeFuncionario(String codigo) {
 		if(this.funcionario!=null && this.funcionario.getCodigo().equals(codigo))
 			return true;
 		else if (this.proximo!=null)
@@ -63,10 +56,22 @@ public class RepositorioFuncionariosLista implements RepositorioFuncionarios{
 			return false;
 	}
 
-	public void atualizarSalario(double salario) 
+	public void atualizarFuncionarios(Funcionarios funcionario) 
 			throws FuncionarioNaoEncontradoException{
-		Funcionarios salarioAntigo = procurarFuncionarios(funcionario.getCodigo());
-		this.removerFuncionarios(salarioAntigo.getCodigo());
-		this.inserirFuncionarios(funcionario, funcionario.getCodigo(), salario);	
+		Funcionarios funcionarioAntigo = procurarFuncionarios(funcionario.getCodigo());
+		this.removerFuncionarios(funcionarioAntigo.getCodigo());
+		this.inserirFuncionarios(funcionario);	
+	}
+
+	public void gerarBonus(Funcionarios funcionario, double valor) 
+			throws FuncionarioNaoEncontradoException {
+		if (this.funcionario!=null && this.funcionario.getCodigo().equals(funcionario.getCodigo())) {
+			this.funcionario.gerarbonus(valor);
+		} else if (this.proximo!=null) {
+			this.proximo.gerarBonus(funcionario, valor);
+		} else {
+			FuncionarioNaoEncontradoException e = new FuncionarioNaoEncontradoException();
+			throw e;
+		}
 	}
 }

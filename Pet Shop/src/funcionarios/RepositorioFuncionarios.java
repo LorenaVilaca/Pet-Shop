@@ -1,7 +1,8 @@
 package funcionarios;
 
 public interface RepositorioFuncionarios {
-	public void inserirFuncionarios(Funcionarios funcionario, String codigo, double salario) 
+	
+	public void inserirFuncionarios(Funcionarios funcionario) 
 			throws LimiteAtingidoException;
 		
 	public void removerFuncionarios(String codigo) 
@@ -10,9 +11,11 @@ public interface RepositorioFuncionarios {
 	public Funcionarios procurarFuncionarios(String codigo) 
 			throws FuncionarioNaoEncontradoException;
 	
-	public boolean existeFuncionario(String codigo) 
+	public void atualizarFuncionarios(Funcionarios funcionario) 
 			throws FuncionarioNaoEncontradoException;
 	
-	public void atualizarSalario(double salario) 
+	public boolean existeFuncionario(String codigo);
+	
+	public void gerarBonus (Funcionarios funcionario, double valor) 
 			throws FuncionarioNaoEncontradoException;
 }

@@ -114,13 +114,13 @@ public class PetShop {
        return this.produtos.existe(codeProduto);
    }
 
-   public void cadastrarFuncionario (Funcionarios funcionario, String codigo, double salario)
-           throws LimiteAtingidoException, FuncionarioJaCadastradoException, FuncionarioNaoEncontradoException {
+   public void cadastrarFuncionario (Funcionarios funcionario)
+           throws LimiteAtingidoException, FuncionarioJaCadastradoException {
        if (this.funcionarios.existe(funcionario.getCodigo())) {
            FuncionarioJaCadastradoException f = new FuncionarioJaCadastradoException();
            throw f;
        } else {
-           funcionarios.cadastrar(funcionario, codigo, salario);
+           funcionarios.cadastrar(funcionario);
        }
    }
 
@@ -128,10 +128,10 @@ public class PetShop {
        this.funcionarios.remover(codigo);
    }
 
-   public void atualizarSalarioFuncionario (Funcionarios funcionario, double salario)
+   public void atualizarFuncionario (Funcionarios funcionario)
            throws FuncionarioNaoEncontradoException {
        if (this.funcionarios.existe(funcionario.getCodigo())) {
-           this.funcionarios.atualizarSalario(salario);
+           this.funcionarios.atualizar(funcionario);
        } else {
            FuncionarioNaoEncontradoException f = new FuncionarioNaoEncontradoException();
            throw f;
@@ -146,6 +146,7 @@ public class PetShop {
    public boolean existeFuncionario (String codigo) throws FuncionarioNaoEncontradoException {
        return this.funcionarios.existe(codigo);
    }
+   
 
    public void cadastrarServico (Servicos servico) 
 		   throws ServicoJaCadastradoException, LimiteAtingidoException, LimiteServicoAtingidoException {

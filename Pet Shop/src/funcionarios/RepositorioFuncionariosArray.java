@@ -1,7 +1,9 @@
 package funcionarios;
 
+import servicos.ServicoNaoEncontradoException;
+
 public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
-	
+
 	private Funcionarios[] arrayFuncionario;
 	private int indice;
 
@@ -9,43 +11,40 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 		this.arrayFuncionario = new Funcionarios[200];
 		this.indice = 0;
 	}
-	
-	public int getIndice (String codigo)
-		throws FuncionarioNaoEncontradoException {
-		for (int i = 0; i < this.indice; i++) {
-            if (arrayFuncionario[i].getCodigo().equals(codigo)) {
-                return i;
-            }
-        }
-        throw new FuncionarioNaoEncontradoException();
-    }
-	
-	public void inserirFuncionarios(Funcionarios funcionario, String codigo, double salario) 
-	throws LimiteAtingidoException {
+
+	public void inserirFuncionarios(Funcionarios funcionario) 
+			throws LimiteAtingidoException {
 		if (this.indice < this.arrayFuncionario.length) {
 			this.arrayFuncionario[this.indice] = funcionario;
 			this.indice += 1;
 		} else {
-			LimiteAtingidoException e;
-            e = new LimiteAtingidoException();
-            throw e;
+			LimiteAtingidoException e = new LimiteAtingidoException();
+			throw e;
 		}
 	}
 	public void removerFuncionarios(String codigo) 
-	throws FuncionarioNaoEncontradoException {
-		int index = this.getIndice(codigo);
-		if (this.arrayFuncionario.length - 1 - index >=0) {
-			System.arraycopy(arrayFuncionario, index+1, this.arrayFuncionario, index, this.arrayFuncionario.length-1-index);
+			throws FuncionarioNaoEncontradoException {
+		boolean achou=false;
+		for (int i = 0; i < arrayFuncionario.length; i ++) {
+			if (this.arrayFuncionario[i].getCodigo().equals(codigo)) {
+				this.arrayFuncionario[i] = null;
+				System.arraycopy(arrayFuncionario, i + 1, this.arrayFuncionario, i, this.arrayFuncionario.length - 1 - i);
+				this.indice --;
+				achou = true;
+				return;
+			}
 		}
-		this.arrayFuncionario[this.arrayFuncionario.length-1] = null;
-		this.indice = this.indice - 1;
+		if (!achou) {
+			FuncionarioNaoEncontradoException e = new FuncionarioNaoEncontradoException();
+			throw e;
+		}
 	}
 	public Funcionarios procurarFuncionarios(String codigo) 
 			throws FuncionarioNaoEncontradoException {
 		Funcionarios resposta = null;
 		boolean achou = false;
 		for (int i=0; i<this.indice && !achou ; i++) {
-			if(this.arrayFuncionario[i].getCodigo()==codigo) {
+			if(this.arrayFuncionario[i].getCodigo().equals(codigo)) {
 				resposta = this.arrayFuncionario[i];
 				achou = true;
 			}
@@ -53,27 +52,51 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 		if (achou) {
 			return resposta;
 		} else {
-			FuncionarioNaoEncontradoException e;
-			e = new FuncionarioNaoEncontradoException();
+			FuncionarioNaoEncontradoException e = new FuncionarioNaoEncontradoException();
 			throw e;
 		}
 	}
-	
+
 	public boolean existeFuncionario(String codigo) {
 		boolean achou = false;
 		for (int i=0; i<this.indice && !achou; i++) {
-			if (this.arrayFuncionario[i].getCodigo()==codigo)
+			if (this.arrayFuncionario[i].getCodigo().equals(codigo))
 				achou = true;
 		}
 		return achou;
 	}
 
-	public void atualizarSalario(double salario) 
-	throws FuncionarioNaoEncontradoException {
+	public void atualizarFuncionarios(Funcionarios funcionario) 
+			throws FuncionarioNaoEncontradoException {
 		boolean achou = false;
-		int i = 0;
-		for (i=0; i<this.indice && !achou; i++) {
+		for (int i=0; i<this.indice && !achou; i++) {
+			if (this.arrayFuncionario[i].getCodigo().equals(funcionario.getCodigo())) {
+				this.arrayFuncionario[i] = funcionario;
+				achou = true;
+				return;
+			}
 		}
-		
+		if (!achou) {
+			FuncionarioNaoEncontradoException e = new FuncionarioNaoEncontradoException();
+			throw e;
+		}
+
+	}
+
+	public void gerarBonus(Funcionarios funcionario, double valor) 
+			throws FuncionarioNaoEncontradoException {
+		boolean achou = false;
+		for (int i=0; i<this.indice && !achou; i++) {
+			if (this.arrayFuncionario[i].getCodigo().equals(funcionario.getCodigo())) {
+				this.arrayFuncionario[i].gerarbonus(valor);
+				achou = true;
+				return;
+			}
+		}
+		if (!achou) {
+			FuncionarioNaoEncontradoException e = new FuncionarioNaoEncontradoException();
+			throw e;
+		}
+
 	}
 }

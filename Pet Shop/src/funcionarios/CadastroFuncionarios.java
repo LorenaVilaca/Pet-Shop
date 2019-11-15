@@ -3,24 +3,18 @@ package funcionarios;
 public class CadastroFuncionarios {
 	private RepositorioFuncionarios repositorio;
 
-	public CadastroFuncionarios (RepositorioFuncionarios repo) {
-		this.repositorio = repo;
+	public CadastroFuncionarios (RepositorioFuncionarios repoFuncionario) {
+		this.repositorio = repoFuncionario;
 	}
 
-	public void cadastrar (Funcionarios funcionario, String codigo, double salario) 
-			throws FuncionarioJaCadastradoException, LimiteAtingidoException, FuncionarioNaoEncontradoException  {
+	public void cadastrar (Funcionarios funcionario) 
+			throws FuncionarioJaCadastradoException, LimiteAtingidoException  {
 		if(this.repositorio.existeFuncionario(funcionario.getCodigo())) {
-			this.repositorio.inserirFuncionarios(funcionario, codigo, salario);
+			this.repositorio.inserirFuncionarios(funcionario);
 		} else {
-			FuncionarioJaCadastradoException e;
-			e = new FuncionarioJaCadastradoException();
+			FuncionarioJaCadastradoException e = new FuncionarioJaCadastradoException();
 			throw e;
 		}
-	}
-
-	public void atualizarSalario (double salario) 
-			throws FuncionarioNaoEncontradoException {
-		this.repositorio.atualizarSalario(salario);
 	}
 
 	public void remover (String codigo) 
@@ -33,8 +27,12 @@ public class CadastroFuncionarios {
 		return this.repositorio.procurarFuncionarios(codigo);
 	}
 
-	public boolean existe (String codigo) 
-			throws FuncionarioNaoEncontradoException {
+	public boolean existe (String codigo) {
 		return this.repositorio.existeFuncionario(codigo);
+	}
+	
+	public void atualizar (Funcionarios funcionario) 
+			throws FuncionarioNaoEncontradoException {
+		this.repositorio.atualizarFuncionarios(funcionario);
 	}
 }
