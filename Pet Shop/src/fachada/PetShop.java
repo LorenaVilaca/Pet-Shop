@@ -147,6 +147,10 @@ public class PetShop {
        return this.funcionarios.existe(codigo);
    }
    
+   public void gerarBonus (Funcionarios funcionario, double valor)
+			throws FuncionarioNaoEncontradoException {
+		this.funcionarios.gerarBonus(funcionario, valor);
+	}
 
    public void cadastrarServico (Servicos servico) 
 		   throws ServicoJaCadastradoException, LimiteAtingidoException, LimiteServicoAtingidoException {
