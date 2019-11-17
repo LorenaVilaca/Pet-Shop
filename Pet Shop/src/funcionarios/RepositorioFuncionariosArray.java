@@ -1,7 +1,5 @@
 package funcionarios;
 
-import servicos.ServicoNaoEncontradoException;
-
 public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 
 	private Funcionarios[] arrayFuncionario;
