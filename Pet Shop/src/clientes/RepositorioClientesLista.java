@@ -1,8 +1,5 @@
 package clientes;
 
-import funcionarios.FuncionarioNaoEncontradoException;
-import funcionarios.Funcionarios;
-
 public class RepositorioClientesLista implements RepositorioClientes {
 
 	private Clientes cliente;

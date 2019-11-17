@@ -1,8 +1,5 @@
 package clientes;
 
-import funcionarios.FuncionarioNaoEncontradoException;
-import funcionarios.Funcionarios;
-
 public interface RepositorioClientes {
 	
 	public void inserir(Clientes cliente) throws LimiteClientesAtingidoException;

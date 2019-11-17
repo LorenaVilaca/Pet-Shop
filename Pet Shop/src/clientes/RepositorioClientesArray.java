@@ -1,8 +1,5 @@
 package clientes;
 
-import funcionarios.FuncionarioNaoEncontradoException;
-import funcionarios.Funcionarios;
-
 public class RepositorioClientesArray implements RepositorioClientes {
 
 	private Clientes[] arrayCliente;
@@ -78,7 +75,7 @@ public class RepositorioClientesArray implements RepositorioClientes {
 					return;
 				}
 			}
-			if (achou) {
+			if (!achou) {
 				ClienteNaoEncontradoException c = new ClienteNaoEncontradoException();
 				throw c;
 			}
