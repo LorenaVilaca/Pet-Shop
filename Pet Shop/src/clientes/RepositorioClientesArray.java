@@ -1,5 +1,10 @@
 package clientes;
 
+import clientes.LimiteClientesAtingidoException;
+import clientes.RepositorioClientes;
+import clientes.ClienteNaoEncontradoException;
+import clientes.Clientes;
+
 public class RepositorioClientesArray implements RepositorioClientes {
 
 	private Clientes[] arrayCliente;
@@ -11,49 +16,60 @@ public class RepositorioClientesArray implements RepositorioClientes {
 	}
 
 	public Clientes procurar(String cpf) throws ClienteNaoEncontradoException {
-		Clientes retorno = null;
-        for (int i = 0; i < this.indice && retorno == null; i++) {
-            if (this.arrayCliente[i].getCpf().contentEquals(cpf)){
-                retorno = this.arrayCliente[i];
-            }
-        }
-        if (retorno != null){
-            return retorno;
-        }else {
-            ClienteNaoEncontradoException e;
-            e = new ClienteNaoEncontradoException();
-            throw e;
-        }
+		boolean achou = false;
+		for (int i = 0; i < 100; i ++) {
+			if (this.arrayCliente[i].getCpf().equals(cpf)) {
+				achou = true;
+				return this.arrayCliente[i];
+			}
+		}
+		if (!achou) {
+			ClienteNaoEncontradoException e = new ClienteNaoEncontradoException();
+			throw e;
+		}
+		return null;
 	}
 
 	public void inserir(Clientes cliente) throws LimiteClientesAtingidoException{
-		if (this.indice < this.arrayCliente.length){
-            this.arrayCliente[this.indice] = cliente;
-            this.indice = this.indice + 1;
-        }else{
-            LimiteClientesAtingidoException e;
-            e = new LimiteClientesAtingidoException();
-            throw e;
-        }
+		if (this.indice < this.arrayCliente.length) {
+			this.arrayCliente [indice] = cliente;
+			indice ++;
+		}
+		else {
+			LimiteClientesAtingidoException e = new LimiteClientesAtingidoException();
+			throw e;
+		}
 	}
 
-	public void remover(String cpf) {
+	public void remover(String cpf) throws ClienteNaoEncontradoException {
+		boolean achou = false;
 		for (int i = 0; i < 100; i ++) {
 			if (this.arrayCliente[i].getCpf().equals(cpf)) {
 				this.arrayCliente[i] = null;
 				System.arraycopy(arrayCliente, i + 1, this.arrayCliente, i, this.arrayCliente.length - 1 - i);
 				this.indice --;
+				achou = true;
 				return;
 			}
+		}
+		if(!achou) {
+			ClienteNaoEncontradoException e = new ClienteNaoEncontradoException();
+			throw e;
 		}
 	}
 
 	public void atualizar(Clientes cliente) {
+		boolean achou = false;
 		for (int i = 0; i < 100; i ++) {
 			if(this.arrayCliente[i].getCpf().equals(cliente.getCpf())) {
 				this.arrayCliente[i] = cliente;
+				achou = true;
 				return;
 			}
+		}
+		if (!achou) {
+			ClienteNaoEncontradoException a = new ClienteNaoEncontradoException();
+			throw a;
 		}
 	}
 	
@@ -67,3 +83,5 @@ public class RepositorioClientesArray implements RepositorioClientes {
 	}
 
 }
+
+
