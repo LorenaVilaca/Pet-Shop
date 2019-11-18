@@ -37,8 +37,8 @@ public class RepositorioVendasArray implements RepositorioVendas {
 
 	@Override
 	//inserindo novas vendas
-	public void inserir(Vendas venda) 
-			throws LimiteAtingidoException {	
+	public void inserir (Vendas venda) 
+			throws LimiteAtingidoException {
 		if (this.indice < this.arrayVendas.length) {
 			this.arrayVendas[indice] = venda;
 			indice++;
@@ -51,7 +51,7 @@ public class RepositorioVendasArray implements RepositorioVendas {
 	}
 
 	@Override
-	public Vendas procurar(int id) 
+	public Vendas procurar (int id) 
 			throws VendaNaoEncontradaException {
 		Vendas retorno2 = null;
 		boolean achou2 = false;

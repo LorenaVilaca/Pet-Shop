@@ -7,7 +7,7 @@ public class RepositorioVendasLista implements RepositorioVendas  {
 	@Override
 	public void remover(int id) 
 			throws VendaNaoEncontradaException {
-		Vendas encontrado = this.procurar(id);
+		Vendas encontrado = this.procurar (id);
 		if (this.venda != null) {
 			if (this.venda.equals(encontrado)) {
 				this.venda = this.proximo.venda;
@@ -21,14 +21,14 @@ public class RepositorioVendasLista implements RepositorioVendas  {
 	}
 	
 	@Override
-	public void inserir(Vendas venda) {
+	public void inserir (Vendas venda) {
 		//inicializando
 		if (this.venda == null) {
 			this.venda = venda;
 			this.proximo = new RepositorioVendasLista();
 		} else this.proximo.inserir(venda);
 	}
-
+	
 	@Override
 	public Vendas procurar (int id) 
 			throws VendaNaoEncontradaException {
@@ -45,7 +45,7 @@ public class RepositorioVendasLista implements RepositorioVendas  {
 	}
 
 	@Override
-	public boolean existe(int id) {
+	public boolean existe (int id) {
 		if (this.venda != null) {
 			if (this.venda.getId() == id) {
 				return true;
@@ -54,7 +54,7 @@ public class RepositorioVendasLista implements RepositorioVendas  {
 	}
 
 	@Override
-	public void atualizar(Vendas venda) 
+	public void atualizar (Vendas venda) 
 			throws VendaNaoEncontradaException {
        Vendas vendaAntiga = procurar(venda.getId());
        this.remover(vendaAntiga.getId());

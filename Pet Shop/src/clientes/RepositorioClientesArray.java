@@ -82,6 +82,25 @@ public class RepositorioClientesArray implements RepositorioClientes {
 		return false;
 	}
 
+<<<<<<< HEAD
 }
 
 
+=======
+	public void gerarBonus(Clientes cliente, double valor) throws ClienteNaoEncontradoException {
+			boolean achou = false;
+			for (int i = 0; i < this.indice && !achou; i++) {
+				if (this.arrayCliente[i].getCpf().equals(cliente.getCpf())) {
+					this.arrayCliente[i].gerarbonus(valor);
+					achou = true;
+					return;
+				}
+			}
+			if (!achou) {
+				ClienteNaoEncontradoException c = new ClienteNaoEncontradoException();
+				throw c;
+			}
+
+		}
+	}
+>>>>>>> branch 'master' of https://github.com/LorenaVilaca/Pet-Shop.git

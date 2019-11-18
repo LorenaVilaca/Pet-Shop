@@ -19,14 +19,22 @@ public class CadastroClientes {
 	public void remover (String cpf) throws ClienteNaoEncontradoException{
 		this.repocliente.remover(cpf);
 	}
+	
 	public void atualizar (Clientes cliente) throws ClienteNaoEncontradoException{
 		this.repocliente.atualizar(cliente);
 	}
+	
 	public Clientes procurar (String cpf) throws ClienteNaoEncontradoException{
 		return this.repocliente.procurar(cpf);
 	}
+	
 	public boolean existe (String cpf) {
 		return this.repocliente.existe(cpf);
+	}
+	
+	public void gerarBonus (Clientes cliente, double valor)
+			throws ClienteNaoEncontradoException {
+		this.repocliente.gerarBonus(cliente, valor);
 	}
 	
 }

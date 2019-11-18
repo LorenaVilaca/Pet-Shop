@@ -3,29 +3,36 @@ package produtos;
 public class RepositorioProdutosLista implements RepositorioProduto{
 	private Produtos produto;
 	private RepositorioProdutosLista next;
-	
+
 	public RepositorioProdutosLista() {
 		this.produto=null;
 		this.next=null;
 	}
-	
+
 	@Override
-	public void inserir(Produtos produto) {
+	public void inserir(Produtos produto) throws ProdutoJaCadastradoException {
 		if (this.produto==null) {
 			this.produto = produto;
 			this.next = new RepositorioProdutosLista();
-		} else {
+		} else if (this.produto.getCode().equals(produto.getCode())) {
+			ProdutoJaCadastradoException p;
+			p = new ProdutoJaCadastradoException();
+			throw p;
+		}
+		else {
 			this.next.inserir(produto);
 		}
 	}
 
 	@Override
-	public Produtos procurar(String codeProduto) {
+	public Produtos procurar(String codeProduto) throws ProdutoNaoEncontradoException {
 		Produtos p = null;
 		if (this.produto!=null&&this.produto.getCode().equals(codeProduto)) {
 			p = this.produto;
 		} else if (this.produto==null) {
-			p = null;
+			ProdutoNaoEncontradoException x;
+			x = new ProdutoNaoEncontradoException();
+			throw x;		
 		} else {
 			this.next.procurar(codeProduto);
 		}
@@ -33,32 +40,43 @@ public class RepositorioProdutosLista implements RepositorioProduto{
 	}
 
 	@Override
-	public void remover(String codeProduto) {
-		
+	public void remover(String codeProduto) throws ProdutoNaoEncontradoException{
+		if (this.produto.getCode().equals(codeProduto)&&this.produto!=null) {
+			this.produto=this.next.produto;
+			this.next=this.next.next;
+		} else if (this.produto==null) {
+			ProdutoNaoEncontradoException x;
+			x = new ProdutoNaoEncontradoException();
+			throw x;	
+		} else {
+			this.next.remover(codeProduto);
+		}
 	}
 
 	@Override
-	public boolean existe(String codeProduto) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean existe(String codeProduto) throws ProdutoNaoEncontradoException{
+		if (this.produto!=null&&this.produto.getCode().equals(codeProduto)) {
+			return true;
+		} else if (this.produto==null) {
+			ProdutoNaoEncontradoException x;
+			x = new ProdutoNaoEncontradoException();
+			throw x;
+		} else {
+			return this.next.existe(codeProduto);
+		}
 	}
 
 	@Override
-	public void atualizarPreco(String codeProduto, double price) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void atualizarQuantidade(String codeProduto, int quantidade) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void atualizarFornecedor(String codeProduto, String fornecedor) {
-		// TODO Auto-generated method stub
-		
+	public void atualizarProduto(Produtos produto) throws ProdutoNaoEncontradoException{
+		if (this.produto.getCode().equals(this.produto.getCode())&&this.produto!=null) {
+			this.produto = produto;
+		} else if (this.produto==null) {
+			ProdutoNaoEncontradoException x;
+			x = new ProdutoNaoEncontradoException();
+			throw x;
+		} else {
+			this.next.atualizarProduto(produto);
+		}
 	}
 
 }

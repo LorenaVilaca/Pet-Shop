@@ -11,5 +11,8 @@ public interface RepositorioClientes {
 	public Clientes procurar(String codigo) throws ClienteNaoEncontradoException;
 
 	public boolean existe(String cpf);
+	
+	public void gerarBonus (Clientes cliente, double valor) throws ClienteNaoEncontradoException;
 
 }
+
