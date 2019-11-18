@@ -58,7 +58,7 @@ public class RepositorioClientesArray implements RepositorioClientes {
 		}
 	}
 
-	public void atualizar(Clientes cliente) {
+	public void atualizar(Clientes cliente) throws ClienteNaoEncontradoException {
 		boolean achou = false;
 		for (int i = 0; i < 100; i ++) {
 			if(this.arrayCliente[i].getCpf().equals(cliente.getCpf())) {

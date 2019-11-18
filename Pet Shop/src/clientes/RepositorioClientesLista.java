@@ -1,5 +1,9 @@
 package clientes;
 
+import clientes.RepositorioClientes;
+import clientes.ClienteNaoEncontradoException;
+import clientes.Clientes;
+
 public class RepositorioClientesLista implements RepositorioClientes {
 
 	private Clientes cliente;
@@ -19,30 +23,43 @@ public class RepositorioClientesLista implements RepositorioClientes {
 		}
 	}
 
-	public void remover(String codigo) {
+	public void remover(String codigo) throws ClienteNaoEncontradoException {
 		if (this.cliente != null && this.cliente.getCpf().equals(codigo)) {
 			this.cliente = this.proximo.cliente;
 			this.proximo = this.proximo.proximo;
-		} else {
-			this.proximo.procurar(codigo);
+		}
+		else if (this.cliente == null) {
+			ClienteNaoEncontradoException e = new ClienteNaoEncontradoException();
+			throw e;
+		}
+		else {
+			this.proximo.remover(codigo);
 		}
 
 	}
 
-	public void atualizar(Clientes cliente) {
+	public void atualizar(Clientes cliente) throws ClienteNaoEncontradoException {
 		if (this.cliente != null && this.cliente.getCpf().equals(cliente.getCpf())) {
 			this.cliente = cliente;
-		} else {
+		}
+		else if (this.cliente == null) {
+			ClienteNaoEncontradoException e = new ClienteNaoEncontradoException();
+			throw e;
+		}
+		else {
 			this.proximo.atualizar(cliente);
 		}
 	}
 
-	public Clientes procurar(String cpf) {
+	public Clientes procurar(String cpf) throws ClienteNaoEncontradoException {
 		if (this.cliente != null && this.cliente.getCpf().equals(cpf)) {
 			return this.cliente;
-		} else if (this.cliente == null) {
-			return null;
-		} else {
+		}
+		else if (this.cliente == null) {
+			ClienteNaoEncontradoException e = new ClienteNaoEncontradoException();
+			throw e;
+		}
+		else {
 			return this.proximo.procurar(cpf);
 		}
 
