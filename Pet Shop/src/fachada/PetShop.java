@@ -23,6 +23,7 @@ import servicos.RepositorioServicos;
 import servicos.ServicoJaCadastradoException;
 import servicos.ServicoNaoEncontradoException;
 import servicos.Servicos;
+import venda.AlgoNaoFoiEncontradoException;
 import venda.CadastroVenda;
 import venda.RepositorioVendas;
 import venda.VendaJaCadastradaException;
@@ -188,13 +189,26 @@ public class PetShop {
    }
    
    public void cadastrarVenda (Vendas venda) 
-		   throws VendaJaCadastradaException, LimiteAtingidoException, venda.LimiteAtingidoException {
+		   throws VendaJaCadastradaException, 
+		   venda.LimiteAtingidoException, 
+		   ClienteNaoEncontradoException, 
+		   FuncionarioNaoEncontradoException, 
+		   ProdutoNaoEncontradoException, 
+		   ServicoNaoEncontradoException, 
+		   AlgoNaoFoiEncontradoException {
+	   if(existeCliente(venda.getCliente().getCpf()) && existeFuncionario(venda.getFuncionario().getCodigo()) 
+			   && existeProduto(venda.getProduto().getCode()) && existeServico(venda.getServico().getCodigo())) {
        if (this.vendas.existe(venda.getId())) {
            VendaJaCadastradaException v = new VendaJaCadastradaException();
            throw v;
        } else {
            vendas.cadastrar(venda);
        }
+   } else {
+	    AlgoNaoFoiEncontradoException a;
+		a = new AlgoNaoFoiEncontradoException();
+		throw a;
+   }
    }
 
    public void removerVenda (int id) 
