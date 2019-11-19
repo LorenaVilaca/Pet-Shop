@@ -1,10 +1,37 @@
 package programa;
 import java.util.Scanner;
+import fachada.*;
+import clientes.*;
+import funcionarios.*;
+import produtos.*;
+import servicos.*;
+import venda.*;
 public class main {
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		
+		Clientes objCliente;
+		Funcionarios objFuncionarios;
+		Produtos objProdutos;
+		Servicos objServicos;
+		Vendas objVendas;
+		
+		RepositorioClientes repoClientesLista = new RepositorioClientesLista();
+	    RepositorioClientes repoClientesArray = new RepositorioClientesArray();
+	    RepositorioFuncionarios repoFuncionariosLista = new RepositorioFuncionariosLista();
+	    RepositorioFuncionarios repoFuncionariosArray = new RepositorioFuncionariosArray();
+	    RepositorioProduto repoProdutosLista = new RepositorioProdutosLista();
+	    RepositorioProduto repoProdutosArray = new RepositorioProdutosArray();
+		RepositorioServicos repoServicosLista = new RepositorioServicoLista();
+		RepositorioServicos repoServicosArray = new RepositorioServicoArray();
+		RepositorioVendas repoVendasLista = new RepositorioVendasLista();
+		RepositorioVendas repoVendasArray = new RepositorioVendasArray();
+		
+	    PetShop petlista = new PetShop (repoClientesLista, repoFuncionariosLista, 
+	    		repoProdutosLista, repoServicosLista, repoVendasLista);
+	    PetShop petarray = new PetShop(repoClientesArray, repoFuncionariosArray, repoProdutosArray,
+	    		repoServicosArray, repoVendasArray);
 		
 		System.out.println("Digite um numero correspondente a função que deseja alterar:\n "
 				+ "1 - FUNCIONARIOS\n"
