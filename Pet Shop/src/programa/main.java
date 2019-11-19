@@ -79,7 +79,7 @@ public class main {
 				} 
 			}
 			//CLIENTES
-			if (p == 2) {
+			if (p == 2) { //fsfsdf
 				while(x!=5) {
 					System.out.println("Selecione como deseja alterar CLIENTES:\n"
 							+ " (1) - Cadastrar\n"
