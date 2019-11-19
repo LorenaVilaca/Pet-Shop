@@ -3,7 +3,7 @@ package funcionarios;
 public interface RepositorioFuncionarios {
 	
 	public void inserirFuncionarios(Funcionarios funcionario) 
-			throws LimiteAtingidoException;
+			throws LimiteAtingidoException, FuncionarioJaCadastradoException;
 		
 	public void removerFuncionarios(String codigo) 
 			throws FuncionarioNaoEncontradoException;

@@ -1,4 +1,4 @@
-package funcionarios;
+	package funcionarios;
 
 public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 

@@ -11,7 +11,7 @@ public class RepositorioServicoArray implements RepositorioServicos {
 	
 	public void inserir(Servicos servico) throws LimiteServicoAtingidoException {
 		if (this.indice < this.arrayServico.length) {
-			this.arrayServico [indice] = servico;
+			this.arrayServico [this.indice] = servico;
 			indice ++;
 		}
 		else {

@@ -25,7 +25,7 @@ public class RepositorioFuncionariosLista implements RepositorioFuncionarios{
 			this.funcionario = this.proximo.funcionario;
 			this.proximo = this.proximo.proximo;
 		} else if (this.proximo!=null)
-			this.removerFuncionarios(codigo);
+			this.proximo.removerFuncionarios(codigo);
 		else {
 			FuncionarioNaoEncontradoException e = new FuncionarioNaoEncontradoException();
 			throw e;
@@ -38,7 +38,7 @@ public class RepositorioFuncionariosLista implements RepositorioFuncionarios{
 		if(this.funcionario != null && this.funcionario.getCodigo().equals(codigo))
 			funcionarioProcurado = this.funcionario;
 		else if (this.proximo!=null)
-			funcionarioProcurado=this.procurarFuncionarios(codigo);
+			this.proximo.procurarFuncionarios(codigo);
 		else {
 			FuncionarioNaoEncontradoException e = new FuncionarioNaoEncontradoException();
 			throw e;
@@ -58,9 +58,16 @@ public class RepositorioFuncionariosLista implements RepositorioFuncionarios{
 
 	public void atualizarFuncionarios(Funcionarios funcionario) 
 			throws FuncionarioNaoEncontradoException{
-		Funcionarios funcionarioAntigo = procurarFuncionarios(funcionario.getCodigo());
-		this.removerFuncionarios(funcionarioAntigo.getCodigo());
-		this.inserirFuncionarios(funcionario);	
+		if(this.funcionario != null && this.funcionario.getCodigo().equals(funcionario.getCodigo())) {
+			this.funcionario = funcionario;
+		}
+		else if (this.funcionario == null) {
+			FuncionarioNaoEncontradoException e = new FuncionarioNaoEncontradoException();
+			throw e;
+		}
+		else {
+			this.proximo.atualizarFuncionarios(funcionario);
+		}
 	}
 
 	public void gerarBonus(Funcionarios funcionario, double valor) 
