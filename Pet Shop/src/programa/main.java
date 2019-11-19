@@ -10,178 +10,206 @@ public class main {
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		
+
 		Clientes objCliente;
 		Funcionarios objFuncionarios;
 		Produtos objProdutos;
 		Servicos objServicos;
 		Vendas objVendas;
-		
-		RepositorioClientes repoClientesLista = new RepositorioClientesLista();
-	    RepositorioClientes repoClientesArray = new RepositorioClientesArray();
-	    RepositorioFuncionarios repoFuncionariosLista = new RepositorioFuncionariosLista();
-	    RepositorioFuncionarios repoFuncionariosArray = new RepositorioFuncionariosArray();
-	    RepositorioProduto repoProdutosLista = new RepositorioProdutosLista();
-	    RepositorioProduto repoProdutosArray = new RepositorioProdutosArray();
-		RepositorioServicos repoServicosLista = new RepositorioServicoLista();
-		RepositorioServicos repoServicosArray = new RepositorioServicoArray();
-		RepositorioVendas repoVendasLista = new RepositorioVendasLista();
-		RepositorioVendas repoVendasArray = new RepositorioVendasArray();
-		
-	    PetShop petlista = new PetShop (repoClientesLista, repoFuncionariosLista, 
-	    		repoProdutosLista, repoServicosLista, repoVendasLista);
-	    PetShop petarray = new PetShop(repoClientesArray, repoFuncionariosArray, repoProdutosArray,
-	    		repoServicosArray, repoVendasArray);
-		
-		System.out.println("Digite um numero correspondente a função que deseja alterar:\n "
-				+ "1 - FUNCIONARIOS\n"
-				+ " 2 - CLIENTES\n"
-				+ " 3 - PRODUTOS\n"
-				+ " 4 - SERVICOS\n"
-				+ " 5 - VENDAS");
 
-		//FUNCIONARIOS
-		if (in.nextInt() == 1) {
-			System.out.println("Selecione como deseja alterar FUNCIONARIOS:\n"
-					+ " 1 - Cadastrar\n"
-					+ " 2 - Procurar\n"
-					+ " 3 - Remover\n"
-					+ " 4 - Atualizar\n");
+		RepositorioClientes repoClientes = new RepositorioClientesLista();
+		//RepositorioClientes repoClientes = new RepositorioClientesArray();
+		RepositorioFuncionarios repoFuncionarios = new RepositorioFuncionariosLista();
+		//RepositorioFuncionarios repoFuncionarios = new RepositorioFuncionariosArray();
+		RepositorioProduto repoProdutos = new RepositorioProdutosLista();
+		//RepositorioProduto repoProdutos = new RepositorioProdutosArray();
+		RepositorioServicos repoServicos = new RepositorioServicoLista();
+		//RepositorioServicos repoServicos = new RepositorioServicoArray();
+		RepositorioVendas repoVendas = new RepositorioVendasLista();
+		//RepositorioVendas repoVendas = new RepositorioVendasArray();
 
-			//CADASTRAR FUNCIONARIO
-			if (in.nextInt() == 1) {
-				
+		PetShop petshop = new PetShop (repoClientes, repoFuncionarios, 
+				repoProdutos, repoServicos, repoVendas);
+		//PetShop petshop = new PetShop(repoClientes, repoFuncionarios, repoProdutos,
+		//repoServicos, repoVendas);
+		int x = 0;
+		int p = 0;
+		while (p!=6) {
+			System.out.println("Digite um numero correspondente a função que deseja alterar:\n "
+					+ "(1) - FUNCIONARIOS\n"
+					+ " (2) - CLIENTES\n"
+					+ " (3) - PRODUTOS\n"
+					+ " (4) - SERVICOS\n"
+					+ " (5) - VENDAS");
+			p = in.nextInt();
+
+			x = 0;
+
+			//FUNCIONARIOS
+			if ( p == 1) {
+				while (x!=5) {
+					System.out.println("Selecione como deseja alterar FUNCIONARIOS:\n"
+							+ " (1) - Cadastrar\n"
+							+ " (2) - Procurar\n"
+							+ " (3) - Remover\n"
+							+ " (4) - Atualizar\n"
+							+ " (5) - Voltar");
+
+					x = in.nextInt();
+					//CADASTRAR FUNCIONARIO
+					if (x == 1) {
+
+					}
+
+					//PROCURAR FUNCIONARIO 
+					if (x == 2) {
+
+					}
+
+					//REMOVER FUNCIONARIO
+					if (x == 3) {
+
+					}
+
+					//ATUALIZAR FUNIONARIO
+					if (x == 4) {
+
+					}
+				} 
+			}
+			//CLIENTES
+			if (p == 2) {
+				while(x!=5) {
+					System.out.println("Selecione como deseja alterar CLIENTES:\n"
+							+ " (1) - Cadastrar\n"
+							+ " (2) - Procurar\n"
+							+ " (3) - Remover\n"
+							+ " (4) - Atualizar\n"
+							+ " (5) - Voltar");
+
+					x = in.nextInt();
+					//CADASTRAR CLIENTES
+					if (x == 1) {
+
+					}
+
+					//PROCURAR CLIENTES 
+					if (x == 2) {
+
+					}
+
+					//REMOVER CLIENTES
+					if (x == 3) {
+
+					}
+
+					//ATUALIZAR CLIENTES
+					if (x == 4) {
+
+					}
+				}
 			}
 
-			//PROCURAR FUNCIONARIO 
-			if (in.nextInt() == 2) {
-				
+			//PRODUTOS
+			if (p == 3) {
+				while(x!=5) {
+					System.out.println("Selecione como deseja alterar PRODUTOS:\n"
+							+ " (1) - Cadastrar\n"
+							+ " (2) - Procurar\n"
+							+ " (3) - Remover\n"
+							+ " (4) - Atualizar\n"
+							+ " (5) - Voltar");
+
+					x = in.nextInt();
+					//CADASTRAR PRODUTOS
+					if (x == 1) {
+						System.out.println("Para cadastrar o PRODUTOS insira:");
+						System.out.println("-Nome do Produto:"); String nomeProduto = in.nextLine();
+						System.out.println("-Codigo do Produto:"); String codeProduto = in.nextLine();
+						System.out.println("-Preco do Produto:"); double priceProduto = in.nextDouble();
+						System.out.println("-");
+					}
+
+					//PROCURAR PRODUTOS 
+					if (x == 2) {
+
+					}
+
+					//REMOVER PRODUTOS
+					if (x == 3) {
+
+					}
+
+					//ATUALIZAR PRODUTOS
+					if (x == 4) {
+
+					}
+				}
 			}
 
-			//REMOVER FUNCIONARIO
-			if (in.nextInt() == 3) {
+			//SERVICOS
+			if (p == 4) {
+				while (x!=5) {
+					System.out.println("Selecione como deseja alterar SERVICOS:\n"
+							+ " (1) - Cadastrar\n"
+							+ " (2) - Procurar\n"
+							+ " (3) - Remover\n"
+							+ " (4) - Atualizar\n"
+							+ " (5) - Voltar");
+					x = in.nextInt();
+					//CADASTRAR FUNCIONARIO
+					if (x == 1) {
 
+					}
+
+					//PROCURAR FUNCIONARIO 
+					if (x == 2) {
+
+					}
+
+					//REMOVER FUNCIONARIO
+					if (x == 3) {
+
+					}
+
+					//ATUALIZAR FUNIONARIO
+					if (x == 4) {
+
+					}
+				}
 			}
 
-			//ATUALIZAR FUNIONARIO
-			if (in.nextInt() == 4) {
+			//VENDAS
+			if (p == 5) {
+				while (x!=5) {
+					System.out.println("Selecione como deseja alterar VENDAS:\n"
+							+ " (1) - Cadastrar\n"
+							+ " (2) - Procurar\n"
+							+ " (3) - Remover\n"
+							+ " (4) - Atualizar\n"
+							+ " (5) - Voltar");
 
-			}
-		} 
+					x = in.nextInt();
+					//CADASTRAR FUNCIONARIO
+					if (x == 1) {
 
-		//CLIENTES
-		if (in.nextInt() == 2) {
-			System.out.println("Selecione como deseja alterar CLIENTES:\n"
-					+ " 1 - Cadastrar\n"
-					+ " 2 - Procurar\n"
-					+ " 3 - Remover\n"
-					+ " 4 - Atualizar\n");
-			
-			//CADASTRAR CLIENTES
-			if (in.nextInt() == 1) {
-				
-			}
+					}
 
-			//PROCURAR CLIENTES 
-			if (in.nextInt() == 2) {
-				
-			}
+					//PROCURAR FUNCIONARIO 
+					if (x == 2) {
 
-			//REMOVER CLIENTES
-			if (in.nextInt() == 3) {
+					}
 
-			}
+					//REMOVER FUNCIONARIO
+					if (x == 3) {
 
-			//ATUALIZAR CLIENTES
-			if (in.nextInt() == 4) {
+					}
 
-			}
-		}
+					//ATUALIZAR FUNIONARIO
+					if (x == 4) {
 
-		//PRODUTOS
-		if (in.nextInt() == 3) {
-			System.out.println("Selecione como deseja alterar PRODUTOS:\n"
-					+ " 1 - Cadastrar\n"
-					+ " 2 - Procurar\n"
-					+ " 3 - Remover\n"
-					+ " 4 - Atualizar\n");
-			
-			//CADASTRAR PRODUTOS
-			if (in.nextInt() == 1) {
-				
-			}
-
-			//PROCURAR PRODUTOS 
-			if (in.nextInt() == 2) {
-				
-			}
-
-			//REMOVER PRODUTOS
-			if (in.nextInt() == 3) {
-
-			}
-
-			//ATUALIZAR PRODUTOS
-			if (in.nextInt() == 4) {
-
-			}
-		}
-
-		//SERVICOS
-		if (in.nextInt() == 4) {
-			System.out.println("Selecione como deseja alterar SERVICOS:\n"
-					+ " 1 - Cadastrar\n"
-					+ " 2 - Procurar\n"
-					+ " 3 - Remover\n"
-					+ " 4 - Atualizar\n");
-			
-			//CADASTRAR FUNCIONARIO
-			if (in.nextInt() == 1) {
-				
-			}
-
-			//PROCURAR FUNCIONARIO 
-			if (in.nextInt() == 2) {
-				
-			}
-
-			//REMOVER FUNCIONARIO
-			if (in.nextInt() == 3) {
-
-			}
-
-			//ATUALIZAR FUNIONARIO
-			if (in.nextInt() == 4) {
-
-			}
-		}
-
-		//VENDAS
-		if (in.nextInt() == 5) {
-			System.out.println("Selecione como deseja alterar VENDAS:\n"
-					+ " 1 - Cadastrar\n"
-					+ " 2 - Procurar\n"
-					+ " 3 - Remover\n"
-					+ " 4 - Atualizar\n");
-			
-			//CADASTRAR FUNCIONARIO
-			if (in.nextInt() == 1) {
-				
-			}
-
-			//PROCURAR FUNCIONARIO 
-			if (in.nextInt() == 2) {
-				
-			}
-
-			//REMOVER FUNCIONARIO
-			if (in.nextInt() == 3) {
-
-			}
-
-			//ATUALIZAR FUNIONARIO
-			if (in.nextInt() == 4) {
-
+					}
+				}
 			}
 		}
 	}
