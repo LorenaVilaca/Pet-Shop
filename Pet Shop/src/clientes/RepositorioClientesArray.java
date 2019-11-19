@@ -18,7 +18,7 @@ public class RepositorioClientesArray implements RepositorioClientes {
 	public Clientes procurar(String cpf) throws ClienteNaoEncontradoException {
 		boolean achou = false;
 		for (int i = 0; i < 100; i ++) {
-			if (this.arrayCliente[i].getCpf().equals(cpf)) {
+			if (this.arrayCliente[i]!=null && this.arrayCliente[i].getCpf().equals(cpf)) {
 				achou = true;
 				return this.arrayCliente[i];
 			}
@@ -44,7 +44,7 @@ public class RepositorioClientesArray implements RepositorioClientes {
 	public void remover(String cpf) throws ClienteNaoEncontradoException {
 		boolean achou = false;
 		for (int i = 0; i < 100; i ++) {
-			if (this.arrayCliente[i].getCpf().equals(cpf)) {
+			if (this.arrayCliente[i]!=null && this.arrayCliente[i].getCpf().equals(cpf)) {
 				this.arrayCliente[i] = null;
 				System.arraycopy(arrayCliente, i + 1, this.arrayCliente, i, this.arrayCliente.length - 1 - i);
 				this.indice --;
@@ -61,7 +61,7 @@ public class RepositorioClientesArray implements RepositorioClientes {
 	public void atualizar(Clientes cliente) throws ClienteNaoEncontradoException {
 		boolean achou = false;
 		for (int i = 0; i < 100; i ++) {
-			if(this.arrayCliente[i].getCpf().equals(cliente.getCpf())) {
+			if(this.arrayCliente[i]!=null && this.arrayCliente[i].getCpf().equals(cliente.getCpf())) {
 				this.arrayCliente[i] = cliente;
 				achou = true;
 				return;
@@ -75,7 +75,7 @@ public class RepositorioClientesArray implements RepositorioClientes {
 	
 	public boolean existe(String cpf) {
 		for (int i = 0; i < 100; i ++) {
-			if (this.arrayCliente[i].getCpf().equals(cpf)) {
+			if (this.arrayCliente[i]!=null && this.arrayCliente[i].getCpf().equals(cpf)) {
 				return true;
 			}
 		}
@@ -85,7 +85,7 @@ public class RepositorioClientesArray implements RepositorioClientes {
 	public void gerarBonus(Clientes cliente, double valor) throws ClienteNaoEncontradoException {
 		boolean achou = false;
 		for (int i = 0; i < this.indice && !achou; i++) {
-			if (this.arrayCliente[i].getCpf().equals(cliente.getCpf())) {
+			if (this.arrayCliente[i]!=null && this.arrayCliente[i].getCpf().equals(cliente.getCpf())) {
 				this.arrayCliente[i].gerarbonus(valor);
 				achou = true;
 				return;
