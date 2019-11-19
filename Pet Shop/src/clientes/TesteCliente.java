@@ -29,30 +29,31 @@ public class TesteCliente {
 		System.out.println(procura4.getNome() + ", " + procura4.getCpf() 
 				+ ", " + procura4.getTelefone());
 		
+		System.out.println();
 		
 		RepositorioClientes repoTeste2 = new RepositorioClientesArray();
 		Clientes cliente2 = new Clientes ("thais", "95488", "99686660");
-		repoTeste.inserir(cliente2);
+		repoTeste2.inserir(cliente2);
 		Clientes novoCliente4 = new Clientes ("debora", "45472", "995672000");
-		repoTeste.inserir(novoCliente4);
+		repoTeste2.inserir(novoCliente4);
 		Clientes novoCliente5 = new Clientes ("nathalia", "74899", "999942444");
-		repoTeste.inserir(novoCliente5);
-		System.out.println(repoTeste.existe(novoCliente2.getCpf()));
-		Clientes procura5 = repoTeste.procurar(novoCliente2.getCpf());
+		repoTeste2.inserir(novoCliente5);
+		System.out.println(repoTeste2.existe(novoCliente2.getCpf()));
+		Clientes procura5 = repoTeste2.procurar(novoCliente2.getCpf());
 		System.out.println(procura5.getNome() + ", " + procura5.getCpf() 
 				+ ", " + procura5.getTelefone());
-		Clientes procura6 = repoTeste.procurar(novoCliente.getCpf());
+		Clientes procura6 = repoTeste2.procurar(novoCliente.getCpf());
 		System.out.println(procura6.getNome() + ", " + procura6.getCpf() 
 				+ ", " + procura6.getTelefone());
-		Clientes procura7 = repoTeste.procurar(cliente.getCpf());
+		Clientes procura7 = repoTeste2.procurar(cliente.getCpf());
 		System.out.println(procura7.getNome() + ", " + procura7.getCpf() 
 				+ ", " + procura7.getTelefone());
-		repoTeste.remover("74899");
-		System.out.println(repoTeste.existe(novoCliente5.getCpf()));
+		repoTeste2.remover("74899");
+		System.out.println(repoTeste2.existe(novoCliente5.getCpf()));
 		Clientes novoCliente6 = new Clientes ("elinete", "45472", "998752022");
-		repoTeste.atualizar(novoCliente6);
-		System.out.println(repoTeste.existe(novoCliente6.getCpf()));
-		Clientes procura8 = repoTeste.procurar(novoCliente6.getCpf());
+		repoTeste2.atualizar(novoCliente6);
+		System.out.println(repoTeste2.existe(novoCliente5.getCpf()));
+		Clientes procura8 = repoTeste2.procurar(novoCliente6.getCpf());
 		System.out.println(procura8.getNome() + ", " + procura8.getCpf() 
 				+ ", " + procura8.getTelefone());
 	}
