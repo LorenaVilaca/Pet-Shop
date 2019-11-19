@@ -204,7 +204,8 @@ public class main {
 					x = in.nextInt();
 					//CADASTRAR FUNCIONARIO
 					if (x == 1) {
-
+                       System.out.print("Digite o id da venda");
+                       
 					}
 
 					//PROCURAR FUNCIONARIO 

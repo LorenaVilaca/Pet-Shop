@@ -211,12 +211,12 @@ public class PetShop {
    }
    }
 
-   public void removerVenda (int id) 
+   public void removerVenda (String id) 
 		   throws VendaNaoEncontradaException {
        this.vendas.remover(id);
    }
 
-   public Vendas procurarVenda (int id) 
+   public Vendas procurarVenda (String id) 
 		   throws VendaNaoEncontradaException {
        return this.vendas.procurar(id);
    }
@@ -231,7 +231,7 @@ public class PetShop {
        }
    }
    
-   public boolean existeVenda (int id) 
+   public boolean existeVenda (String id) 
 		   throws VendaNaoEncontradaException {
        return this.vendas.existe(id);
    }

@@ -10,9 +10,9 @@ public class Vendas {
 	private Produtos produto;
 	private Servicos servico;
 	private double valor;
-	private int id;
+	private String id;
 	public Vendas (Funcionarios funcionario, Clientes cliente, 
-			Produtos produto, Servicos servico, double valor, int id) {
+			Produtos produto, Servicos servico, double valor, String id) {
 		this.funcionario = funcionario;
 		this.cliente = cliente;
 		this.produto = produto;
@@ -20,10 +20,10 @@ public class Vendas {
 		this.valor = valor;
 		this.id = id;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public Funcionarios getFuncionario() {
