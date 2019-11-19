@@ -11,12 +11,12 @@ public class RepositorioVendasArray implements RepositorioVendas {
 	}
 
 	@Override
-	public void remover(int id) 
+	public void remover(String id) 
 			throws VendaNaoEncontradaException {
 		int a = this.getIndice(id);
 		boolean achou4 = false;
 		for (int i = 0; i < this.indice && !achou4; i++) {
-			if (this.arrayVendas[i].getId() == id) {
+			if (this.arrayVendas[i].getId().equals(id)) {
 				achou4 = true;
 			}
 		}
@@ -51,12 +51,12 @@ public class RepositorioVendasArray implements RepositorioVendas {
 	}
 
 	@Override
-	public Vendas procurar (int id) 
+	public Vendas procurar (String id) 
 			throws VendaNaoEncontradaException {
 		Vendas retorno2 = null;
 		boolean achou2 = false;
 		for (int i = 0; i < this.indice && !achou2; i++) {
-			if (this.arrayVendas[i].getId() == id) {
+			if (this.arrayVendas[i].getId().equals(id)) {
 				retorno2 = this.arrayVendas[i];
 				achou2 = true;
 			}
@@ -71,10 +71,10 @@ public class RepositorioVendasArray implements RepositorioVendas {
 	}
 
 	@Override
-	public boolean existe(int id) {
+	public boolean existe (String id) {
 		boolean achou3 = false;
 		for (int i = 0; i < this.indice && !achou3; i++) {
-			if (this.arrayVendas[i].getId() == id) achou3 = true;
+			if (this.arrayVendas[i].getId().equals(id)) achou3 = true;
 		}
 		return achou3;
 	}
@@ -86,12 +86,12 @@ public class RepositorioVendasArray implements RepositorioVendas {
 		arrayVendas [b] = venda;
 	}
 
-	public int getIndice(int id) 
+	public int getIndice(String id) 
 			throws VendaNaoEncontradaException {
 		int retorno = 0;
 		boolean achou = false;
 		for (int i = 0; i < this.indice && !achou; i++) {
-			if (this.arrayVendas[i].getId() == id) {
+			if (this.arrayVendas[i].getId().equals(id)) {
 				retorno = i;
 				achou = true;
 			}

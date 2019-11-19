@@ -17,17 +17,17 @@ public class CadastroVenda {
     	   this.repositorio.atualizar(venda);
        }
        
-       public void remover (int id) 
+       public void remover (String id) 
     		   throws VendaNaoEncontradaException {
     	   this.repositorio.remover(id);
        }
        
-       public Vendas procurar (int id) 
+       public Vendas procurar (String id) 
     		   throws VendaNaoEncontradaException {
 		return this.repositorio.procurar(id);	   
        }
        
-       public boolean existe (int id) {
+       public boolean existe (String id) {
 		return this.repositorio.existe(id); 	   
        }
 }
