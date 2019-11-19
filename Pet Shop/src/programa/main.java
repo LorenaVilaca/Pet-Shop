@@ -137,9 +137,9 @@ public class main {
                              
                              System.out.println("\n\n------ Produto Cadastrado com Sucesso ------\n\n");
                          } catch (LimiteProdutosAtingidoException | ProdutoJaCadastradoException | ProdutoNaoEncontradoException e) {
-                             System.out.println("\n\n----------------- ERRO -----------------");
+                             System.out.println("\n\n----------------- ERRO -----------------\n\n");
                              System.out.println(e.getMessage());
-                             System.out.println("\n\n----------------- ERRO -----------------");
+                             System.out.println("\n\n----------------- ERRO -----------------\n\n");
                          }
 					}
 
