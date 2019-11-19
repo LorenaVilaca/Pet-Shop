@@ -51,13 +51,13 @@ public class RepositorioVendasArray implements RepositorioVendas {
 	}
 
 	@Override
-	public Vendas procurar (int id) 
+	public int procurar (int id) 
 			throws VendaNaoEncontradaException {
-		Vendas retorno2 = null;
+		int retorno2 = 0;
 		boolean achou2 = false;
 		for (int i = 0; i < this.indice && !achou2; i++) {
 			if (this.arrayVendas[i].getId() == id) {
-				retorno2 = this.arrayVendas[i];
+				retorno2 = this.arrayVendas[i].getId();
 				achou2 = true;
 			}
 		}
