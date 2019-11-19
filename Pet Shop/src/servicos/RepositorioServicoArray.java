@@ -23,7 +23,7 @@ public class RepositorioServicoArray implements RepositorioServicos {
 	public void remover(String codigo) throws ServicoNaoEncontradoException{
 		boolean achou = false;
 		for (int i = 0; i < 100; i ++) {
-			if (this.arrayServico[i].getCodigo().equals(codigo)) {
+			if (this.arrayServico[i] != null && this.arrayServico[i].getCodigo().equals(codigo)) {
 				this.arrayServico[i] = null;
 				System.arraycopy(arrayServico, i + 1, this.arrayServico, i, this.arrayServico.length - 1 - i);
 				this.indice --;
@@ -40,7 +40,7 @@ public class RepositorioServicoArray implements RepositorioServicos {
 	public void atualizar(Servicos servico) throws ServicoNaoEncontradoException{
 		boolean achou = false;
 		for (int i = 0; i < 100; i ++) {
-			if(this.arrayServico[i].getCodigo().equals(servico.getCodigo())) {
+			if(this.arrayServico[i] != null && this.arrayServico[i].getCodigo().equals(servico.getCodigo())) {
 				this.arrayServico[i] = servico;
 				achou = true;
 				return;
@@ -55,7 +55,7 @@ public class RepositorioServicoArray implements RepositorioServicos {
 	public Servicos procurar(String codigo) throws ServicoNaoEncontradoException {
 		boolean achou = false;
 		for (int i = 0; i < 100; i ++) {
-			if (this.arrayServico[i].getCodigo().equals(codigo)) {
+			if (this.arrayServico[i] != null && this.arrayServico[i].getCodigo().equals(codigo)) {
 				achou = true;
 				return this.arrayServico [i];
 			}
@@ -69,7 +69,7 @@ public class RepositorioServicoArray implements RepositorioServicos {
 
 	public boolean existe(String codigo) {
 		for (int i = 0; i < 100; i ++) {
-			if (this.arrayServico[i].getCodigo().equals(codigo)) {
+			if (this.arrayServico[i] != null && this.arrayServico[i].getCodigo().equals(codigo)) {
 				return true;
 			}
 		}
