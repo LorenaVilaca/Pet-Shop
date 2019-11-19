@@ -12,18 +12,18 @@ public class CadastroProdutos {
 		}
 	}
 
-	public void atualizarProduto (Produtos produto) throws ProdutoNaoEncontradoException { //produto nao encontrado
+	public void atualizarProduto (Produtos produto) throws ProdutoNaoEncontradoException {
 		this.repositorio.atualizarProduto(produto);
 	}
-	public void remover(String codeProduto) throws ProdutoNaoEncontradoException { //produto nao encontrado 
+	public void remover(String codeProduto) throws ProdutoNaoEncontradoException {
 		this.repositorio.remover(codeProduto);
 	}
 
-	public Produtos procurar(String codeProduto)throws ProdutoNaoEncontradoException { //produto na encontrado
+	public Produtos procurar(String codeProduto)throws ProdutoNaoEncontradoException {
 		return this.repositorio.procurar(codeProduto);
 	}
 	
-	public boolean existe(String codeProduto) throws ProdutoNaoEncontradoException { //produto nao encontrado
+	public boolean existe(String codeProduto) {
 		return this.repositorio.existe(codeProduto);
 	}
 	

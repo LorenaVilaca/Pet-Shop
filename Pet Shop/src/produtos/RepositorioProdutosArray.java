@@ -11,21 +11,22 @@ public class RepositorioProdutosArray implements RepositorioProduto {
 
 	@Override
 	public void inserir(Produtos produto) throws LimiteProdutosAtingidoException, ProdutoJaCadastradoException { 
-		for (int i=0;i<this.indice;i++) {
-			if (this.arrayProdutos[i].getCode().equals(produto.getCode())) {
+		for (int i=0;i<=this.indice;i++) {
+			if (this.arrayProdutos[i]!=null&&this.arrayProdutos[i].getCode().equals(produto.getCode())) {
 				ProdutoJaCadastradoException p;
 				p = new ProdutoJaCadastradoException();
 				throw p;
-			}else {
-				if(this.indice < this.arrayProdutos.length) {
-					this.arrayProdutos[this.indice] = produto;
-					this.indice++;
-				} else {
-					LimiteProdutosAtingidoException p;
-					p = new LimiteProdutosAtingidoException();
-					throw p;
-				}
 			}
+		}
+		if(this.indice < this.arrayProdutos.length) {
+			this.arrayProdutos[this.indice] = produto;
+			this.indice++;
+		} else {
+			LimiteProdutosAtingidoException p;
+			p = new LimiteProdutosAtingidoException();
+			throw p;
+
+
 		}
 	}
 
@@ -67,20 +68,13 @@ public class RepositorioProdutosArray implements RepositorioProduto {
 	}
 
 	@Override
-	public boolean existe(String codeProduto) throws ProdutoNaoEncontradoException {
-		boolean existe = false;
-		for (int i=0; i<this.arrayProdutos.length && !existe;i++) {
+	public boolean existe(String codeProduto){
+		for (int i=0; i<indice;i++) {
 			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
-				existe = true;
+				return true;
 			}
-		} if (!existe) {
-			ProdutoNaoEncontradoException p;
-			p = new ProdutoNaoEncontradoException();
-			throw p;
-		} else {
-			return existe;
-		}
-
+		} 
+		return false;
 	}
 
 	@Override
