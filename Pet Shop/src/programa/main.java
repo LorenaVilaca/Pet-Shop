@@ -40,7 +40,8 @@ public class main {
 					+ " (2) - CLIENTES\n"
 					+ " (3) - PRODUTOS\n"
 					+ " (4) - SERVICOS\n"
-					+ " (5) - VENDAS");
+					+ " (5) - VENDAS"
+					+ " (6) - SAIR");
 			p = in.nextInt();
 
 			x = 0;
