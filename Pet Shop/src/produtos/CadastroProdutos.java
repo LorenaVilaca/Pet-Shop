@@ -9,6 +9,10 @@ public class CadastroProdutos {
 	public void cadastrar(Produtos produto) throws LimiteProdutosAtingidoException, ProdutoNaoEncontradoException, ProdutoJaCadastradoException{ 
 		if(!this.repositorio.existe(produto.getCode())) {
 			this.repositorio.inserir(produto);
+		} else {
+			ProdutoJaCadastradoException p;
+			p = new ProdutoJaCadastradoException();
+			throw p;
 		}
 	}
 
