@@ -1,4 +1,5 @@
 package venda;
+
 public class RepositorioVendasLista implements RepositorioVendas  {
 	
 	private Vendas venda;
@@ -7,7 +8,7 @@ public class RepositorioVendasLista implements RepositorioVendas  {
 	@Override
 	public void remover(int id) 
 			throws VendaNaoEncontradaException {
-		Vendas encontrado = this.procurar (id);
+		Vendas encontrado = this.procurar(id);
 		if (this.venda != null) {
 			if (this.venda.equals(encontrado)) {
 				this.venda = this.proximo.venda;
@@ -32,7 +33,7 @@ public class RepositorioVendasLista implements RepositorioVendas  {
 	@Override
 	public Vendas procurar (int id) 
 			throws VendaNaoEncontradaException {
-		Vendas retorno; retorno = null;
+		Vendas retorno = null;
 		if (this.venda != null) {
 			if (this.venda.getId() == id) retorno = this.venda;
 			else retorno = this.proximo.procurar(id);
@@ -54,10 +55,16 @@ public class RepositorioVendasLista implements RepositorioVendas  {
 	}
 
 	@Override
-	public void atualizar (Vendas venda) 
-			throws VendaNaoEncontradaException {
-       Vendas vendaAntiga = procurar(venda.getId());
-       this.remover(vendaAntiga.getId());
-       this.inserir(venda);
+	public void atualizar (Vendas venda) throws VendaNaoEncontradaException {
+		if (this.venda != null && this.venda.getId() == venda.getId()) {
+			this.venda = venda;
+		}
+		else if (this.venda == null) {
+			VendaNaoEncontradaException v = new VendaNaoEncontradaException();
+			throw v;
+		}
+		else {
+			this.proximo.atualizar(venda);
+		}
 	}
 }

@@ -1,4 +1,4 @@
-package venda; //meu pau eh gigante
+package venda;
 public class CadastroVenda {
 	private RepositorioVendas repositorio;
        public CadastroVenda (RepositorioVendas repo) {
@@ -7,7 +7,7 @@ public class CadastroVenda {
        
        public void cadastrar (Vendas venda) 
     		   throws LimiteAtingidoException, VendaJaCadastradaException {
-    	   //cadastrando qnd n�o existe a venda com o respectivo id
+    	   //cadastrando qnd nao existe a venda com o respectivo id
     	   if (!this.repositorio.existe(venda.getId()))
     		   this.repositorio.inserir(venda);	   
     	   }

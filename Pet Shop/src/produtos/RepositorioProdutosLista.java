@@ -54,13 +54,11 @@ public class RepositorioProdutosLista implements RepositorioProduto{
 	}
 
 	@Override
-	public boolean existe(String codeProduto) throws ProdutoNaoEncontradoException{
+	public boolean existe(String codeProduto){
 		if (this.produto!=null&&this.produto.getCode().equals(codeProduto)) {
 			return true;
 		} else if (this.produto==null) {
-			ProdutoNaoEncontradoException x;
-			x = new ProdutoNaoEncontradoException();
-			throw x;
+			return false;
 		} else {
 			return this.next.existe(codeProduto);
 		}
