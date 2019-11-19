@@ -8,9 +8,9 @@ public class RepositorioVendasLista implements RepositorioVendas  {
 	@Override
 	public void remover(int id) 
 			throws VendaNaoEncontradaException {
-		int encontrado = this.procurar(id);
+		Vendas encontrado = this.procurar(id);
 		if (this.venda != null) {
-			if (this.venda.getId() == encontrado) {
+			if (this.venda.equals(encontrado)) {
 				this.venda = this.proximo.venda;
 				this.proximo = this.proximo.proximo;
 			} else this.proximo.remover(id);
@@ -31,11 +31,11 @@ public class RepositorioVendasLista implements RepositorioVendas  {
 	}
 	
 	@Override
-	public int procurar (int id) 
+	public Vendas procurar (int id) 
 			throws VendaNaoEncontradaException {
-		int retorno = 0;
+		Vendas retorno = null;
 		if (this.venda != null) {
-			if (this.venda.getId() == id) retorno = id;
+			if (this.venda.getId() == id) retorno = this.venda;
 			else retorno = this.proximo.procurar(id);
 		} else {
 			VendaNaoEncontradaException v;

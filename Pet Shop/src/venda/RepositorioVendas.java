@@ -4,7 +4,7 @@ public interface RepositorioVendas {
                throws VendaNaoEncontradaException;
        public void inserir (Vendas venda) 
     		   throws LimiteAtingidoException, VendaJaCadastradaException;
-       public int procurar (int id)
+       public Vendas procurar (int id)
     		   throws VendaNaoEncontradaException;
        public boolean existe (int id);
        public void atualizar (Vendas venda)

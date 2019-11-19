@@ -20,12 +20,22 @@ public class testeVendaArray {
 		repoTeste2.inserir(novaVenda);
 		Vendas novaVenda2 = new Vendas (funcionario, cliente, produto, servico, 50, 3);
 		repoTeste2.atualizar(novaVenda2);
-		System.out.println(repoTeste2.existe(novaVenda2.getId()));
-		System.out.println(repoTeste2.procurar(novaVenda2.getId()));
-		System.out.println(repoTeste2.procurar(venda.getId()));
-		repoTeste2.remover(novaVenda2.getId());
-		System.out.println(repoTeste2.existe(novaVenda2.getId()));
-		System.out.println(repoTeste2.procurar(novaVenda2.getId()));
+		//System.out.println(repoTeste2.existe(novaVenda2.getId()));
+		//System.out.println(repoTeste2.procurar(novaVenda2.getId()));
+		//System.out.println(repoTeste2.procurar(venda.getId()));
+		Vendas procura = repoTeste2.procurar(3);
+		procura.getCliente().setCredito(250);
+		System.out.println(procura.getCliente().getNome() + ", " + procura.getCliente().getCpf() 
+				+ ", " + procura.getCliente().getTelefone() + ", " + procura.getCliente().getCredito());
+		System.out.println(procura.getFuncionario().getNome() + ", " + procura.getFuncionario().getCodigo() + ", " 
+				+ procura.getFuncionario().getSalario());
+		System.out.println(procura.getProduto().getNome() + ", " + procura.getProduto().getCode() + ", " + procura.getProduto().getFornecedor() + ", " 
+				+ procura.getProduto().getPrice() + ", " + procura.getProduto().getQuantidade());
+		System.out.println(procura.getServico().getNome() + ", " + procura.getServico().getCodigo() 
+				+ ", " + procura.getServico().getPreco());
+		//System.out.println(procura.getValor() + ", " + procura.getId());
+		//repoTeste2.remover(novaVenda2.getId());
+		//System.out.println(repoTeste2.existe(novaVenda2.getId()));
+		//System.out.println(repoTeste2.procurar(novaVenda2.getId()));
 	}
-
 }

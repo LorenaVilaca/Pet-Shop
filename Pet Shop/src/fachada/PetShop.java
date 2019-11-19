@@ -202,7 +202,7 @@ public class PetShop {
        this.vendas.remover(id);
    }
 
-   public int procurarVenda (int id) 
+   public Vendas procurarVenda (int id) 
 		   throws VendaNaoEncontradaException {
        return this.vendas.procurar(id);
    }

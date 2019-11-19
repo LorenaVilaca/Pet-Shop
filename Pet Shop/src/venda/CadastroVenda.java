@@ -22,7 +22,7 @@ public class CadastroVenda {
     	   this.repositorio.remover(id);
        }
        
-       public int procurar (int id) 
+       public Vendas procurar (int id) 
     		   throws VendaNaoEncontradaException {
 		return this.repositorio.procurar(id);	   
        }
