@@ -154,7 +154,7 @@ public class PetShop {
 	}
 
    public void cadastrarServico (Servicos servico) 
-		   throws ServicoJaCadastradoException, LimiteAtingidoException, LimiteServicoAtingidoException {
+		   throws ServicoJaCadastradoException, LimiteServicoAtingidoException {
        if (this.servicos.existe(servico.getCodigo())) {
            ServicoJaCadastradoException s = new ServicoJaCadastradoException();
            throw s;
