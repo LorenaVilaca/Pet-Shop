@@ -25,7 +25,7 @@ public class RepositorioProdutosArray implements RepositorioProduto {
 	public Produtos procurar(String codeProduto) throws ProdutoNaoEncontradoException {
 		Produtos p = null;
 		boolean find = false;
-		for(int i=0; i<this.arrayProdutos.length && !find; i++) {
+		for(int i=0; i<indice && !find; i++) {
 			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
 				find = true;
 				p = this.arrayProdutos[i];
@@ -44,10 +44,11 @@ public class RepositorioProdutosArray implements RepositorioProduto {
 	@Override
 	public void remover(String codeProduto) throws ProdutoNaoEncontradoException {
 		boolean removido = false;
-		for (int i=0; i<this.arrayProdutos.length && !removido; i++) {
+		for (int i=0; i<indice && !removido; i++) {
 			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
 				this.arrayProdutos[i] = null;
-				System.arraycopy(arrayProdutos, i+1, this.arrayProdutos, i, this.arrayProdutos.length -1 -i);				
+				System.arraycopy(arrayProdutos, i+1, this.arrayProdutos, i, this.arrayProdutos.length -1 -i);
+				indice -= 1;
 				removido = true;
 			}
 		}
