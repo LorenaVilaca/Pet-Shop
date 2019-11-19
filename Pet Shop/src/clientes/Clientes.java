@@ -7,8 +7,7 @@ public class Clientes extends PessoaAbstract {
 
 	public Clientes (String nome, String cpf, String telefone) { 
 		super (nome,cpf,telefone);
-		this.credito = 0;
-				
+		this.credito = 0;	
 	}
 
 	public void gerarbonus(double valor) {

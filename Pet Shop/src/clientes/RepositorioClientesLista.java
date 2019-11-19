@@ -76,13 +76,13 @@ public class RepositorioClientesLista implements RepositorioClientes {
 	}
 
 	public void gerarBonus(Clientes cliente, double valor) throws ClienteNaoEncontradoException {
-			if (this.cliente != null && this.cliente.getCpf().equals(cliente.getCpf())) {
-				this.cliente.gerarbonus(valor);
-			} else if (this.proximo!=null) {
-				this.proximo.gerarBonus(cliente, valor);
-			} else {
-				ClienteNaoEncontradoException c = new ClienteNaoEncontradoException();
-				throw c;
-			}
+		if (this.cliente != null && this.cliente.getCpf().equals(cliente.getCpf())) {
+			this.cliente.gerarbonus(valor);
+		} else if (this.proximo!=null) {
+			this.proximo.gerarBonus(cliente, valor);
+		} else {
+			ClienteNaoEncontradoException c = new ClienteNaoEncontradoException();
+			throw c;
 		}
 	}
+}
