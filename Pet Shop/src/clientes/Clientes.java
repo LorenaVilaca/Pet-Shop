@@ -3,6 +3,7 @@ package clientes;
 import pessoa.PessoaAbstract;
 
 public class Clientes extends PessoaAbstract {
+	
 	private double credito;
 
 	public Clientes (String nome, String cpf, String telefone) { 
