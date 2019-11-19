@@ -40,7 +40,7 @@ public class main {
 					+ " (2) - CLIENTES\n"
 					+ " (3) - PRODUTOS\n"
 					+ " (4) - SERVICOS\n"
-					+ " (5) - VENDAS"
+					+ " (5) - VENDAS\n"
 					+ " (6) - SAIR");
 			p = in.nextInt();
 
@@ -79,7 +79,7 @@ public class main {
 				} 
 			}
 			//CLIENTES
-			if (p == 2) {
+			if (p == 2) { //fsfsdf
 				while(x!=5) {
 					System.out.println("Selecione como deseja alterar CLIENTES:\n"
 							+ " (1) - Cadastrar\n"
@@ -121,14 +121,25 @@ public class main {
 							+ " (4) - Atualizar\n"
 							+ " (5) - Voltar");
 
-					x = in.nextInt();
+					x = Integer.parseInt(in.next());
 					//CADASTRAR PRODUTOS
 					if (x == 1) {
 						System.out.println("Para cadastrar o PRODUTOS insira:");
-						System.out.println("-Nome do Produto:"); String nomeProduto = in.nextLine();
-						System.out.println("-Codigo do Produto:"); String codeProduto = in.nextLine();
+						System.out.println("-Nome do Produto:"); String nomeProduto = in.next();
+						System.out.println("-Codigo do Produto:"); String codeProduto = in.next();
 						System.out.println("-Preco do Produto:"); double priceProduto = in.nextDouble();
-						System.out.println("-");
+						System.out.println("-Quantidade:"); int quantidadeProduto = in.nextInt();
+						System.out.println("-Fornecedor:"); String fornecedorProduto = in.next();
+						Produtos produto = new Produtos(nomeProduto, codeProduto, priceProduto, quantidadeProduto, fornecedorProduto);
+						 try {
+                             petshop.cadastrarProdutos(produto);
+                             
+                             System.out.println("\n\n------ Produto Cadastrado com Sucesso ------\n\n");
+                         } catch (LimiteProdutosAtingidoException | ProdutoJaCadastradoException | ProdutoNaoEncontradoException e) {
+                             System.out.println("\n\n----------------- ERRO -----------------\n\n");
+                             System.out.println(e.getMessage());
+                             System.out.println("\n\n----------------- ERRO -----------------\n\n");
+                         }
 					}
 
 					//PROCURAR PRODUTOS 
