@@ -132,7 +132,6 @@ public class main {
 						System.out.println("-Fornecedor:"); String fornecedorProduto = in.next();
 						Produtos produto = new Produtos(nomeProduto, codeProduto, priceProduto, quantidadeProduto, fornecedorProduto);
 						 try {
-                             //pokeZoo.cadastrarZelador(objetoZelador);
                              petshop.cadastrarProdutos(produto);
                              
                              System.out.println("\n\n------ Produto Cadastrado com Sucesso ------\n\n");
