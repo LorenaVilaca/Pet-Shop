@@ -79,7 +79,7 @@ public class main {
 				} 
 			}
 			//CLIENTES
-			if (p == 2) { //fsfsdf
+			if (p == 2) { 
 				while(x!=5) {
 					System.out.println("Selecione como deseja alterar CLIENTES:\n"
 							+ " (1) - Cadastrar\n"
@@ -144,17 +144,49 @@ public class main {
 
 					//PROCURAR PRODUTOS 
 					if (x == 2) {
-
+						System.out.println("Digite o codigo do PRODUTO que deseja procurar");
+						String codeProduto = in.next();
+						try {
+							petshop.procurarProduto(codeProduto);
+						} catch ( ProdutoNaoEncontradoException e) {
+                            System.out.println("\n\n----------------- ERRO -----------------\n\n");
+                            System.out.println(e.getMessage());
+                            System.out.println("\n\n----------------- ERRO -----------------\n\n");
+                        }
 					}
 
 					//REMOVER PRODUTOS
 					if (x == 3) {
+						System.out.println("Ddigite o codigo do PRODUTO que deseja remover");
+						String codeProduto = in.next();
+						try {
+							petshop.removerProduto(codeProduto);
+						} catch (ProdutoNaoEncontradoException e){
+							System.out.println("\n\n----------------- ERRO -----------------\n\n");
+                            System.out.println(e.getMessage());
+                            System.out.println("\n\n----------------- ERRO -----------------\n\n");
+						}
 
 					}
 
 					//ATUALIZAR PRODUTOS
 					if (x == 4) {
-
+						System.out.println("Para atualizar o PRODUTOS insira:");
+						System.out.println("-Novo nome:"); String nomeProduto = in.next();
+						System.out.println("-Codigo do Produto:"); String codeProduto = in.next();
+						System.out.println("-Novo Preco:"); double priceProduto = in.nextDouble();
+						System.out.println("-Nova Quantidade:"); int quantidadeProduto = in.nextInt();
+						System.out.println("-Nova Fornecedor:"); String fornecedorProduto = in.next();
+						Produtos produto = new Produtos(nomeProduto, codeProduto, priceProduto, quantidadeProduto, fornecedorProduto);
+						 try {
+                             petshop.atualizarProduto(produto);
+                             
+                             System.out.println("\n\n------ Produto Cadastrado com Sucesso ------\n\n");
+                         } catch (ProdutoNaoEncontradoException e) {
+                             System.out.println("\n\n----------------- ERRO -----------------\n\n");
+                             System.out.println(e.getMessage());
+                             System.out.println("\n\n----------------- ERRO -----------------\n\n");
+                         }
 					}
 				}
 			}
