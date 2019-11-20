@@ -223,7 +223,12 @@ public class main {
 						System.out.println("Digite o codigo do PRODUTO que deseja procurar");
 						String codeProduto = in.next();
 						try {
-							petshop.procurarProduto(codeProduto);
+							Produtos produtop = petshop.procurarProduto(codeProduto);
+							System.out.println("Produto de codigo:" + codeProduto + "\n-"
+									+ produtop.getNome() + "\n-"
+									+ produtop.getPrice() + "\n-"
+									+ produtop.getQuantidade() + "\n-"
+									+ produtop.getFornecedor() + "\n");
 						} catch ( ProdutoNaoEncontradoException e) {
 							System.out.println("\n\n----------------- ERRO -----------------\n\n");
 							System.out.println(e.getMessage());
@@ -237,6 +242,7 @@ public class main {
 						String codeProduto = in.next();
 						try {
 							petshop.removerProduto(codeProduto);
+							System.out.println("\n\n------ Produto Removido com Sucesso ------\n\n");
 						} catch (ProdutoNaoEncontradoException e){
 							System.out.println("\n\n----------------- ERRO -----------------\n\n");
 							System.out.println(e.getMessage());
@@ -257,7 +263,7 @@ public class main {
 						try {
 							petshop.atualizarProduto(produto);
 
-							System.out.println("\n\n------ Produto Cadastrado com Sucesso ------\n\n");
+							System.out.println("\n\n------ Produto Atualizado com Sucesso ------\n\n");
 						} catch (ProdutoNaoEncontradoException e) {
 							System.out.println("\n\n----------------- ERRO -----------------\n\n");
 							System.out.println(e.getMessage());
