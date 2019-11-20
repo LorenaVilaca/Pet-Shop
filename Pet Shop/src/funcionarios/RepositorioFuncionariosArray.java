@@ -11,12 +11,12 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 	}
 
 	public void inserirFuncionarios(Funcionarios funcionario) 
-			throws LimiteAtingidoException {
+			throws LimiteFuncionariosAtingidoException {
 		if (this.indice < this.arrayFuncionario.length) {
 			this.arrayFuncionario[this.indice] = funcionario;
 			this.indice += 1;
 		} else {
-			LimiteAtingidoException e = new LimiteAtingidoException();
+			LimiteFuncionariosAtingidoException e = new LimiteFuncionariosAtingidoException();
 			throw e;
 		}
 	}

@@ -59,22 +59,96 @@ public class main {
 					x = in.nextInt();
 					//CADASTRAR FUNCIONARIO
 					if (x == 1) {
-
+						System.out.println("Para cadastrar um FUNCIONARIO insira:");
+						System.out.println("-Nome do Funcionario:"); 
+						String nomeFunc=in.next();
+						System.out.println("-CPF do Funcionario:"); 
+						String cpfFunc=in.next();
+						System.out.println("-Telefone do Funcionario:"); 
+						String telFunc=in.next();
+						System.out.println("-Codigo do Funcionario:"); 
+						String codeFunc=in.next();
+						System.out.println("-Salario do Funcionario");
+						double salarioFunc=in.nextDouble();
+						Funcionarios funcionario = new Funcionarios(nomeFunc, cpfFunc, telFunc, codeFunc, salarioFunc);
+						try {
+							petshop.cadastrarFuncionario(funcionario);
+							System.out.println("\n\n------ Funcionario Cadastrado com Sucesso ------\n\n");
+                        } catch (LimiteFuncionariosAtingidoException | FuncionarioJaCadastradoException e) {
+                            System.out.println("\n\n----------------- ERRO -----------------\n\n");
+                            System.out.println(e.getMessage());
+                            System.out.println("\n\n----------------- ERRO -----------------\n\n");
+						}
 					}
 
 					//PROCURAR FUNCIONARIO 
 					if (x == 2) {
-
+						System.out.println("Digite o codigo do FUNCIONARIO que deseja procurar");
+						String codeFunc = in.next();
+						try {
+							petshop.procurarFuncionario(codeFunc);
+                        } catch (FuncionarioNaoEncontradoException e) {
+                            System.out.println("\n\n----------------- ERRO -----------------\n\n");
+                            System.out.println(e.getMessage());
+                            System.out.println("\n\n----------------- ERRO -----------------\n\n");
+						}
 					}
 
 					//REMOVER FUNCIONARIO
 					if (x == 3) {
-
+						System.out.println("Digite o codigo do FUNCIONARIO que deseja remover");
+						String codeFunc = in.next();
+						try {
+							petshop.removerFuncionario(codeFunc);
+                        } catch (FuncionarioNaoEncontradoException e) {
+                            System.out.println("\n\n----------------- ERRO -----------------\n\n");
+                            System.out.println(e.getMessage());
+                            System.out.println("\n\n----------------- ERRO -----------------\n\n");
+						}
 					}
 
-					//ATUALIZAR FUNIONARIO
+					//ATUALIZAR
 					if (x == 4) {
-
+						System.out.println("Primeiro, insira os dados do FUNCIONARIO que deseja atualizar:");
+						System.out.println("-Nome do Funcionario:"); 
+						String nomeFunc=in.next();
+						System.out.println("-CPF do Funcionario:"); 
+						String cpfFunc=in.next();
+						System.out.println("-Telefone do Funcionario:"); 
+						String telFunc=in.next();
+						System.out.println("-Codigo do Funcionario:"); 
+						String codeFunc=in.next();
+						System.out.println("-Salario do Funcionario");
+						double salarioFunc=in.nextDouble();
+						Funcionarios funcionario = new Funcionarios(nomeFunc, cpfFunc, telFunc, codeFunc, salarioFunc);
+						System.out.println("Agora, escolha o que deseja fazer\n"
+							+ " (1) - ATUALIZAR UM CADASTRO DE FUNCIONARIO\n"
+							+ " (2) - GERAR BONUS PARA UM FUNCIONARIO JA EXISTENTE\n");
+							int y = in.nextInt();
+						//ATUALIZAR FUNCIONARIO
+							if (y == 1) {
+								try {
+									petshop.atualizarFuncionario(funcionario);
+									System.out.println("\n\n------ Funcionario Atualizado com Sucesso ------\n\n");
+								} catch (FuncionarioNaoEncontradoException e) {
+									System.out.println("\n\n----------------- ERRO -----------------\n\n");
+									System.out.println(e.getMessage());
+									System.out.println("\n\n----------------- ERRO -----------------\n\n");
+								}
+							}
+							//GERAR BONUS
+							if (y == 2) {
+								System.out.println("Digite o valor da VENDA efetuada");
+								double valor = in.nextDouble();
+								try {
+									petshop.gerarBonus(funcionario, valor);
+									System.out.println("\n\n------ Bonus Gerado com Sucesso ------\n\n");
+								} catch (FuncionarioNaoEncontradoException e) {
+									System.out.println("\n\n----------------- ERRO -----------------\n\n");
+									System.out.println(e.getMessage());
+									System.out.println("\n\n----------------- ERRO -----------------\n\n");
+								}
+							}
 					}
 				} 
 			}
@@ -157,7 +231,7 @@ public class main {
 
 					//REMOVER PRODUTOS
 					if (x == 3) {
-						System.out.println("Ddigite o codigo do PRODUTO que deseja remover");
+						System.out.println("Digite o codigo do PRODUTO que deseja remover");
 						String codeProduto = in.next();
 						try {
 							petshop.removerProduto(codeProduto);

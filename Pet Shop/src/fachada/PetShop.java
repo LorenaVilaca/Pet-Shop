@@ -8,7 +8,7 @@ import clientes.RepositorioClientes;
 import funcionarios.CadastroFuncionarios;
 import funcionarios.FuncionarioJaCadastradoException;
 import funcionarios.FuncionarioNaoEncontradoException;
-import funcionarios.LimiteAtingidoException;
+import funcionarios.LimiteFuncionariosAtingidoException;
 import funcionarios.Funcionarios;
 import funcionarios.RepositorioFuncionarios;
 import produtos.CadastroProdutos;
@@ -116,7 +116,7 @@ public class PetShop {
    }
 
    public void cadastrarFuncionario (Funcionarios funcionario)
-           throws LimiteAtingidoException, FuncionarioJaCadastradoException {
+           throws LimiteFuncionariosAtingidoException, FuncionarioJaCadastradoException {
        if (this.funcionarios.existe(funcionario.getCodigo())) {
            FuncionarioJaCadastradoException f = new FuncionarioJaCadastradoException();
            throw f;

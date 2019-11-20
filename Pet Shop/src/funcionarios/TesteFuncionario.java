@@ -2,7 +2,7 @@ package funcionarios;
 
 
 public class TesteFuncionario {
-	public static void main(String[] args) throws LimiteAtingidoException, FuncionarioJaCadastradoException, FuncionarioNaoEncontradoException {
+	public static void main(String[] args) throws LimiteFuncionariosAtingidoException, FuncionarioJaCadastradoException, FuncionarioNaoEncontradoException {
 		RepositorioFuncionarios repo = new RepositorioFuncionariosArray();
 		Funcionarios teste = new Funcionarios("Lorena", "123123", "123", "1", 251.8);
 		Funcionarios teste1 = new Funcionarios("Gui", "12312", "123", "2", 251.8);
