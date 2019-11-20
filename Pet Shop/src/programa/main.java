@@ -35,7 +35,7 @@ public class main {
 		int x = 0;
 		int p = 0;
 		while (p!=6) {
-			System.out.println("Digite um numero correspondente a função que deseja alterar:\n "
+			System.out.println("Digite um numero correspondente a funcao que deseja alterar:\n "
 					+ "(1) - FUNCIONARIOS\n"
 					+ " (2) - CLIENTES\n"
 					+ " (3) - PRODUTOS\n"
@@ -201,24 +201,82 @@ public class main {
 							+ " (4) - Atualizar\n"
 							+ " (5) - Voltar");
 					x = in.nextInt();
-					//CADASTRAR FUNCIONARIO
+					//CADASTRAR SERVICO
 					if (x == 1) {
-
+						System.out.println("Para cadastrar o SERVICO insira:");
+						System.out.println("-Nome do SERVICO:"); 
+						String nomeServico = in.next();
+						System.out.println("-Codigo do SERVICO:"); 
+						String codeServico= in.next();
+						System.out.println("-Preco do SERVICO:"); 
+						double priceServico = in.nextDouble();
+						System.out.println("-");
+						try {
+							Servicos objetoServico = new Servicos (nomeServico, codeServico, priceServico);
+							petshop.cadastrarServico(objetoServico);
+							System.out.println("\n\nSERVICO cadastrado com sucesso!\n\n");
+						}
+						catch (ServicoJaCadastradoException e){
+							System.out.println("\n\n********************ERRO********************");
+							System.out.println(e.getMessage() + "\n\n");
+						}
+						catch (LimiteServicoAtingidoException e) {
+							System.out.println("\n\n********************ERRO********************");
+							System.out.println(e.getMessage() + "\n\n");
+						}
 					}
 
-					//PROCURAR FUNCIONARIO 
+					//PROCURAR SERVICO 
 					if (x == 2) {
-
+						System.out.println("Para procurar o SERVICO insira:");
+						System.out.println("-Codigo do SERVICO:"); 
+						String codeServico= in.next();
+						try {
+							Servicos servicoProcurado = petshop.procurarServico(codeServico);
+							System.out.println("-Nome do SERVICO: " + servicoProcurado.getNome());
+							System.out.println("-Codigo do SERVICO: " + servicoProcurado.getCodigo());
+							System.out.println("-Valos do SERVICO: R$" + servicoProcurado.getPreco() );
+							System.out.println("-\n\n");
+						}
+						catch (ServicoNaoEncontradoException e) {
+							System.out.println("\n\n********************ERRO********************");
+							System.out.println(e.getMessage() + "\n\n");
+						}
 					}
 
-					//REMOVER FUNCIONARIO
+					//REMOVER SERVICO
 					if (x == 3) {
-
+						System.out.println("Para remover o SERVICO insira:");
+						System.out.println("-Codigo do SERVICO:\n");
+						String codeServico = in.next();
+						try {
+							petshop.removerServico(codeServico);
+							System.out.println("\n\nSERVICO removido com sucesso!\n\n");
+						}
+						catch(ServicoNaoEncontradoException e) {
+							System.out.println("\n\n********************ERRO********************");
+							System.out.println(e.getMessage() + "\n\n");
+						}
 					}
 
-					//ATUALIZAR FUNIONARIO
+					//ATUALIZAR SERVICO
 					if (x == 4) {
-
+						System.out.println("Para atualizar o SERVICO insira:");
+						System.out.println("-Codigo do SERVICO a ser atualizado:\n");
+						String codeServico = in.next();
+						try {
+							petshop.existeServico(codeServico);
+							System.out.println("Insira o novo nome do SERVICO:");
+							String newName = in.next();
+							System.out.println("Insira o novo preco do SERVICO");
+							double newPrice = in.nextDouble();
+							Servicos objetoServico = new Servicos(newName, codeServico, newPrice);
+							petshop.atualizarServico(objetoServico);
+						}
+						catch (ServicoNaoEncontradoException e) {
+							System.out.println("\n\n********************ERRO********************");
+							System.out.println(e.getMessage() + "\n\n");
+						}
 					}
 				}
 			}
