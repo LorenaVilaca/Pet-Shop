@@ -6,6 +6,7 @@ import funcionarios.*;
 import produtos.*;
 import servicos.*;
 import venda.*;
+
 public class main {
 
 	public static void main(String[] args) {
@@ -32,6 +33,7 @@ public class main {
 				repoProdutos, repoServicos, repoVendas);
 		//PetShop petshop = new PetShop(repoClientes, repoFuncionarios, repoProdutos,
 		//repoServicos, repoVendas);
+		
 		int x = 0;
 		int p = 0;
 		while (p!=6) {
@@ -367,55 +369,23 @@ public class main {
 
 					x = in.nextInt();
 					String codeF = null; String cpf = null; String codeP = null; String codeS = null; double valor = 0;
+					
 					//procurando as classes pertencentes a venda
 					if (x == 1) {
 
-						System.out.println("Digite o cpf do cliente:");
-						cpf = in.next();
+						System.out.println("Digite o cpf do cliente:"); cpf = in.next();
+						System.out.println("Digite o codigo do funcionario que efetuou a venda:"); codeF = in.next();
+						System.out.println("Digite o codigo do produto vendido:"); codeP = in.next();
+						System.out.println("Digite o codigo do servico prestado:"); codeS = in.next();
+						System.out.println("Digite o valor total da venda:"); valor = in.nextDouble();
+						System.out.println("Digite o id da venda:"); String id = in.next();
+
 						try {
+
 							Clientes cliente = petshop.procurarCliente(cpf);
-						} catch (ClienteNaoEncontradoException c) {
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-							System.out.println(c.getMessage());
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");	   
-						}
-
-						System.out.println("Digite o codigo do funcionario que efetuou a venda:");
-						codeF = in.next();
-						try {
 							Funcionarios funcionario = petshop.procurarFuncionario(codeF);
-						} catch (FuncionarioNaoEncontradoException f) {
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-							System.out.println(f.getMessage());
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");	   
-						}
-
-						System.out.println("Digite o codigo do produto vendido:");
-						codeP = in.next();
-						try {
 							Produtos produto = petshop.procurarProduto(codeP);
-						} catch (ProdutoNaoEncontradoException a) {
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-							System.out.println(a.getMessage());
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");	   
-						}
-
-						System.out.println("Digite o codigo do servico prestado:");
-						codeS = in.next();
-						try {
 							Servicos servico = petshop.procurarServico(codeS);
-						} catch (ServicoNaoEncontradoException s) {
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-							System.out.println(s.getMessage());
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");	   
-						}
-
-						System.out.println("Digite o valor total da venda:");
-						valor = in.nextDouble();
-						System.out.println("Digite o id da venda:");
-						String id = in.next();
-
-						try {
 							Vendas venda = new Vendas (petshop.procurarFuncionario(codeF),
 									petshop.procurarCliente(cpf),
 									petshop.procurarProduto(codeP),
@@ -424,16 +394,17 @@ public class main {
 							//cadastrando
 							petshop.cadastrarVenda(venda);
 							System.out.println("\n\n------ Venda Cadastrada com Sucesso ------\n\n");
+
 						} catch (ClienteNaoEncontradoException | 
-								FuncionarioNaoEncontradoException | 
-								ProdutoNaoEncontradoException | 
-								ServicoNaoEncontradoException | 
+								FuncionarioNaoEncontradoException |
+								ProdutoNaoEncontradoException |
+								ServicoNaoEncontradoException |  
 								VendaJaCadastradaException |
 								LimiteAtingidoException | 
-								AlgoNaoFoiEncontradoException v) {
+								AlgoNaoFoiEncontradoException c) {
 							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-							System.out.println(v.getMessage());
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
+							System.out.println(c.getMessage());
+							System.out.println("\n\n----------------- ERRO -----------------\n\n");	   
 						}
 					}
 
@@ -450,7 +421,7 @@ public class main {
 									+ "\n" + "codigo do funcionario: " + procura.getFuncionario().getCodigo() + "\n" + "telefone do funcionario: " 
 									+ procura.getFuncionario().getTelefone() + "\n" + "salario do funcionario: " + procura.getFuncionario().getSalario());
 							System.out.println("nome do produto: " + procura.getProduto().getNome() + "\n" + "codigo do produto" + procura.getProduto().getCode() + "\n" 
-									+ " nome do fornecedor do produto: " + procura.getProduto().getFornecedor() + "\n" + "preco do produto: " + procura.getProduto().getPrice() 
+									+ "nome do fornecedor do produto: " + procura.getProduto().getFornecedor() + "\n" + "preco do produto: " + procura.getProduto().getPrice() 
 									+ "\n" + "quantidade do produto em estoque: " + procura.getProduto().getQuantidade());
 							System.out.println("nome do servico prestado: " + procura.getServico().getNome() + "\n" + "codigo do servico prestado: " + procura.getServico().getCodigo() 
 									+ "\n" + "preco do servico prestado: " +  procura.getServico().getPreco());
@@ -478,51 +449,62 @@ public class main {
 
 					//ATUALIZAR VENDA
 					if (x == 4) {
+
 						System.out.println("Digite o id da venda que voce quer atualizar:");
 						String idA = in.next();
 						System.out.println("Deseja atualizar a venda inteira ou apenas um aspecto da venda?" + "\n" 
 								+ "(1) Venda inteira" + "\n" + "(2) apenas um aspecto");
-						int comandoC = in.nextInt(); 
+						int comandoC = in.nextInt();
+
 						String nomeNovoCliente; String cpfNovoCliente; String telefoneNovoCliente;
 						double credNovoCliente; String cpfNovoFunc = ""; String nomeNovoFunc;
 						String telefoneNovoFunc; String codNovoFunc; double SalarioNovoFunc;
 						String nomeNovoProd; String codNovoProd; String FornNovoProd;
 						int qntdNovoProd; double PrecoNovoProd; String nomeNovoServ;
 						String codNovoServ; double precoNovoServ; double valorNovaVenda;
+
+						//mudando tudo (venda com o mesmo id)
 						if (comandoC == 1) {
+
+							//atualizando cliente da venda
 							System.out.println("Digite os dados do novo cliente");
 							nomeNovoCliente = in.next();
 							cpfNovoCliente = in.next();
 							telefoneNovoCliente = in.next();
-							in.nextLine();
 							credNovoCliente = in.nextDouble();
-							Clientes novoCliente = new Clientes(nomeNovoCliente, cpfNovoFunc, telefoneNovoCliente);
+							Clientes novoCliente = new Clientes(nomeNovoCliente, cpfNovoCliente, telefoneNovoCliente);
 							novoCliente.setCredito(credNovoCliente);
+
+							//atualizando funcionario da venda
 							System.out.println("Digite os dados do novo Funcionario");
 							nomeNovoFunc = in.next();
 							cpfNovoFunc = in.next();
 							telefoneNovoFunc = in.next();
 							codNovoFunc = in.next();
-							in.nextLine();
 							SalarioNovoFunc = in.nextDouble();
 							Funcionarios novoFunc = new Funcionarios(nomeNovoFunc, cpfNovoFunc, telefoneNovoFunc, codNovoFunc, SalarioNovoFunc);
+
+							//atualizando produto da venda
 							System.out.println("Digite os dados do novo produto");
 							nomeNovoProd = in.next();
 							codNovoProd = in.next();
 							FornNovoProd = in.next();
-							in.nextLine();
 							qntdNovoProd = in.nextInt();
 							PrecoNovoProd = in.nextDouble();
 							Produtos novoProd = new Produtos(nomeNovoProd, codNovoProd, PrecoNovoProd, qntdNovoProd, FornNovoProd);
+
+							//atualizando servico da venda
 							System.out.println("Digite os dados do novo servico");
 							nomeNovoServ = in.next();
 							codNovoServ = in.next();
-							in.nextLine();
 							precoNovoServ = in.nextDouble();
 							Servicos novoServ = new Servicos(nomeNovoServ, codNovoServ, precoNovoServ);
+
+							//atualizando o valor da venda
 							System.out.println("Digite o valor total da nova venda");
 							valorNovaVenda = in.nextDouble();
 							Vendas vendaNova = new Vendas(novoFunc, novoCliente, novoProd, novoServ, valorNovaVenda, idA);
+
 							try {
 								petshop.atualizarVenda(vendaNova);
 								System.out.println("\n\n------ Venda Atualizada com Sucesso ------\n\n");
@@ -531,20 +513,25 @@ public class main {
 								System.out.println(v.getMessage());
 								System.out.println("\n\n----------------- ERRO -----------------\n\n");
 							}
-						} else {
-							System.out.println("Qual parte voce quer modificar da venda atual?" + "\n" +
+						} 
+						
+						//atualizando apenas um aspecto
+						else if (comandoC == 2) {
+
+							System.out.println("Qual parte voce quer modificar na venda atual?" + "\n" +
 									"(1) Cliente" + "\n" +
 									"(2) Funcionario" + "\n" +
 									"(3) Produto" + "\n" + 
 									"(4) Servico" + "\n" +
 									"(5) Valor");
 							int comandoX = in.nextInt();
+
+							//atualizando apenas o cliente
 							if (comandoX == 1) {
 								System.out.println("Digite os dados do novo cliente");
 								nomeNovoCliente = in.next();
 								cpfNovoCliente = in.next();
 								telefoneNovoCliente = in.next();
-								in.nextLine();
 								credNovoCliente = in.nextDouble();
 								Clientes novoCliente = new Clientes(nomeNovoCliente, cpfNovoFunc, telefoneNovoCliente);
 								novoCliente.setCredito(credNovoCliente);
@@ -561,15 +548,19 @@ public class main {
 									System.out.println(v.getMessage());
 									System.out.println("\n\n----------------- ERRO -----------------\n\n");
 								}
-							} else if (comandoX == 2) {
+							} 
+
+							//atualizando apenas o funcionario
+							else if (comandoX == 2) {
+
 								System.out.println("Digite os dados do novo Funcionario");
 								nomeNovoFunc = in.next();
 								cpfNovoFunc = in.next();
 								telefoneNovoFunc = in.next();
 								codNovoFunc = in.next();
-								in.nextLine();
 								SalarioNovoFunc = in.nextDouble();
 								Funcionarios novoFunc = new Funcionarios(nomeNovoFunc, cpfNovoFunc, telefoneNovoFunc, codNovoFunc, SalarioNovoFunc);
+
 								try {
 									Vendas vendaNova = new Vendas(novoFunc, 
 											petshop.procurarCliente(cpf), petshop.procurarProduto(codeP), petshop.procurarServico(codeS), valor, idA);
@@ -583,15 +574,19 @@ public class main {
 									System.out.println(v.getMessage());
 									System.out.println("\n\n----------------- ERRO -----------------\n\n");
 								}
-							} else if (comandoX == 3) {
+							} 
+
+							//atualizando apenas o produto
+							else if (comandoX == 3) {
+
 								System.out.println("Digite os dados do novo produto");
 								nomeNovoProd = in.next();
 								codNovoProd = in.next();
 								FornNovoProd = in.next();
-								in.nextLine();
 								qntdNovoProd = in.nextInt();
 								PrecoNovoProd = in.nextDouble();
 								Produtos novoProd = new Produtos(nomeNovoProd, codNovoProd, PrecoNovoProd, qntdNovoProd, FornNovoProd);
+
 								try {
 									Vendas vendaNova = new Vendas(petshop.procurarFuncionario(codeF), 
 											petshop.procurarCliente(cpf), novoProd, petshop.procurarServico(codeS), valor, idA);
@@ -605,13 +600,17 @@ public class main {
 									System.out.println(v.getMessage());
 									System.out.println("\n\n----------------- ERRO -----------------\n\n");
 								}
-							} else if (comandoX == 4) {
+							} 
+
+							//atualizando apenas o servico
+							else if (comandoX == 4) {
+
 								System.out.println("Digite os dados do novo servico");
 								nomeNovoServ = in.next();
 								codNovoServ = in.next();
-								in.nextLine();
 								precoNovoServ = in.nextDouble();
 								Servicos novoServ = new Servicos(nomeNovoServ, codNovoServ, precoNovoServ);
+
 								try {
 									Vendas vendaNova = new Vendas(petshop.procurarFuncionario(codeF), 
 											petshop.procurarCliente(cpf), petshop.procurarProduto(codeP), novoServ, valor, idA);
@@ -624,9 +623,13 @@ public class main {
 									System.out.println("\n\n----------------- ERRO -----------------\n\n");
 									System.out.println(v.getMessage());
 									System.out.println("\n\n----------------- ERRO -----------------\n\n");
-								}
-							} else if (comandoX == 5) {
+								}	
+							} 
+
+							//atualizando apenas o valor da venda
+							else if (comandoX == 5) {
 								valorNovaVenda = in.nextDouble();
+
 								try {
 									Vendas vendaNova = new Vendas(petshop.procurarFuncionario(codeF), 
 											petshop.procurarCliente(cpf), petshop.procurarProduto(codeP), 
