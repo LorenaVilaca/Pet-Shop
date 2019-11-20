@@ -33,7 +33,7 @@ public class testeVendaArray {
 				+ procura.getProduto().getPrice() + ", " + procura.getProduto().getQuantidade());
 		System.out.println(procura.getServico().getNome() + ", " + procura.getServico().getCodigo() 
 				+ ", " + procura.getServico().getPreco());
-		//System.out.println(procura.getValor() + ", " + procura.getId());
+		System.out.println(procura.getValor() + ", " + procura.getId());
 		//repoTeste2.remover(novaVenda2.getId());
 		//System.out.println(repoTeste2.existe(novaVenda2.getId()));
 		//System.out.println(repoTeste2.procurar(novaVenda2.getId()));
