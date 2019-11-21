@@ -1,4 +1,4 @@
-	package funcionarios;
+package funcionarios;
 
 public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 
@@ -22,14 +22,13 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 	}
 	public void removerFuncionarios(String codigo) 
 			throws FuncionarioNaoEncontradoException {
-		boolean achou=false;
-		for (int i = 0; i < arrayFuncionario.length; i ++) {
+		boolean achou = false;
+		for (int i = 0; i < indice && !achou; i++) {
 			if (this.arrayFuncionario[i].getCodigo().equals(codigo)) {
 				this.arrayFuncionario[i] = null;
 				System.arraycopy(arrayFuncionario, i + 1, this.arrayFuncionario, i, this.arrayFuncionario.length - 1 - i);
-				this.indice --;
+				this.indice--;
 				achou = true;
-				return;
 			}
 		}
 		if (!achou) {
@@ -37,6 +36,24 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 			throw e;
 		}
 	}
+	
+	/*public void remover(String codeProduto) throws ProdutoNaoEncontradoException {
+		boolean removido = false;
+		for (int i=0; i<indice && !removido; i++) {
+			if (this.arrayProdutos[i].getCode().equals(codeProduto)) {
+				this.arrayProdutos[i] = null;
+				System.arraycopy(arrayProdutos, i+1, this.arrayProdutos, i, this.arrayProdutos.length -1 -i);
+				indice -= 1;
+				removido = true;
+			}
+		}
+		if (!removido) {
+			ProdutoNaoEncontradoException p;
+			p = new ProdutoNaoEncontradoException();
+			throw p;
+		}
+	}
+*/
 	public Funcionarios procurarFuncionarios(String codigo) 
 			throws FuncionarioNaoEncontradoException {
 		Funcionarios resposta = null;
