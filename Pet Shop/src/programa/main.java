@@ -138,19 +138,6 @@ public class main {
 								System.out.println("\n\n----------------- ERRO -----------------\n\n");
 							}
 						}
-						//GERAR BONUS
-						if (y == 2) {
-							System.out.println("Digite o valor da VENDA efetuada");
-							double valor = in.nextDouble();
-							try {
-								petshop.gerarBonus(funcionario, valor);
-								System.out.println("\n\n------ Bonus Gerado com Sucesso ------\n\n");
-							} catch (FuncionarioNaoEncontradoException e) {
-								System.out.println("\n\n----------------- ERRO -----------------\n\n");
-								System.out.println(e.getMessage());
-								System.out.println("\n\n----------------- ERRO -----------------\n\n");
-							}
-						}
 					}
 				} 
 			}
@@ -460,8 +447,7 @@ public class main {
 								} 
 								else if (comandoCred == 2) {
 									try {
-
-										petshop.procurarCliente(cpf).setCredito(petshop.procurarCliente(cpf).getCredito() + valor);
+										petshop.procurarCliente(cpf).setCredito(petshop.procurarCliente(cpf).gerarbonus(valor)+petshop.procurarCliente(cpf).getCredito());
 									} catch (ClienteNaoEncontradoException c) {
 										System.out.println("\n\n----------------- ERRO -----------------\n\n");
 										System.out.println(c.getMessage());
@@ -475,13 +461,14 @@ public class main {
 									Funcionarios funcionario = petshop.procurarFuncionario(codeF);
 									Produtos produto = petshop.procurarProduto(codeP);
 									Servicos servico = petshop.procurarServico(codeS);
-									Vendas venda = new Vendas (petshop.procurarFuncionario(codeF),
-											petshop.procurarCliente(cpf),
-											petshop.procurarProduto(codeP),
-											petshop.procurarServico(codeS),
+									Vendas venda = new Vendas (funcionario,
+											cliente,
+											produto,
+											servico,
 											valor, id);
 
 									//CADASTRANDO
+									funcionario.setSalario(funcionario.getSalario()+petshop.procurarFuncionario(codeF).gerarbonus(valor));
 									petshop.cadastrarVenda(venda);
 									System.out.println("\n\n------ Venda Cadastrada com Sucesso ------\n\n");
 
