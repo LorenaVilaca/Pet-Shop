@@ -30,11 +30,5 @@ public class CadastroClientes {
 	
 	public boolean existe (String cpf) {
 		return this.repocliente.existe(cpf);
-	}
-	
-	public void gerarBonus (double valor)
-			throws ClienteNaoEncontradoException {
-		this.repocliente.gerarBonus(valor);
-	}
-	
+	}	
 }

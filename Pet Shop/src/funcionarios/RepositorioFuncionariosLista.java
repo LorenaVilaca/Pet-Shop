@@ -69,16 +69,4 @@ public class RepositorioFuncionariosLista implements RepositorioFuncionarios{
 			this.proximo.atualizarFuncionarios(funcionario);
 		}
 	}
-
-	public void gerarBonus(Funcionarios funcionario, double valor) 
-			throws FuncionarioNaoEncontradoException {
-		if (this.funcionario!=null && this.funcionario.getCodigo().equals(funcionario.getCodigo())) {
-			this.funcionario.gerarbonus(valor);
-		} else if (this.proximo!=null) {
-			this.proximo.gerarBonus(funcionario, valor);
-		} else {
-			FuncionarioNaoEncontradoException e = new FuncionarioNaoEncontradoException();
-			throw e;
-		}
-	}
 }

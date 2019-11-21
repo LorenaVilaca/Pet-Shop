@@ -24,8 +24,8 @@ public class Funcionarios extends PessoaAbstract {
 	public void setSalario(double salario) {
 		this.salario = salario;
 	}
-	public void gerarbonus(double valor) {
-		this.salario += valor * 0.02;
+	public double gerarbonus(double valor) {
+		return valor * 0.02;
 	}
 		
 }

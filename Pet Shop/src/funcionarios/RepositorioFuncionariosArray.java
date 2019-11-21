@@ -80,21 +80,4 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 		}
 
 	}
-
-	public void gerarBonus(Funcionarios funcionario, double valor) 
-			throws FuncionarioNaoEncontradoException {
-		boolean achou = false;
-		for (int i=0; i<this.indice && !achou; i++) {
-			if (this.arrayFuncionario[i].getCodigo().equals(funcionario.getCodigo())) {
-				this.arrayFuncionario[i].gerarbonus(valor);
-				achou = true;
-				return;
-			}
-		}
-		if (!achou) {
-			FuncionarioNaoEncontradoException e = new FuncionarioNaoEncontradoException();
-			throw e;
-		}
-
-	}
 }

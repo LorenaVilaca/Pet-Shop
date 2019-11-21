@@ -15,7 +15,4 @@ public interface RepositorioFuncionarios {
 			throws FuncionarioNaoEncontradoException;
 	
 	public boolean existeFuncionario(String codigo);
-	
-	public void gerarBonus (Funcionarios funcionario, double valor) 
-			throws FuncionarioNaoEncontradoException;
 }

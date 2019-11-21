@@ -35,8 +35,4 @@ public class CadastroFuncionarios {
 			throws FuncionarioNaoEncontradoException {
 		this.repositorio.atualizarFuncionarios(funcionario);
 	}
-	public void gerarBonus (Funcionarios funcionario, double valor)
-			throws FuncionarioNaoEncontradoException {
-		this.repositorio.gerarBonus(funcionario, valor);
-	}
 }

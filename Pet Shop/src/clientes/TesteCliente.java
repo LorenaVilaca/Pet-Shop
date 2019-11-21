@@ -28,7 +28,6 @@ public class TesteCliente {
 		Clientes procura4 = repoTeste.procurar(novoCliente3.getCpf());
 		System.out.println(procura4.getNome() + ", " + procura4.getCpf() 
 				+ ", " + procura4.getTelefone());
-		repoTeste.gerarBonus(novoCliente3, 10);
 		Clientes procurar = repoTeste.procurar(novoCliente3.getCpf());
 		System.out.println(procurar.getNome() + ", " + procurar.getCpf() 
 				+ ", " + procurar.getTelefone() + ", " + procurar.getCredito());
@@ -60,7 +59,6 @@ public class TesteCliente {
 		Clientes procura8 = repoTeste2.procurar(novoCliente6.getCpf());
 		System.out.println(procura8.getNome() + ", " + procura8.getCpf() 
 				+ ", " + procura8.getTelefone());
-		repoTeste.gerarBonus(novoCliente6, 10);
 		Clientes procurar2 = repoTeste.procurar(novoCliente6.getCpf());
 		System.out.println(procurar2.getNome() + ", " + procurar2.getCpf() 
 				+ ", " + procurar2.getTelefone() + ", " + procurar2.getCredito());
