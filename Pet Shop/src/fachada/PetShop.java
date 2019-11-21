@@ -73,11 +73,6 @@ public class PetShop {
        }
 
    }
-   
-   public void gerarBonus (double valor)
-			throws ClienteNaoEncontradoException {
-		this.clientes.gerarbonus(valor);
-	}
 
    public Clientes procurarCliente(String cpf)
            throws ClienteNaoEncontradoException {
@@ -152,11 +147,7 @@ public class PetShop {
    public boolean existeFuncionario (String codigo) throws FuncionarioNaoEncontradoException {
        return this.funcionarios.existe(codigo);
    }
-   
-   public void gerarBonus (Funcionarios funcionario, double valor)
-			throws FuncionarioNaoEncontradoException {
-		this.funcionarios.gerarBonus(funcionario, valor);
-	}
+
 
    public void cadastrarServico (Servicos servico) 
 		   throws ServicoJaCadastradoException, LimiteServicoAtingidoException {
