@@ -37,5 +37,8 @@ public class testeVendaArray {
 		//repoTeste2.remover(novaVenda2.getId());
 		//System.out.println(repoTeste2.existe(novaVenda2.getId()));
 		//System.out.println(repoTeste2.procurar(novaVenda2.getId()));
+		
+		
+		
 	}
 }

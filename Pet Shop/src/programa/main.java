@@ -500,12 +500,12 @@ public class main {
 									+ procura.getCliente().getCredito() + "\n");
 							System.out.println("nome do funcionario: " + procura.getFuncionario().getNome() + "\n" + "cpf do funcionario: " + procura.getFuncionario().getCpf() 
 									+ "\n" + "codigo do funcionario: " + procura.getFuncionario().getCodigo() + "\n" + "telefone do funcionario: " 
-									+ procura.getFuncionario().getTelefone() + "\n" + "salario do funcionario: " + procura.getFuncionario().getSalario());
-							System.out.println("nome do produto: " + procura.getProduto().getNome() + "\n" + "codigo do produto" + procura.getProduto().getCode() + "\n" 
+									+ procura.getFuncionario().getTelefone() + "\n" + "salario do funcionario: " + procura.getFuncionario().getSalario() + "\n");
+							System.out.println("nome do produto: " + procura.getProduto().getNome() + "\n" + "codigo do produto: " + procura.getProduto().getCode() + "\n" 
 									+ "nome do fornecedor do produto: " + procura.getProduto().getFornecedor() + "\n" + "preco do produto: " + procura.getProduto().getPrice() 
-									+ "\n" + "quantidade do produto em estoque: " + procura.getProduto().getQuantidade());
+									+ "\n" + "quantidade do produto em estoque: " + procura.getProduto().getQuantidade() + "\n");
 							System.out.println("nome do servico prestado: " + procura.getServico().getNome() + "\n" + "codigo do servico prestado: " 
-									+ procura.getServico().getCodigo() + "\n" + "preco do servico prestado: " +  procura.getServico().getPreco());
+									+ procura.getServico().getCodigo() + "\n" + "preco do servico prestado: " +  procura.getServico().getPreco() + "\n");
 							System.out.println("valor total da venda: " + procura.getValor() + "\n" + "id da venda: " + procura.getId());
 						} catch (VendaNaoEncontradaException v) {
 							System.out.println("\n\n----------------- ERRO -----------------\n\n");
