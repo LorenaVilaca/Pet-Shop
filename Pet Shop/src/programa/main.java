@@ -375,7 +375,7 @@ public class main {
 					//REMOVER SERVICO
 					if (x == 3) {
 						System.out.println("Para remover o SERVICO insira:");
-						System.out.println("-Codigo do SERVICO:\n");
+						System.out.println("-Codigo do SERVICO:");
 						String codeServico = in.next();
 						try {
 							petshop.removerServico(codeServico);
@@ -391,7 +391,7 @@ public class main {
 					//ATUALIZAR SERVICO
 					if (x == 4) {
 						System.out.println("Para atualizar o SERVICO insira:");
-						System.out.println("-Codigo do SERVICO a ser atualizado:\n");
+						System.out.println("-Codigo do SERVICO a ser atualizado:");
 						String codeServico = in.next();
 						try {
 							petshop.existeServico(codeServico);
@@ -401,6 +401,7 @@ public class main {
 							double newPrice = in.nextDouble();
 							Servicos objetoServico = new Servicos(newName, codeServico, newPrice);
 							petshop.atualizarServico(objetoServico);
+							System.out.println("SERVICO atualizado com sucesso\n\n");
 						}
 						catch (ServicoNaoEncontradoException e) {
 							System.out.println("\n\n********************ERRO********************");
