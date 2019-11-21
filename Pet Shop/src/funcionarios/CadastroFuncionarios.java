@@ -9,7 +9,7 @@ public class CadastroFuncionarios {
 
 	public void cadastrar (Funcionarios funcionario) 
 			throws FuncionarioJaCadastradoException, LimiteFuncionariosAtingidoException{
-		if(this.repositorio.existeFuncionario(funcionario.getCodigo())) {
+		if(!this.repositorio.existeFuncionario(funcionario.getCodigo())) {
 			this.repositorio.inserirFuncionarios(funcionario);
 		} else {
 			FuncionarioJaCadastradoException e = new FuncionarioJaCadastradoException();
