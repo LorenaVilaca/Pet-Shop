@@ -18,16 +18,16 @@ public class main {
 		Servicos objServicos;
 		Vendas objVendas;
 
-		RepositorioClientes repoClientes = new RepositorioClientesLista();
-		//RepositorioClientes repoClientes = new RepositorioClientesArray();
-		RepositorioFuncionarios repoFuncionarios = new RepositorioFuncionariosLista();
-		//RepositorioFuncionarios repoFuncionarios = new RepositorioFuncionariosArray();
-		RepositorioProduto repoProdutos = new RepositorioProdutosLista();
-		//RepositorioProduto repoProdutos = new RepositorioProdutosArray();
-		RepositorioServicos repoServicos = new RepositorioServicoLista();
-		//RepositorioServicos repoServicos = new RepositorioServicoArray();
-		RepositorioVendas repoVendas = new RepositorioVendasLista();
-		//RepositorioVendas repoVendas = new RepositorioVendasArray();
+		//RepositorioClientes repoClientes = new RepositorioClientesLista();
+		RepositorioClientes repoClientes = new RepositorioClientesArray();
+		//RepositorioFuncionarios repoFuncionarios = new RepositorioFuncionariosLista();
+		RepositorioFuncionarios repoFuncionarios = new RepositorioFuncionariosArray();
+		//RepositorioProduto repoProdutos = new RepositorioProdutosLista();
+		RepositorioProduto repoProdutos = new RepositorioProdutosArray();
+		//RepositorioServicos repoServicos = new RepositorioServicoLista();
+		RepositorioServicos repoServicos = new RepositorioServicoArray();
+		//RepositorioVendas repoVendas = new RepositorioVendasLista();
+		RepositorioVendas repoVendas = new RepositorioVendasArray();
 
 		PetShop petshop = new PetShop (repoClientes, repoFuncionarios, 
 				repoProdutos, repoServicos, repoVendas);
@@ -397,11 +397,11 @@ public class main {
 							petshop.existeServico(codeServico);
 							System.out.println("Insira o novo nome do SERVICO:");
 							String newName = in.next();
-							System.out.println("Insira o novo preco do SERVICO");
+							System.out.println("Insira o novo preco do SERVICO:");
 							double newPrice = in.nextDouble();
 							Servicos objetoServico = new Servicos(newName, codeServico, newPrice);
 							petshop.atualizarServico(objetoServico);
-							System.out.println("SERVICO atualizado com sucesso\n\n");
+							System.out.println("\n\nSERVICO atualizado com sucesso\n\n");
 						}
 						catch (ServicoNaoEncontradoException e) {
 							System.out.println("\n\n********************ERRO********************");
