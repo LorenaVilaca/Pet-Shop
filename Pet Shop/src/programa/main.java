@@ -341,11 +341,14 @@ public class main {
 						}
 						catch (ServicoJaCadastradoException e){
 							System.out.println("\n\n********************ERRO********************");
-							System.out.println(e.getMessage() + "\n\n");
+							System.out.println(e.getMessage());
+							System.out.println("********************ERRO********************\n\n");
 						}
 						catch (LimiteServicoAtingidoException e) {
 							System.out.println("\n\n********************ERRO********************");
-							System.out.println(e.getMessage() + "\n\n");
+							System.out.println(e.getMessage());
+							System.out.println("********************ERRO********************\n\n");
+							
 						}
 					}
 
@@ -363,7 +366,9 @@ public class main {
 						}
 						catch (ServicoNaoEncontradoException e) {
 							System.out.println("\n\n********************ERRO********************");
-							System.out.println(e.getMessage() + "\n\n");
+							System.out.println(e.getMessage());
+							System.out.println("********************ERRO********************\n\n");
+							
 						}
 					}
 
@@ -378,7 +383,8 @@ public class main {
 						}
 						catch(ServicoNaoEncontradoException e) {
 							System.out.println("\n\n********************ERRO********************");
-							System.out.println(e.getMessage() + "\n\n");
+							System.out.println(e.getMessage());
+							System.out.println("********************ERRO********************\n\n");
 						}
 					}
 
@@ -398,7 +404,8 @@ public class main {
 						}
 						catch (ServicoNaoEncontradoException e) {
 							System.out.println("\n\n********************ERRO********************");
-							System.out.println(e.getMessage() + "\n\n");
+							System.out.println(e.getMessage());
+							System.out.println("********************ERRO********************\n\n");
 						}
 					}
 				}
