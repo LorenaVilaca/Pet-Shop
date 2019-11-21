@@ -89,10 +89,10 @@ public class main {
 						String codeFunc = in.next();
 						try {
 							Funcionarios funcionario = petshop.procurarFuncionario(codeFunc);
-							System.out.println("Produto de codigo:" + codeFunc + "\n-"
-									+ funcionario.getNome() + "\n-"
-									+ funcionario.getCpf() + "\n-"
-									+ funcionario.getTelefone() + "\n-"
+							System.out.println("Produto de codigo:" + codeFunc + "\n-Nome do Funcionario:"
+									+ funcionario.getNome() + "\n-CPF do Funcionario:"
+									+ funcionario.getCpf() + "\n-Telefone do Funcionario:"
+									+ funcionario.getTelefone() + "\n-Salario do Funcionario:"
 									+ funcionario.getSalario() + "\n");
 						} catch (FuncionarioNaoEncontradoException e) {
 							System.out.println("\n\n----------------- ERRO -----------------\n\n");
@@ -154,12 +154,11 @@ public class main {
 					if (x == 1) {
 						System.out.println("Para cadastrar o CLIENTE insira:");
 						System.out.println("-Nome do Cliente:"); 
-						String nomeCliente = in.nextLine();
+						String nomeCliente = in.next();
 						System.out.println("-Cpf do Cliente:"); 
-						String cpfCliente = in.nextLine();
+						String cpfCliente = in.next();
 						System.out.println("-Telefone do Cliente:"); 
-						String telefoneCliente = in.nextLine();
-						System.out.println("-");
+						String telefoneCliente = in.next();
 						try {
 							Clientes objetoCliente = new Clientes (nomeCliente, cpfCliente, telefoneCliente);
 							petshop.cadastrarCliente(objetoCliente);
@@ -178,14 +177,13 @@ public class main {
 					//PROCURAR CLIENTES 
 					if (x == 2) {
 						System.out.println("Para procurar o CLIENTE insira:");
-						System.out.println("-Cpf do Cliente:");
-						String cpfCliente = in.nextLine();
+						System.out.println("-CPF do Cliente:");
+						String cpfCliente = in.next();
 						try {
 							Clientes clienteProcurado = petshop.procurarCliente(cpfCliente);
 							System.out.println("-Nome do CLIENTE: " + clienteProcurado.getNome());
 							System.out.println("-CPF do CLIENTE: " + clienteProcurado.getCpf());
 							System.out.println("-Telefone do CLIENTE: " + clienteProcurado.getTelefone() );
-							System.out.println("-\n\n");
 						}
 						catch (ClienteNaoEncontradoException e) {
 							System.out.println("\n\n*******ERRO*******");
@@ -197,10 +195,10 @@ public class main {
 					if (x == 3) {
 						System.out.println("Para remover o CLIENTE insira:");
 						System.out.println("-Cpf do Cliente:"); 
-						String cpfCliente = in.nextLine();
+						String cpfCliente = in.next();
 						try {
 							petshop.removerCliente(cpfCliente);
-							System.out.println("\n\nSCLIENTE removido com sucesso!\n\n");
+							System.out.println("\n\nCLIENTE removido com sucesso!\n\n");
 						}
 						catch(ClienteNaoEncontradoException e) {
 							System.out.println("\n\n*******ERRO*******");
@@ -212,13 +210,13 @@ public class main {
 					if (x == 4) {
 						System.out.println("Para atualizar as informacoes do CLIENTE insira:");
 						System.out.println("-Cpf do Cliente:"); 
-						String cpfCliente = in.nextLine();
+						String cpfCliente = in.next();
 						try {
 							petshop.existeCliente(cpfCliente);
 							System.out.println("-NOVO nome do Cliente:"); 
-							String novoNomeCliente = in.nextLine();
+							String novoNomeCliente = in.next();
 							System.out.println("-NOVO telefone do Cliente:"); 
-							String novoTelefoneCliente = in.nextLine();
+							String novoTelefoneCliente = in.next();
 							Clientes objetoCliente = new Clientes (novoNomeCliente, cpfCliente, novoTelefoneCliente);
 							petshop.atualizarCliente(objetoCliente);
 						}
