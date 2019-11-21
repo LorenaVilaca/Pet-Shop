@@ -88,7 +88,12 @@ public class main {
 						System.out.println("Digite o codigo do FUNCIONARIO que deseja procurar");
 						String codeFunc = in.next();
 						try {
-							petshop.procurarFuncionario(codeFunc);
+							Funcionarios funcionario = petshop.procurarFuncionario(codeFunc);
+							System.out.println("Produto de codigo:" + codeFunc + "\n-"
+									+ funcionario.getNome() + "\n-"
+									+ funcionario.getCpf() + "\n-"
+									+ funcionario.getTelefone() + "\n-"
+									+ funcionario.getSalario() + "\n");
 						} catch (FuncionarioNaoEncontradoException e) {
 							System.out.println("\n\n----------------- ERRO -----------------\n\n");
 							System.out.println(e.getMessage());
@@ -102,6 +107,7 @@ public class main {
 						String codeFunc = in.next();
 						try {
 							petshop.removerFuncionario(codeFunc);
+							System.out.println("\n\n------ Funcionario Removido com Sucesso ------\n\n");
 						} catch (FuncionarioNaoEncontradoException e) {
 							System.out.println("\n\n----------------- ERRO -----------------\n\n");
 							System.out.println(e.getMessage());
@@ -111,24 +117,17 @@ public class main {
 
 					//ATUALIZAR
 					if (x == 4) {
-						System.out.println("Primeiro, insira os dados do FUNCIONARIO que deseja atualizar:");
+						System.out.println("Primeiro, insira o codigo do FUNCIONARIO que deseja atualizar:");
+						String codeFunc=in.next();
 						System.out.println("-Nome do Funcionario:"); 
 						String nomeFunc=in.next();
 						System.out.println("-CPF do Funcionario:"); 
 						String cpfFunc=in.next();
 						System.out.println("-Telefone do Funcionario:"); 
 						String telFunc=in.next();
-						System.out.println("-Codigo do Funcionario:"); 
-						String codeFunc=in.next();
 						System.out.println("-Salario do Funcionario");
 						double salarioFunc=in.nextDouble();
 						Funcionarios funcionario = new Funcionarios(nomeFunc, cpfFunc, telFunc, codeFunc, salarioFunc);
-						System.out.println("Agora, escolha o que deseja fazer\n"
-								+ " (1) - ATUALIZAR UM CADASTRO DE FUNCIONARIO\n"
-								+ " (2) - GERAR BONUS PARA UM FUNCIONARIO JA EXISTENTE\n");
-						int y = in.nextInt();
-						//ATUALIZAR FUNCIONARIO
-						if (y == 1) {
 							try {
 								petshop.atualizarFuncionario(funcionario);
 								System.out.println("\n\n------ Funcionario Atualizado com Sucesso ------\n\n");
@@ -137,7 +136,6 @@ public class main {
 								System.out.println(e.getMessage());
 								System.out.println("\n\n----------------- ERRO -----------------\n\n");
 							}
-						}
 					}
 				} 
 			}
