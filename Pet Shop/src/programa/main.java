@@ -422,13 +422,12 @@ public class main {
 					//procurando as classes pertencentes a venda
 					if (x == 1) {
 
-						System.out.println("Digite o cpf do cliente:"); cpf = in.next();
-						System.out.println("Deseja usar o credito do cliente?");
+						System.out.println("Digite o CPF do cliente:"); cpf = in.next();
 						System.out.println("Digite o codigo do funcionario que efetuou a venda:"); codeF = in.next();
 						System.out.println("Digite o codigo do produto vendido:"); codeP = in.next();
 						System.out.println("Digite o codigo do servico prestado:"); codeS = in.next();
 						System.out.println("Digite o valor total da venda:"); valor = in.nextDouble();
-						System.out.println("Digite o id da venda:"); String id = in.next();
+						System.out.println("Digite o ID da venda:"); String id = in.next();
 						System.out.println("Abater credito do cliente no valor total da venda?" + "\n" +
 								"(1) SIM" + "\n" +
 								"(2) NAO"); int comandoCred = in.nextInt();
@@ -489,18 +488,18 @@ public class main {
 						String idP = in.next();
 						try {
 							Vendas procura = petshop.procurarVenda(idP);
-							System.out.println("nome do cliente: " + procura.getCliente().getNome() + "\n" + "cpf do cliente: " + procura.getCliente().getCpf() 
-									+ "\n" + "telefone do cliente: " + procura.getCliente().getTelefone() + "\n" + "desconto que o cliente possui: " 
+							System.out.println("Nome do CLIENTE: " + procura.getCliente().getNome() + "\n" + "CPF do CLIENTE: " + procura.getCliente().getCpf() 
+									+ "\n" + "Telefone do CLIENTE: " + procura.getCliente().getTelefone() + "\n" + "Desconto que o CLIENTE possui: " 
 									+ procura.getCliente().getCredito() + "\n");
-							System.out.println("nome do funcionario: " + procura.getFuncionario().getNome() + "\n" + "cpf do funcionario: " + procura.getFuncionario().getCpf() 
-									+ "\n" + "codigo do funcionario: " + procura.getFuncionario().getCodigo() + "\n" + "telefone do funcionario: " 
-									+ procura.getFuncionario().getTelefone() + "\n" + "salario do funcionario: " + procura.getFuncionario().getSalario() + "\n");
-							System.out.println("nome do produto: " + procura.getProduto().getNome() + "\n" + "codigo do produto: " + procura.getProduto().getCode() + "\n" 
-									+ "nome do fornecedor do produto: " + procura.getProduto().getFornecedor() + "\n" + "preco do produto: " + procura.getProduto().getPrice() 
-									+ "\n" + "quantidade do produto em estoque: " + procura.getProduto().getQuantidade() + "\n");
-							System.out.println("nome do servico prestado: " + procura.getServico().getNome() + "\n" + "codigo do servico prestado: " 
-									+ procura.getServico().getCodigo() + "\n" + "preco do servico prestado: " +  procura.getServico().getPreco() + "\n");
-							System.out.println("valor total da venda: " + procura.getValor() + "\n" + "id da venda: " + procura.getId());
+							System.out.println("Nome do FUNCIONARIOS: " + procura.getFuncionario().getNome() + "\n" + "CPF do FUNCIONARIO: " + procura.getFuncionario().getCpf() 
+									+ "\n" + "Codigo do FUNCIONARIO: " + procura.getFuncionario().getCodigo() + "\n" + "Telefone do FUNCIONARIO: " 
+									+ procura.getFuncionario().getTelefone() + "\n" + "Salario do FUNCIONARIO: " + procura.getFuncionario().getSalario() + "\n");
+							System.out.println("Nome do PRODUTO: " + procura.getProduto().getNome() + "\n" + "Codigo do PRODUTO: " + procura.getProduto().getCode() + "\n" 
+									+ "Nome do fornecedor do PRODUTO: " + procura.getProduto().getFornecedor() + "\n" + "Preco do PRODUTO: " + procura.getProduto().getPrice() 
+									+ "\n" + "Quantidade do PRODUTO em estoque: " + procura.getProduto().getQuantidade() + "\n");
+							System.out.println("Nome do SERVICO prestado: " + procura.getServico().getNome() + "\n" + "Codigo do SERVICO prestado: " 
+									+ procura.getServico().getCodigo() + "\n" + "Preco do SERVICO prestado: " +  procura.getServico().getPreco() + "\n");
+							System.out.println("Valor total da VENDA: " + procura.getValor() + "\n" + "ID da VENDA: " + procura.getId() + "\n");
 						} catch (VendaNaoEncontradaException v) {
 							System.out.println("\n\n----------------- ERRO -----------------\n\n");
 							System.out.println(v.getMessage());
