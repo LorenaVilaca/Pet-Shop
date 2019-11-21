@@ -526,54 +526,42 @@ public class main {
 						Funcionarios funcionario = null; Clientes cliente = null; Produtos produto = null; Servicos servico = null;
 
 						System.out.println("Digite o id da venda que voce deseja atualizar");
+						try {
 						String idA = in.next();
 
 						System.out.println("Digite o codigo do Novo FUNCIONARIO responsavel pela venda:");
-						try {
+						
 							funcionario = petshop.procurarFuncionario(in.next());
-						} catch (FuncionarioNaoEncontradoException a) {
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-							System.out.println(a.getMessage());
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-						}
-
+						
 						System.out.println("Digite o CPF Novo CLIENTE que comprou:");
-						try {
+						
 							cliente = petshop.procurarCliente(in.next());
-						} catch (ClienteNaoEncontradoException c) {
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-							System.out.println(c.getMessage());
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-						}
+						
 
 						System.out.println("Digite o Codigo do novo PRODUTO que foi vendido:");
-						try {
+						
 							produto = petshop.procurarProduto(in.next());
-						} catch (ProdutoNaoEncontradoException c){
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-							System.out.println(c.getMessage());
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-						}
+						
 
 						System.out.println("Digite o codigo do SERVICO incluido na venda:");
-						try {
+						
 							servico = petshop.procurarServico(in.next());
-						} catch (ServicoNaoEncontradoException c){
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-							System.out.println(c.getMessage());
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-						}
+						
 
 						System.out.println("Digite o novo VALOR TOTAL da venda:");
 						double valorNovaVenda = in.nextDouble();
 						Vendas vendaNova = new Vendas(funcionario, cliente, produto, servico, valorNovaVenda, idA);
-						try {
+					
 							petshop.atualizarVenda(vendaNova);
 							System.out.println("\n\n------ Venda Atualizada com Sucesso ------\n\n");
-						} catch (VendaNaoEncontradaException v) {
+						}  catch (ClienteNaoEncontradoException | 
+								FuncionarioNaoEncontradoException |
+								ProdutoNaoEncontradoException |
+								ServicoNaoEncontradoException |  
+								VendaNaoEncontradaException c) {
 							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-							System.out.println(v.getMessage());
-							System.out.println("\n\n----------------- ERRO -----------------\n\n");
+							System.out.println(c.getMessage());
+							System.out.println("\n\n----------------- ERRO -----------------\n\n");	   
 						}
 					}
 				}
