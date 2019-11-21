@@ -41,7 +41,7 @@ public class RepositorioProdutosLista implements RepositorioProduto{
 
 	@Override
 	public void remover(String codeProduto) throws ProdutoNaoEncontradoException{
-		if (this.produto.getCode().equals(codeProduto)&&this.produto!=null) {
+		if (this.produto!=null && this.produto.getCode().equals(codeProduto)) {
 			this.produto=this.next.produto;
 			this.next=this.next.next;
 		} else if (this.produto==null) {

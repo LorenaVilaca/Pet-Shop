@@ -265,10 +265,10 @@ public class main {
 						String codeProduto = in.next();
 						try {
 							Produtos produtop = petshop.procurarProduto(codeProduto);
-							System.out.println("Produto de codigo:" + codeProduto + "\n-"
-									+ produtop.getNome() + "\n-"
-									+ produtop.getPrice() + "\n-"
-									+ produtop.getQuantidade() + "\n-"
+							System.out.println("Produto de codigo:" + codeProduto + "\n-Nome do Produto:"
+									+ produtop.getNome() + "\n-Preco do Produto:"
+									+ produtop.getPrice() + "\n-Quantidade:"
+									+ produtop.getQuantidade() + "\n-Fornecedor:"
 									+ produtop.getFornecedor() + "\n");
 						} catch ( ProdutoNaoEncontradoException e) {
 							System.out.println("\n\n----------------- ERRO -----------------\n\n");
@@ -294,12 +294,12 @@ public class main {
 
 					//ATUALIZAR PRODUTOS
 					if (x == 4) {
-						System.out.println("Para atualizar o PRODUTOS insira:");
+						System.out.println("Insira o Codigo do PRODUTO que deseja alterar:");
+						String codeProduto = in.next();
 						System.out.println("-Novo nome:"); String nomeProduto = in.next();
-						System.out.println("-Codigo do Produto:"); String codeProduto = in.next();
 						System.out.println("-Novo Preco:"); double priceProduto = in.nextDouble();
 						System.out.println("-Nova Quantidade:"); int quantidadeProduto = in.nextInt();
-						System.out.println("-Nova Fornecedor:"); String fornecedorProduto = in.next();
+						System.out.println("-Novo Fornecedor:"); String fornecedorProduto = in.next();
 						Produtos produto = new Produtos(nomeProduto, codeProduto, priceProduto, quantidadeProduto, fornecedorProduto);
 						try {
 							petshop.atualizarProduto(produto);
