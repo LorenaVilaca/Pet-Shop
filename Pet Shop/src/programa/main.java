@@ -535,7 +535,7 @@ public class main {
 						System.out.println("Digite o id da venda que voce deseja atualizar");
 						String idA = in.next();
 						
-						System.out.println("Digite o Novo FUNCIONARIO responsavel pela venda:");
+						System.out.println("Digite o codigo do Novo FUNCIONARIO responsavel pela venda:");
 						try {
 							funcionario = petshop.procurarFuncionario(in.next());
 						} catch (FuncionarioNaoEncontradoException a) {
