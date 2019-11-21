@@ -447,32 +447,27 @@ public class main {
 						System.out.println("Abater credito do cliente no valor total da venda?" + "\n" +
 								"(1) SIM" + "\n" +
 								"(2) NAO"); int comandoCred = in.nextInt();
-                                if (comandoCred == 1) {
-                                	try {
-                                	double valorCred = petshop.procurarCliente(cpf).getCredito();
-                                	valor -= valorCred;
-                                	petshop.procurarCliente(cpf).setCredito(0);
-                                	} catch (ClienteNaoEncontradoException c) {
-                                		System.out.println("\n\n----------------- ERRO -----------------\n\n");
-            							System.out.println(c.getMessage());
-            							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-                                	}
-                                } 
-                                else if (comandoCred == 2) {
-                                	try {
-                                	petshop.gerarBonus(petshop.procurarCliente(cpf), valor);                	
-                                	petshop.procurarCliente(cpf).setCredito(petshop.procurarCliente(cpf).getCredito() + valor);
-                                	} catch (ClienteNaoEncontradoException c) {
-                                		System.out.println("\n\n----------------- ERRO -----------------\n\n");
-            							System.out.println(c.getMessage());
-            							System.out.println("\n\n----------------- ERRO -----------------\n\n");
-                                	}
-                                /*case 2{
-                                    double valorbonus = petshop.gerarBonusCliente (valortotal)
-                                    petshop.procurarCliente.setCredito( petshop.procurarCliente.getCredito() + valorbonus)*/
-                                }
-                                
+								if (comandoCred == 1) {
+									try {
+										double valorCred = petshop.procurarCliente(cpf).getCredito();
+										valor -= valorCred;
+										petshop.procurarCliente(cpf).setCredito(0);
+									} catch (ClienteNaoEncontradoException c) {
+										System.out.println("\n\n----------------- ERRO -----------------\n\n");
+										System.out.println(c.getMessage());
+										System.out.println("\n\n----------------- ERRO -----------------\n\n");
+									}
+								} 
+								else if (comandoCred == 2) {
+									try {
 
+										petshop.procurarCliente(cpf).setCredito(petshop.procurarCliente(cpf).getCredito() + valor);
+									} catch (ClienteNaoEncontradoException c) {
+										System.out.println("\n\n----------------- ERRO -----------------\n\n");
+										System.out.println(c.getMessage());
+										System.out.println("\n\n----------------- ERRO -----------------\n\n");
+									}
+								}
 
 								try {
 
