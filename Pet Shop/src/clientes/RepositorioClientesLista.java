@@ -35,7 +35,6 @@ public class RepositorioClientesLista implements RepositorioClientes {
 		else {
 			this.proximo.remover(codigo);
 		}
-
 	}
 
 	public void atualizar(Clientes cliente) throws ClienteNaoEncontradoException {

@@ -12,7 +12,7 @@ public interface RepositorioClientes {
 
 	public boolean existe(String cpf);
 	
-	public void gerarBonus (Clientes cliente, double valor) throws ClienteNaoEncontradoException;
+	public void gerarBonus (double valor) throws ClienteNaoEncontradoException;
 
 }
 

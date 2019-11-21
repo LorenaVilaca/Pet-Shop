@@ -32,9 +32,9 @@ public class CadastroClientes {
 		return this.repocliente.existe(cpf);
 	}
 	
-	public void gerarBonus (Clientes cliente, double valor)
+	public void gerarBonus (double valor)
 			throws ClienteNaoEncontradoException {
-		this.repocliente.gerarBonus(cliente, valor);
+		this.repocliente.gerarBonus(valor);
 	}
 	
 }

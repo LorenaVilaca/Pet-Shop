@@ -11,8 +11,8 @@ public class Clientes extends PessoaAbstract {
 		this.credito = 0;	
 	}
 
-	public void gerarbonus(double valor) {
-		this.credito = valor * 0.02;
+	public void gerarBonus(double valor) {
+		this.credito = valor * 0.1;
 	}
 
 
@@ -23,5 +23,5 @@ public class Clientes extends PessoaAbstract {
 	public void setCredito(double credito) {
 		this.credito = credito;
 	}
-	
+
 }

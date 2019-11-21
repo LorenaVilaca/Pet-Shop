@@ -73,6 +73,11 @@ public class PetShop {
        }
 
    }
+   
+   public void gerarBonus (double valor)
+			throws ClienteNaoEncontradoException {
+		this.clientes.gerarbonus(valor);
+	}
 
    public Clientes procurarCliente(String cpf)
            throws ClienteNaoEncontradoException {
